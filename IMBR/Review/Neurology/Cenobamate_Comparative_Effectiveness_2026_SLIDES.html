@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cenobamate Comparative Effectiveness 2026 | Slide Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============ THEME: Medical Professional (Light) ============ */
+:root {
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'DM Sans', 'Sarabun', sans-serif;
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface2: #f1f5f9;
+  --surface-elevated: #ffffff;
+  --border: rgba(15, 118, 110, 0.08);
+  --border-bright: rgba(15, 118, 110, 0.16);
+  --text: #1a2332;
+  --text-dim: #64748b;
+  --accent: #0d9488;
+  --accent-light: #14b8a6;
+  --accent-dim: rgba(13, 148, 136, 0.1);
+  --accent-glow: rgba(13, 148, 136, 0.15);
+  --secondary: #1e3a8a;
+  --secondary-dim: rgba(30, 58, 138, 0.1);
+  --gold: #d4a73a;
+  --gold-dim: rgba(212, 167, 58, 0.12);
+  --green: #059669;
+  --green-dim: rgba(5, 150, 105, 0.1);
+  --red: #dc2626;
+  --red-dim: rgba(220, 38, 38, 0.1);
+  --blue: #2563eb;
+  --blue-dim: rgba(37, 99, 235, 0.1);
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-lg: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  overflow: hidden;
+}
+
+/* ============ DECK ENGINE ============ */
+.deck {
+  height: 100dvh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slide {
+  height: 100dvh;
+  scroll-snap-align: start;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(32px, 5vh, 64px) clamp(32px, 6vw, 96px);
+  isolation: isolate;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.slide .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide.visible .reveal { opacity: 1; transform: none; }
+.slide.visible .reveal:nth-child(1) { transition-delay: 0.1s; }
+.slide.visible .reveal:nth-child(2) { transition-delay: 0.2s; }
+.slide.visible .reveal:nth-child(3) { transition-delay: 0.3s; }
+.slide.visible .reveal:nth-child(4) { transition-delay: 0.4s; }
+.slide.visible .reveal:nth-child(5) { transition-delay: 0.5s; }
+.slide.visible .reveal:nth-child(6) { transition-delay: 0.6s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .slide, .slide .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============ NAV CHROME ============ */
+.deck-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  z-index: 100;
+  width: 0%;
+  transition: width 0.3s ease;
+  pointer-events: none;
+}
+
+.deck-dots {
+  position: fixed;
+  right: clamp(12px, 2vw, 24px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 100;
+}
+
+.deck-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-bright);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.deck-dot.active {
+  background: var(--accent);
+  transform: scale(1.3);
+}
+
+.deck-dot:hover {
+  background: var(--accent-light);
+}
+
+.deck-counter {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dim);
+  background: var(--surface);
+  padding: 8px 16px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  z-index: 100;
+  font-family: var(--font-body);
+}
+
+.deck-hints {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  font-size: 12px;
+  color: var(--text-dim);
+  z-index: 100;
+  display: flex;
+  gap: 8px;
+}
+
+.deck-hints span {
+  background: var(--surface);
+  padding: 4px 10px;
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+}
+
+/* ============ SLIDE BACKGROUNDS ============ */
+.bg-gradient {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+}
+
+.bg-gradient-teal {
+  background: linear-gradient(135deg, var(--accent) 0%, #0891b2 100%);
+}
+
+.bg-light {
+  background: var(--bg);
+}
+
+.bg-surface {
+  background: var(--surface);
+}
+
+.bg-teal-wash {
+  background: linear-gradient(180deg, var(--accent-dim) 0%, var(--bg) 100%);
+}
+
+.bg-gold-wash {
+  background: linear-gradient(180deg, var(--gold-dim) 0%, var(--bg) 100%);
+}
+
+/* ============ TYPOGRAPHY ============ */
+.display {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 7vw, 88px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.heading-xl {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.heading-lg {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.heading-md {
+  font-family: var(--font-body);
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.heading-sm {
+  font-family: var(--font-body);
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.label-light {
+  color: rgba(255,255,255,0.8);
+}
+
+.body-lg {
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.6;
+  color: var(--text-dim);
+}
+
+.body {
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1.6;
+}
+
+/* ============ TITLE SLIDE ============ */
+.title-content {
+  max-width: 900px;
+}
+
+.title-content .label {
+  margin-bottom: 20px;
+}
+
+.title-content .display {
+  margin-bottom: 24px;
+}
+
+.title-content .body-lg {
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+
+.title-meta {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.meta-item svg {
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+}
+
+.accent-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--gold));
+}
+
+/* ============ CARDS ============ */
+.card {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+}
+
+.card-elevated {
+  background: var(--surface-elevated);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.card-accent {
+  border-left: 4px solid var(--accent);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card-highlight {
+  background: var(--accent-dim);
+  border: 2px solid var(--accent);
+}
+
+.card-warning {
+  background: var(--gold-dim);
+  border: 2px solid var(--gold);
+}
+
+/* ============ PICO CARDS ============ */
+.pico-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.pico-card {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border: 2px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.pico-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.pico-card.p {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.pico-card.i {
+  border-color: var(--blue);
+  background: var(--blue-dim);
+}
+
+.pico-card.c {
+  border-color: var(--secondary);
+  background: var(--secondary-dim);
+}
+
+.pico-card.o {
+  border-color: var(--green);
+  background: var(--green-dim);
+}
+
+.pico-letter {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.pico-card.p .pico-letter { color: var(--accent); }
+.pico-card.i .pico-letter { color: var(--blue); }
+.pico-card.c .pico-letter { color: var(--secondary); }
+.pico-card.o .pico-letter { color: var(--green); }
+
+.pico-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+
+.pico-text {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+/* ============ STAT CARDS ============ */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.stat-card-best {
+  background: var(--accent-dim);
+  border: 2px solid var(--accent);
+}
+
+.stat-card-warning {
+  background: var(--gold-dim);
+  border: 2px solid var(--gold);
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-card-best .stat-number { color: var(--accent); }
+.stat-card-warning .stat-number { color: var(--gold); }
+
+.stat-label {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+.stat-desc {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* ============ COMPARISON TABLE ============ */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  background: var(--surface);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th {
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  text-align: left;
+  padding: 14px 18px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:nth-child(even) td {
+  background: var(--surface2);
+}
+
+tr:hover td {
+  background: var(--accent-dim);
+}
+
+.cell-best {
+  background: var(--accent-dim) !important;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.cell-warn {
+  background: var(--gold-dim) !important;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.badge-success {
+  background: var(--green-dim);
+  color: var(--green);
+}
+
+.badge-warning {
+  background: var(--gold-dim);
+  color: var(--gold);
+}
+
+/* ============ DRUG CARDS ============ */
+.drug-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.drug-card {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.drug-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.drug-card-best {
+  background: var(--accent-dim);
+  border: 2px solid var(--accent);
+}
+
+.drug-name {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.drug-mech {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+
+.drug-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+/* ============ TAKEAWAY LIST ============ */
+.takeaway-list {
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+
+.takeaway-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--accent);
+}
+
+.takeaway-num {
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.takeaway-text {
+  font-size: 15px;
+  line-height: 1.5;
+  padding-top: 4px;
+}
+
+.takeaway-text strong {
+  color: var(--accent);
+}
+
+/* ============ CALLOUT ============ */
+.callout {
+  background: var(--gold-dim);
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.callout-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.callout-text {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.callout-text strong {
+  color: var(--gold);
+}
+
+/* ============ TWO COLUMN ============ */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .two-col { grid-template-columns: 1fr; }
+  .pico-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============ SLIDE NUMBER ============ */
+.slide-num {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: var(--surface);
+  padding: 6px 12px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+/* ============ CORNER DECORATION ============ */
+.corner-mark {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  opacity: 0.15;
+}
+
+.corner-mark svg {
+  width: 100%;
+  height: 100%;
+}
+
+.corner-tl { top: 24px; left: 24px; }
+.corner-tr { top: 24px; right: 24px; transform: rotate(90deg); }
+.corner-bl { bottom: 24px; left: 24px; transform: rotate(-90deg); }
+.corner-br { bottom: 24px; right: 24px; transform: rotate(180deg); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 640px) {
+  .slide { padding: 24px; }
+  .pico-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .deck-dots { display: none; }
+  .deck-hints { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="deck-progress"></div>
+<div class="deck-dots"></div>
+<div class="deck-counter">1 / 8</div>
+<div class="deck-hints">
+  <span>↑↓ เลื่อน</span>
+  <span>Space ต่อไป</span>
+</div>
+
+<div class="deck">
+
+<!-- ============ SLIDE 1: Title ============ -->
+<div class="slide bg-gradient visible" id="slide-1">
+  <div class="corner-mark corner-tl">
+    <svg viewBox="0 0 60 60" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5">
+      <path d="M0 30 L30 0 L60 0 M0 30 L0 60 L30 60"/>
+    </svg>
+  </div>
+  <div class="corner-mark corner-br">
+    <svg viewBox="0 0 60 60" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5">
+      <path d="M0 30 L30 0 L60 0 M0 30 L0 60 L30 60"/>
+    </svg>
+  </div>
+  
+  <div class="title-content">
+    <div class="reveal label label-light">Comparative Effectiveness Study</div>
+    <h1 class="reveal display" style="color: white; margin: 20px 0 24px;">Cenobamate vs<br>Brivaracetam,<br>Lacosamide &<br>Perampanel</h1>
+    <p class="reveal body-lg" style="color: rgba(255,255,255,0.85); margin-bottom: 40px;">ในผู้ป่วย Drug-Resistant Focal Epilepsy<br>Multicenter Pooled Analysis จาก Real-World Data</p>
+    
+    <div class="reveal title-meta">
+      <div class="meta-item" style="color: rgba(255,255,255,0.8);">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        March 2026
+      </div>
+      <div class="meta-item" style="color: rgba(255,255,255,0.8);">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        JAMA Neurology
+      </div>
+      <div class="meta-item" style="color: rgba(255,255,255,0.8);">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5"/></svg>
+        EAN Pages
+      </div>
+    </div>
+  </div>
+  <div class="accent-bar"></div>
+</div>
+
+<!-- ============ SLIDE 2: PICO ============ -->
+<div class="slide bg-light" id="slide-2">
+  <div class="reveal label" style="margin-bottom: 16px;">PICO Question</div>
+  <h2 class="reveal heading-xl" style="margin-bottom: 40px;">ประชากรและการศึกษา</h2>
+  
+  <div class="reveal pico-grid">
+    <div class="pico-card p">
+      <div class="pico-letter">P</div>
+      <div class="pico-title">Population</div>
+      <div class="pico-text">ผู้ใหญ่ที่มี<br>Drug-Resistant<br>Focal Epilepsy</div>
+    </div>
+    <div class="pico-card i">
+      <div class="pico-letter">I</div>
+      <div class="pico-title">Intervention</div>
+      <div class="pico-text">Cenobamate<br>Adjunctive Therapy</div>
+    </div>
+    <div class="pico-card c">
+      <div class="pico-letter">C</div>
+      <div class="pico-title">Comparison</div>
+      <div class="pico-text">Brivaracetam<br>Lacosamide<br>Perampanel</div>
+    </div>
+    <div class="pico-card o">
+      <div class="pico-letter">O</div>
+      <div class="pico-title">Outcomes</div>
+      <div class="pico-text">Responder Rate<br>Seizure Freedom<br>Retention Rate</div>
+    </div>
+  </div>
+  
+  <div class="reveal slide-num">2 / 8</div>
+</div>
+
+<!-- ============ SLIDE 3: Key Findings ============ -->
+<div class="slide bg-teal-wash" id="slide-3">
+  <div class="reveal label" style="margin-bottom: 16px;">Key Findings</div>
+  <h2 class="reveal heading-xl" style="margin-bottom: 40px;">ผลการศึกษาหลัก</h2>
+  
+  <div class="reveal stat-grid">
+    <div class="stat-card stat-card-best">
+      <div class="stat-number">↑</div>
+      <div class="stat-label">Responder Rate</div>
+      <div class="stat-desc">Cenobamate สูงสุด<br>ที่ 6 และ 12 เดือน</div>
+    </div>
+    <div class="stat-card stat-card-best">
+      <div class="stat-number">↑</div>
+      <div class="stat-label">Seizure Freedom</div>
+      <div class="stat-desc">Likelihood สูงสุด<br>ที่ 12 เดือน</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">↑</div>
+      <div class="stat-label">Retention Rate</div>
+      <div class="stat-desc">สูงกว่า Brivaracetam<br>และ Perampanel</div>
+    </div>
+    <div class="stat-card stat-card-warning">
+      <div class="stat-number">!</div>
+      <div class="stat-label">Tolerability</div>
+      <div class="stat-desc">อุบัติการณ์ AE<br>สูงที่สุด</div>
+    </div>
+  </div>
+  
+  <div class="reveal slide-num">3 / 8</div>
+</div>
+
+<!-- ============ SLIDE 4: Drugs Compared ============ -->
+<div class="slide bg-light" id="slide-4">
+  <div class="reveal label" style="margin-bottom: 16px;">Antiepileptic Drugs</div>
+  <h2 class="reveal heading-xl" style="margin-bottom: 40px;">ยาที่ศึกษาเปรียบเทียบ</h2>
+  
+  <div class="reveal drug-grid">
+    <div class="drug-card drug-card-best">
+      <div class="drug-name">Cenobamate</div>
+      <div class="drug-mech">GABA-A Enhancement<br>Na+ Channel Block</div>
+      <span class="drug-tag">Highest Efficacy</span>
+    </div>
+    <div class="drug-card">
+      <div class="drug-name">Brivaracetam</div>
+      <div class="drug-mech">SV2A Ligand</div>
+      <span class="drug-tag badge-success">Best Tolerability</span>
+    </div>
+    <div class="drug-card">
+      <div class="drug-name">Lacosamide</div>
+      <div class="drug-mech">Na+ Channel Modifier</div>
+      <span class="badge badge-success">Well Tolerated</span>
+    </div>
+    <div class="drug-card">
+      <div class="drug-name">Perampanel</div>
+      <div class="drug-mech">AMPA Receptor<br>Antagonist</div>
+    </div>
+  </div>
+  
+  <div class="reveal slide-num">4 / 8</div>
+</div>
+
+<!-- ============ SLIDE 5: Detailed Comparison ============ -->
+<div class="slide bg-light" id="slide-5">
+  <div class="reveal label" style="margin-bottom: 16px;">Comparative Data</div>
+  <h2 class="reveal heading-xl" style="margin-bottom: 32px;">ผลเปรียบเทียบรายละเอียด</h2>
+  
+  <div class="reveal table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 20%;">Drug</th>
+          <th style="width: 20%; text-align: center;">Responder Rate</th>
+          <th style="width: 20%; text-align: center;">Seizure Freedom</th>
+          <th style="width: 20%; text-align: center;">Retention</th>
+          <th style="width: 20%; text-align: center;">Adverse Events</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color: var(--accent);">Cenobamate</strong></td>
+          <td style="text-align: center;" class="cell-best">Highest</td>
+          <td style="text-align: center;" class="cell-best">Highest</td>
+          <td style="text-align: center;" class="cell-best">Highest</td>
+          <td style="text-align: center;"><span class="badge badge-warning">Highest</span></td>
+        </tr>
+        <tr>
+          <td><strong>Brivaracetam</strong></td>
+          <td style="text-align: center;">Moderate</td>
+          <td style="text-align: center;">Moderate</td>
+          <td style="text-align: center;">Lower</td>
+          <td style="text-align: center;"><span class="badge badge-success">Lowest</span></td>
+        </tr>
+        <tr>
+          <td><strong>Lacosamide</strong></td>
+          <td style="text-align: center;">Moderate</td>
+          <td style="text-align: center;">Moderate</td>
+          <td style="text-align: center;">Moderate</td>
+          <td style="text-align: center;"><span class="badge badge-success">Low</span></td>
+        </tr>
+        <tr>
+          <td><strong>Perampanel</strong></td>
+          <td style="text-align: center;">Lower</td>
+          <td style="text-align: center;">Lowest</td>
+          <td style="text-align: center;">Lowest</td>
+          <td style="text-align: center;">Moderate</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="reveal slide-num">5 / 8</div>
+</div>
+
+<!-- ============ SLIDE 6: Adverse Events ============ -->
+<div class="slide bg-gold-wash" id="slide-6">
+  <div class="reveal label" style="margin-bottom: 16px;">Safety Profile</div>
+  <h2 class="reveal heading-xl" style="margin-bottom: 32px;">ผลข้างเคียงของ Cenobamate</h2>
+  
+  <div class="reveal two-col" style="gap: 24px;">
+    <div>
+      <div class="card" style="margin-bottom: 16px; border-left: 4px solid var(--gold);">
+        <div class="heading-sm" style="margin-bottom: 8px;">😴 Somnolence</div>
+        <div class="body" style="color: var(--text-dim);">อาการง่วงนอน — ผลข้างเคียงที่พบบ่อยที่สุด</div>
+      </div>
+      <div class="card" style="margin-bottom: 16px; border-left: 4px solid var(--gold);">
+        <div class="heading-sm" style="margin-bottom: 8px;">💫 Dizziness</div>
+        <div class="body" style="color: var(--text-dim);">อาการเวียนศีรษะ — พบบ่อยเป็นอันดับสอง</div>
+      </div>
+      <div class="card" style="border-left: 4px solid var(--gold);">
+        <div class="heading-sm" style="margin-bottom: 8px;">🧠 CNS-Related</div>
+        <div class="body" style="color: var(--text-dim);">อาการทางระบบประสาทส่วนกลางอื่นๆ</div>
+      </div>
+    </div>
+    <div>
+      <div class="callout">
+        <svg class="callout-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+        <div class="callout-text">
+          <strong>Clinical Pearl:</strong><br>
+          Slow titration สำคัญมากสำหรับ Cenobamate — เริ่มต้นขนาดต่ำและเพิ่มช้าๆ เพื่อลดผลข้างเคียง
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="reveal slide-num">6 / 8</div>
+</div>
+
+<!-- ============ SLIDE 7: Clinical Implications ============ -->
+<div class="slide bg-light" id="slide-7">
+  <div class="reveal label" style="margin-bottom: 16px;">Clinical Recommendations</div>
+  <h2 class="reveal heading-xl" style="margin-bottom: 32px;">ข้อแนะนำทางคลินิก</h2>
+  
+  <div class="reveal card-grid">
+    <div class="card card-accent">
+      <div class="label" style="margin-bottom: 12px;">เมื่อต้องการประสิทธิภาพสูงสุด</div>
+      <div class="body">Cenobamate เป็นตัวเลือกแรกสำหรับ Drug-Resistant Focal Epilepsy<br><br><strong>แต่ต้องพิจารณาผลข้างเคียงที่อาจเกิดขึ้น</strong></div>
+    </div>
+    <div class="card">
+      <div class="label" style="margin-bottom: 12px;">เมื่อกังวลเรื่องผลข้างเคียง</div>
+      <div class="body">Brivaracetam มี Tolerability ดีที่สุด<br><br>Lacosamide เป็นทางเลือกที่สมดุล</div>
+    </div>
+    <div class="card">
+      <div class="label" style="margin-bottom: 12px;">การเริ่มยา Cenobamate</div>
+      <div class="body">• เริ่มต้นขนาดต่ำ<br>• Titr ช้าๆ<br>• ติดตามอาการใกล้ชิด<br>• ปฏิบัติตาม protocol</div>
+    </div>
+  </div>
+  
+  <div class="reveal slide-num">7 / 8</div>
+</div>
+
+<!-- ============ SLIDE 8: Takeaways ============ -->
+<div class="slide bg-gradient" id="slide-8">
+  <div class="reveal label label-light" style="margin-bottom: 16px;">Summary</div>
+  <h2 class="reveal heading-xl" style="color: white; margin-bottom: 40px;">Key Takeaways</h2>
+  
+  <ol class="reveal takeaway-list" style="max-width: 800px;">
+    <li class="takeaway-item">
+      <span class="takeaway-num">1</span>
+      <span class="takeaway-text"><strong>Cenobamate มีประสิทธิภาพสูงสุด</strong> — Responder rate และ Seizure freedom สูงกว่ายาอื่นๆ ที่ 12 เดือน</span>
+    </li>
+    <li class="takeaway-item">
+      <span class="takeaway-num">2</span>
+      <span class="takeaway-text"><strong>Tolerability ต้องพิจารณา</strong> — อุบัติการณ์ผลข้างเคียงสูงที่สุด โดยเฉพาะ Somnolence และ Dizziness</span>
+    </li>
+    <li class="takeaway-item">
+      <span class="takeaway-num">3</span>
+      <span class="takeaway-text"><strong>Retention rate สูง</strong> — แม้มีผลข้างเคียง ผู้ป่วยยังคงใช้ยาต่อได้ดี</span>
+    </li>
+    <li class="takeaway-item">
+      <span class="takeaway-num">4</span>
+      <span class="takeaway-text"><strong>Slow Titration สำคัญ</strong> — การเริ่มต้นขนาดต่ำและเพิ่มช้าเป็นกุญแจสำคัญ</span>
+    </li>
+  </ol>
+  
+  <div class="reveal" style="margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.2);">
+    <p class="body" style="color: rgba(255,255,255,0.7);">
+      <strong style="color: white;">References:</strong> Colonna I, Wurm R. Comparative Effectiveness of Brivaracetam, Cenobamate, Lacosamide, and Perampanel in Focal Epilepsy. JAMA Neurology. March 2026.
+    </p>
+  </div>
+  
+  <div class="accent-bar"></div>
+</div>
+
+</div>
+
+<script>
+// ============ DECK ENGINE ============
+(function() {
+  const deck = document.querySelector('.deck');
+  const slides = document.querySelectorAll('.slide');
+  const progress = document.querySelector('.deck-progress');
+  const dotsContainer = document.querySelector('.deck-dots');
+  const counter = document.querySelector('.deck-counter');
+  
+  // Create dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'deck-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+  
+  const dots = document.querySelectorAll('.deck-dot');
+  
+  // Intersection Observer for visibility
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        const index = Array.from(slides).indexOf(entry.target);
+        updateProgress(index);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  slides.forEach(slide => observer.observe(slide));
+  
+  function updateProgress(index) {
+    // Progress bar
+    const pct = ((index + 1) / slides.length) * 100;
+    progress.style.width = pct + '%';
+    
+    // Counter
+    counter.textContent = (index + 1) + ' / ' + slides.length;
+    
+    // Dots
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+  
+  function goToSlide(index) {
+    slides[index].scrollIntoView({ behavior: 'smooth' });
+  }
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    const current = Array.from(slides).findIndex(s => s.classList.contains('visible'));
+    if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault();
+      if (current < slides.length - 1) goToSlide(current + 1);
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      if (current > 0) goToSlide(current - 1);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      goToSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      goToSlide(slides.length - 1);
+    }
+  });
+  
+  // Initialize
+  slides[0].classList.add('visible');
+  updateProgress(0);
+})();
+</script>
+
+</body>
+</html>

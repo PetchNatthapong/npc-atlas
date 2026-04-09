@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liver Abscess 2025 — Visual Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface-2: #21253a;
+      --border: rgba(255,255,255,0.08);
+      --border-strong: rgba(255,255,255,0.14);
+      --text: #e8eaf0;
+      --text-dim: #8890a4;
+      --text-muted: #5a6072;
+      --accent-pyogenic: #e07840;
+      --accent-pyogenic-bg: rgba(224,120,64,0.12);
+      --accent-pyogenic-border: rgba(224,120,64,0.35);
+      --accent-amebic: #42b8a0;
+      --accent-amebic-bg: rgba(66,184,160,0.12);
+      --accent-amebic-border: rgba(66,184,160,0.35);
+      --accent-comparison: #7c8cf8;
+      --accent-comparison-bg: rgba(124,140,248,0.1);
+      --accent-critical: #f04060;
+      --accent-critical-bg: rgba(240,64,96,0.1);
+      --accent-warning: #f0c040;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'Fira Code', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100dvh;
+    }
+    a { color: var(--accent-comparison); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header ── */
+    .hero {
+      background: linear-gradient(135deg, #12151f 0%, #1a1d27 60%, #1e2235 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 24px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(224,120,64,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 70% at 20% 80%, rgba(66,184,160,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero__label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .hero__title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .hero__subtitle {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      max-width: 600px;
+    }
+    .hero__sources {
+      margin-top: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .card--pyogenic { border-color: var(--accent-pyogenic-border); }
+    .card--amebic { border-color: var(--accent-amebic-border); }
+    .card--pyogenic .card__tag { background: var(--accent-pyogenic-bg); color: var(--accent-pyogenic); border-color: var(--accent-pyogenic-border); }
+    .card--amebic .card__tag { background: var(--accent-amebic-bg); color: var(--accent-amebic); border-color: var(--accent-amebic-border); }
+    .card--full { grid-column: 1 / -1; }
+    .card--center { text-align: center; }
+    .card--small-pad { padding: 16px 20px; }
+
+    .card__tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 4px;
+      border: 1px solid;
+      margin-bottom: 14px;
+    }
+    .card__title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+    .card__title small {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    /* ── Section ── */
+    .section {
+      padding: 40px 0;
+    }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section__label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .section__heading {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    /* ── Comparison Table ── */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 10px;
+      border: 1px solid var(--border-strong);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    thead tr {
+      background: var(--surface-2);
+    }
+    th {
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-dim);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border-strong);
+    }
+    th.col-pyogenic { color: var(--accent-pyogenic); }
+    th.col-amebic { color: var(--accent-amebic); }
+    td {
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    tbody tr:hover td { background: rgba(255,255,255,0.04); }
+    td.col-pyogenic { border-left: 2px solid var(--accent-pyogenic-border); }
+    td.col-amebic { border-left: 2px solid var(--accent-amebic-border); }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      font-weight: 500;
+    }
+    .badge--danger { background: var(--accent-critical-bg); color: var(--accent-critical); }
+    .badge--success { background: var(--accent-amebic-bg); color: var(--accent-amebic); }
+    .badge--warning { background: rgba(240,192,64,0.1); color: var(--accent-warning); }
+    .badge--info { background: var(--accent-pyogenic-bg); color: var(--accent-pyogenic); }
+
+    /* ── Algorithm ── */
+    .algo-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 0;
+    }
+    .algo-step + .algo-step { border-top: 1px solid var(--border); }
+    .algo-num {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 1px solid var(--border-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+    .algo-num.num-pyogenic { border-color: var(--accent-pyogenic-border); color: var(--accent-pyogenic); background: var(--accent-pyogenic-bg); }
+    .algo-num.num-amebic { border-color: var(--accent-amebic-border); color: var(--accent-amebic); background: var(--accent-amebic-bg); }
+    .algo-num.num-common { border-color: var(--accent-comparison); color: var(--accent-comparison); background: var(--accent-comparison-bg); }
+    .algo-content h4 {
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .algo-content p {
+      font-size: 0.83rem;
+      color: var(--text-dim);
+    }
+    .algo-content code {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      background: var(--surface-2);
+      padding: 1px 6px;
+      border-radius: 3px;
+      color: var(--accent-pyogenic);
+    }
+    .algo-arrow {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      padding: 4px 0;
+    }
+
+    /* ── Key Numbers ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .kpi {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+    }
+    .kpi__value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .kpi__label {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .kpi--pyogenic .kpi__value { color: var(--accent-pyogenic); }
+    .kpi--amebic .kpi__value { color: var(--accent-amebic); }
+    .kpi--warning .kpi__value { color: var(--accent-warning); }
+    .kpi--danger .kpi__value { color: var(--accent-critical); }
+
+    /* ── Take-home ── */
+    .take-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .take-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .take-num {
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent-comparison);
+      background: var(--accent-comparison-bg);
+      border: 1px solid rgba(124,140,248,0.25);
+      border-radius: 4px;
+      padding: 2px 6px;
+      min-width: 24px;
+      text-align: center;
+    }
+    .take-text {
+      font-size: 0.83rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    .take-text strong { color: var(--text); }
+
+    /* ── Flowchart ── */
+    .flow-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .flow-node {
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 0.87rem;
+      position: relative;
+    }
+    .flow-node--decision {
+      border-color: var(--accent-warning);
+      background: rgba(240,192,64,0.05);
+      text-align: center;
+      font-weight: 600;
+    }
+    .flow-node--pyogenic { border-left: 3px solid var(--accent-pyogenic); }
+    .flow-node--amebic { border-left: 3px solid var(--accent-amebic); }
+    .flow-node--common { border-left: 3px solid var(--accent-comparison); }
+    .flow-node--action { border-left: 3px solid var(--accent-amebic); }
+    .flow-node--critical { border-color: var(--accent-critical); border-color: rgba(240,64,96,0.4); }
+    .flow-node__title { font-weight: 600; margin-bottom: 3px; }
+    .flow-node__sub { font-size: 0.78rem; color: var(--text-dim); font-family: var(--font-mono); }
+    .flow-arrow {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      padding: 3px 0;
+    }
+    .flow-branch {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .flow-branch-label {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 0 0;
+    }
+
+    /* ── References ── */
+    .ref-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .ref-list li {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      display: flex;
+      gap: 12px;
+    }
+    .ref-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-comparison);
+      flex-shrink: 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    @media (max-width: 768px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .kpi-grid { grid-template-columns: 1fr 1fr; }
+      .take-grid { grid-template-columns: 1fr; }
+      .flow-branch { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="container">
+    <div class="hero__label">Expert Review · March 2025</div>
+    <h1 class="hero__title">Liver Abscess<br>Diagnosis &amp; Management 2025</h1>
+    <p class="hero__subtitle">Evidence-based visual guide comparing pyogenic vs. amebic liver abscess — diagnosis, antibiotics, drainage strategies, and 10 key take-home points.</p>
+    <div class="hero__sources">
+      Sources: Kumar 2025 (SAR J Surgery) · BMJ Best Practice 2024 · NCBI/NIH · Johns Hopkins ABX Guide · StatPearls · SIS 2024
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ── SECTION 1: KEY METRICS ── -->
+  <section class="section">
+    <div class="section__label">Overview</div>
+    <h2 class="section__heading">At a Glance</h2>
+    <div class="kpi-grid">
+      <div class="kpi kpi--pyogenic">
+        <div class="kpi__value">0.03–1.5%</div>
+        <div class="kpi__label">Hospital admission rate (pyogenic)</div>
+      </div>
+      <div class="kpi kpi--amebic">
+        <div class="kpi__value">10×</div>
+        <div class="kpi__label">Male predominance (amebic)</div>
+      </div>
+      <div class="kpi kpi--warning">
+        <div class="kpi__value">70–90%</div>
+        <div class="kpi__label">PCD success rate</div>
+      </div>
+      <div class="kpi kpi--danger">
+        <div class="kpi__value">20–50%</div>
+        <div class="kpi__label">Mortality if ruptured (amebic)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 2: COMPARISON TABLE ── -->
+  <section class="section">
+    <div class="section__label">Comparison</div>
+    <h2 class="section__heading">Pyogenic vs. Amebic Liver Abscess</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:22%">Parameter</th>
+            <th class="col-pyogenic" style="width:39%">Pyogenic</th>
+            <th class="col-amebic" style="width:39%">Amebic</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Causative agent</strong></td>
+            <td class="col-pyogenic">Polymicrobial bacteria — <em>E. coli, Klebsiella, Proteus, S. aureus, Streptococcus</em></td>
+            <td class="col-amebic"><em>Entamoeba histolytica</em> (protozoan trophozoite)</td>
+          </tr>
+          <tr>
+            <td><strong>Transmission / Source</strong></td>
+            <td class="col-pyogenic">Biliary (40%), portal vein (20%), cryptogenic (20%), arterial, direct extension, trauma</td>
+            <td class="col-amebic">Fecal-oral; intestinal invasion → portal dissemination</td>
+          </tr>
+          <tr>
+            <td><strong>Demographics</strong></td>
+            <td class="col-pyogenic">Age &gt;50, male predominance, diabetes, cirrhosis, malignancy</td>
+            <td class="col-amebic">Men 18–50 (10× more than women); immigrants/travelers from endemic zones</td>
+          </tr>
+          <tr>
+            <td><strong>Location</strong></td>
+            <td class="col-pyogenic">Right lobe (~60%); often multiple</td>
+            <td class="col-amebic">Right lobe (~80%); usually <strong>solitary</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Abscess content</strong></td>
+            <td class="col-pyogenic"><span class="badge badge--danger">Purulent, foul-smelling</span><br>PMNs + bacteria on Gram stain</td>
+            <td class="col-amebic"><span class="badge badge--success">"Anchovy paste"</span><br>Chocolate-brown, odorless; usually sterile</td>
+          </tr>
+          <tr>
+            <td><strong>Blood cultures</strong></td>
+            <td class="col-pyogenic"><span class="badge badge--warning">Positive ~50%</span></td>
+            <td class="col-amebic">Usually negative</td>
+          </tr>
+          <tr>
+            <td><strong>Key diagnostic</strong></td>
+            <td class="col-pyogenic">CT/US + Gram stain + culture of aspirate</td>
+            <td class="col-amebic">Serology (IHA &gt;95% sensitive), travel history, imaging</td>
+          </tr>
+          <tr>
+            <td><strong>First-line antibiotics</strong></td>
+            <td class="col-pyogenic"><code>Ceftriaxone</code> + <code>Metronidazole</code><br>or Amoxicillin-clavulanate</td>
+            <td class="col-amebic"><code>Metronidazole</code> 500–750 mg tid × 7–10d<br><strong>+ then Paromomycin</strong> (luminal agent)</td>
+          </tr>
+          <tr>
+            <td><strong>Drainage needed?</strong></td>
+            <td class="col-pyogenic"><span class="badge badge--danger">&gt;90% require drainage</span><br>Antibiotics alone only if &lt;2 cm + stable</td>
+            <td class="col-amebic"><span class="badge badge--success">&lt;15% require drainage</span><br>Most respond to antibiotics alone</td>
+          </tr>
+          <tr>
+            <td><strong>Drainage method</strong></td>
+            <td class="col-pyogenic"><strong>PCD first-line</strong> (&gt;5 cm catheter; &lt;5 cm aspiration)<br>Surgery if PCD fails / ruptured</td>
+            <td class="col-amebic">PCD if: failure after 5–7d, &gt;5 cm, rupture risk, coinfection</td>
+          </tr>
+          <tr>
+            <td><strong>Mortality</strong></td>
+            <td class="col-pyogenic">6–30% overall; &lt;3% with modern treatment</td>
+            <td class="col-amebic">Excellent if treated; <strong>20–50% if ruptured peritonitis</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Major complications</strong></td>
+            <td class="col-pyogenic">Sepsis (25%), rupture, peritonitis, empyema</td>
+            <td class="col-amebic">Rupture → pleura (4–7%), peritoneum (7–10%), pericardium (rare, high mortality)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:12px;font-size:0.78rem;color:var(--text-muted);font-family:var(--font-mono)">
+      Sources: NCBI/NIH NBK6955 · StatPearls NBK430832 · Kumar 2025 SAR J Surgery · BMJ Best Practice
+    </p>
+  </section>
+
+  <!-- ── SECTION 3: TREATMENT ALGORITHM ── -->
+  <section class="section">
+    <div class="section__label">Treatment Algorithm</div>
+    <h2 class="section__heading">Step-by-Step Management</h2>
+
+    <div class="flow-wrap" style="max-width:780px;margin:0 auto;">
+
+      <!-- Step 1: Suspicion -->
+      <div class="flow-node flow-node--common">
+        <div class="flow-node__title">① Suspect Liver Abscess</div>
+        <div class="flow-node__sub">Fever + RUQ pain + risk factors → order US + labs (CBC, LFTs, blood cultures × 2)</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+
+      <!-- Step 2: Confirm -->
+      <div class="flow-node flow-node--common">
+        <div class="flow-node__title">② Confirm &amp; Characterize</div>
+        <div class="flow-node__sub">US (first-line) → CT if uncertain / small lesions / planning drainage<br>Blood cultures (before antibiotics!) + serology if amebic suspected</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+
+      <!-- Step 3: Branch -->
+      <div class="flow-node flow-node--decision">
+        Is this Pyogenic or Amebic?
+      </div>
+      <div class="flow-branch-label">— Decision point —</div>
+
+      <div class="flow-branch">
+        <!-- PYOGENIC -->
+        <div class="flow-node flow-node--pyogenic" style="opacity:0.95">
+          <div class="flow-node__title" style="color:var(--accent-pyogenic)">Pyogenic</div>
+          <div class="flow-node__sub" style="margin-bottom:10px">E. coli, Klebsiella, polymicrobial</div>
+          <div style="font-size:0.82rem;color:var(--text-dim);line-height:1.7">
+            <strong>Empiric antibiotics:</strong><br>
+            <code>Ceftriaxone</code> 1–2g IV q12h<br>
+            <code>+ Metronidazole</code> 500mg IV q8h<br><br>
+            <strong>OR</strong> Amoxicillin-clavulanate<br>
+            <strong>OR</strong> Piperacillin-tazobactam<br>
+            (if severe sepsis / ICU)
+          </div>
+        </div>
+        <!-- AMEBIC -->
+        <div class="flow-node flow-node--amebic">
+          <div class="flow-node__title" style="color:var(--accent-amebic)">Amebic</div>
+          <div class="flow-node__sub" style="margin-bottom:10px">Entamoeba histolytica</div>
+          <div style="font-size:0.82rem;color:var(--text-dim);line-height:1.7">
+            <strong>Nitroimidazole (always first):</strong><br>
+            <code>Metronidazole</code> 500–750mg PO/IV tid × 7–10d<br>
+            <strong>OR</strong> <code>Tinidazole</code> 2g od × 3–5d<br><br>
+            <strong style="color:var(--accent-critical)">+ Luminal agent (MANDATORY):</strong><br>
+            <code>Paromomycin</code> 500mg tid × 7d<br>
+            (or Iodoquinol 650mg tid × 20d)
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-arrow">↓</div>
+
+      <!-- Step 4: Drainage Decision -->
+      <div class="flow-node flow-node--decision">
+        Does this abscess need drainage?
+      </div>
+
+      <!-- Drain YES -->
+      <div class="flow-node flow-node--pyogenic" style="border-left-color:var(--accent-pyogenic)">
+        <div class="flow-node__title">Percutaneous Drainage — First-Line</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;font-size:0.82rem;color:var(--text-dim)">
+          <div>
+            <strong style="color:var(--accent-pyogenic)">PCD (Catheter)</strong><br>
+            Abscess &gt;5 cm<br>
+            Success: 70–90%<br>
+            Allows culture sampling
+          </div>
+          <div>
+            <strong style="color:var(--accent-pyogenic)">Aspiration</strong><br>
+            Abscess &lt;5 cm<br>
+            Higher surgical risk<br>
+            Faster for small lesions
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-arrow">↓</div>
+
+      <!-- Step 5: Response -->
+      <div class="flow-node flow-node--decision">
+        Clinical improvement within 5–7 days?
+      </div>
+
+      <div class="flow-branch">
+        <div class="flow-node flow-node--amebic">
+          <div class="flow-node__title" style="color:var(--accent-amebic)">✅ Yes — Continue antibiotics</div>
+          <div class="flow-node__sub">IV → Oral switch at 2 weeks<br>Total: 4–6 weeks (pyogenic) / 10 days + luminal (amebic)</div>
+        </div>
+        <div class="flow-node flow-node--critical" style="border-left-color:var(--accent-critical)">
+          <div class="flow-node__title" style="color:var(--accent-critical)">❌ No — Escalate</div>
+          <div class="flow-node__sub">Re-image, reassess drain position<br>Consider surgical drainage<br>Rule out rupture / complications</div>
+        </div>
+      </div>
+
+      <div class="flow-arrow">↓</div>
+
+      <!-- Step 6: Surgery -->
+      <div class="flow-node flow-node--common" style="border-left-color:var(--accent-critical)">
+        <div class="flow-node__title" style="color:var(--accent-critical)">Surgical Drainage — Last Resort</div>
+        <div class="flow-node__sub">Indications: PCD failure · Underlying biliary disease · Ruptured abscess · Multiple loculated collections<br>
+        Approach: <strong>Laparoscopic preferred</strong> (less pain, faster recovery) · Open for source control · Transpleural for dome abscesses</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── SECTION 4: ANTIBIOTIC QUICK REFERENCE ── -->
+  <section class="section">
+    <div class="section__label">Pharmacology</div>
+    <h2 class="section__heading">Antibiotic Quick Reference</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:22%">Scenario</th>
+            <th style="width:42%">Regimen</th>
+            <th style="width:36%">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Pyogenic — Standard</strong></td>
+            <td><code>Ceftriaxone</code> 1–2g IV q12h <strong>+</strong> <code>Metronidazole</code> 500mg IV q8h</td>
+            <td>Add anaerobic coverage in all cases; metronidazole covers amebic as well</td>
+          </tr>
+          <tr>
+            <td><strong>Pyogenic — Biliary source</strong></td>
+            <td><code>Ampicillin</code> + <code>Aminoglycoside</code> <strong>OR</strong> Carbapenem</td>
+            <td>Culture-guided de-escalation essential; longer duration 4–6 wks</td>
+          </tr>
+          <tr>
+            <td><strong>Pyogenic — Severe sepsis</strong></td>
+            <td><code>Piperacillin-tazobactam</code> <strong>OR</strong> Carbapenem + Metronidazole</td>
+            <td>Broadest coverage; reassess at 48–72h with cultures</td>
+          </tr>
+          <tr>
+            <td><strong>Pyogenic — Oral step-down</strong></td>
+            <td><code>Amoxicillin-clavulanate</code> 875/125mg bid <strong>OR</strong> Fluoroquinolone + Metronidazole</td>
+            <td>Switch after clinical improvement; total 4–6 weeks</td>
+          </tr>
+          <tr>
+            <td><strong>Amebic — Nitroimidazole</strong></td>
+            <td><code>Metronidazole</code> 500–750mg PO/IV tid × 7–10d <strong>OR</strong> <code>Tinidazole</code> 2g od × 3–5d</td>
+            <td>Clinical response expected within 72–96 hours</td>
+          </tr>
+          <tr>
+            <td><strong>Amebic — Luminal agent</strong></td>
+            <td><code>Paromomycin</code> 500mg tid × 7d <strong>OR</strong> <code>Iodoquinol</code> 650mg tid × 20d</td>
+            <td><strong style="color:var(--accent-critical)">NEVER give simultaneously with metronidazole</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── SECTION 5: TAKE-HOME POINTS ── -->
+  <section class="section">
+    <div class="section__label">Clinical Pearls</div>
+    <h2 class="section__heading">10 Take-Home Points</h2>
+    <div class="take-grid">
+      <div class="take-item">
+        <span class="take-num">1</span>
+        <div class="take-text"><strong>US is first-line imaging</strong> — CT superior for small/multiple abscesses and intervention planning.</div>
+      </div>
+      <div class="take-item">
+        <span class="take-num">2</span>
+        <div class="take-text"><strong>Always culture before antibiotics</strong> — blood cultures + aspirate Gram stain guide targeted therapy.</div>
+      </div>
+      <div class="take-item">
+        <span class="take-num">3</span>
+        <div class="take-text"><strong>Antibiotics alone only if</strong> solitary pyogenic abscess &lt;2 cm in clinically stable patients.</div>
+      </div>
+      <div class="take-item">
+        <span class="take-num">4</span>
+        <div class="take-text"><strong>Empiric regimen = ceftriaxone + metronidazole</strong> (or amox-clav) — covers gram-negatives, gram-positives, anaerobes, and empiric amebic coverage.</div>
+      </div>
+      <div class="take-item">
+        <span class="take-num">5</span>
+        <div class="take-text"><strong>Klebsiella pneumoniae</strong> = most common in Asia; <em>E. coli</em> = most common in Western countries — adjust coverage.</div>
+      </div>
+      <div class="take-item">
+        <span class="take-num">6</span>
+        <div class="take-text"><strong>Metronidazole is mandatory</strong> in ALL liver abscess empiric regimens — for anaerobes AND possible amebic abscess.</div>
+      </div>
+      <div class="take-item">
+        <span class="take-num">7</span>
+        <div class="take-text"><strong>PCD is first-line drainage</strong> (&gt;5 cm catheter, &lt;5 cm aspiration) — 70–90% success rate. Both therapeutic AND diagnostic.</div>
+      </div>
+      <div class="take-item">
+        <span class="take-num">8</span>
+        <div class="take-text"><strong>Amebic = nitroimidazole + luminal agent</strong> — metronidazole alone is insufficient (colonization persists 40–60%).</div>
+      </div>
+      <div class="take-item">
+        <span class="take-num">9</span>
+        <div class="take-text"><strong>Surgery is now rare</strong> — reserved for PCD failure, underlying surgical disease, or ruptured abscess. Laparoscopic preferred.</div>
+      </div>
+      <div class="take-item">
+        <span class="take-num">10</span>
+        <div class="take-text"><strong>Rupture = major cause of death</strong> — amebic peritonitis carries 20–50% mortality. Early recognition and intervention are critical.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 6: REFERENCES ── -->
+  <section class="section">
+    <div class="section__label">Sources</div>
+    <h2 class="section__heading">References</h2>
+    <ol class="ref-list">
+      <li>
+        <span class="ref-num">[1]</span>
+        <span>Pyogenic and Amebic Liver Abscess — Surgical Treatment. NCBI Bookshelf NBK6955. <a href="https://www.ncbi.nlm.nih.gov/books/NBK6955/">https://www.ncbi.nlm.nih.gov/books/NBK6955/</a></span>
+      </li>
+      <li>
+        <span class="ref-num">[2]</span>
+        <span>Amebic Liver Abscess. StatPearls [Internet]. NCBI Bookshelf NBK430832. <a href="https://www.ncbi.nlm.nih.gov/books/NBK430832/">https://www.ncbi.nlm.nih.gov/books/NBK430832/</a></span>
+      </li>
+      <li>
+        <span class="ref-num">[3]</span>
+        <span>BMJ Best Practice. Liver abscess — Symptoms, diagnosis and treatment. Updated 31 Oct 2024. <a href="https://bestpractice.bmj.com/topics/en-gb/640">https://bestpractice.bmj.com/topics/en-gb/640</a></span>
+      </li>
+      <li>
+        <span class="ref-num">[4]</span>
+        <span>Kumar HR. An Update on Current Management of Liver Abscess. SAR Journal of Surgery. 2025;62:10–14. <a href="https://sarpublication.com/media/articles/SARJS_62_10-14.pdf">https://sarpublication.com/media/articles/SARJS_62_10-14.pdf</a></span>
+      </li>
+      <li>
+        <span class="ref-num">[5]</span>
+        <span>Surgical Infection Society (SIS). Guidelines on the Management of Intra-Abdominal Infection: 2024 Update. Surgical Infections. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/38990709/">38990709</a></span>
+      </li>
+      <li>
+        <span class="ref-num">[6]</span>
+        <span>Johns Hopkins ABX Guide. Hepatic Abscess. <a href="https://www.hopkinsguides.com/hopkins/view/Johns_Hopkins_ABX_Guide/540259/all/Hepatic_Abscess">https://www.hopkinsguides.com</a></span>
+      </li>
+    </ol>
+  </section>
+
+</div>
+
+<footer class="footer">
+  Liver Abscess: Diagnosis and Management Guidelines 2025 · Expert Review · Sources: Kumar 2025 · BMJ Best Practice · NCBI/NIH · StatPearls · SIS 2024 · Johns Hopkins ABX Guide
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --secondary: #1e3a8a;
+      --accent: #fbbf24;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --text-dark: #1e293b;
+      --text-gray: #64748b;
+      --border: #e2e8f0;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Sarabun', 'DM Sans', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    /* ========== HEADER ========== */
+    .header {
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+      color: white;
+      padding: 50px 45px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 350px;
+      height: 350px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -50px;
+      width: 250px;
+      height: 250px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--text-dark);
+      padding: 6px 18px;
+      border-radius: 25px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: 0.5px;
+    }
+
+    .header h1 {
+      font-size: 38px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .header .subtitle {
+      font-size: 18px;
+      opacity: 0.9;
+      margin-bottom: 25px;
+      font-weight: 400;
+    }
+
+    .meta-info {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    .meta-info span {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    /* ========== PAGE BREAKS ========== */
+    .section {
+      background: var(--bg-white);
+      padding: 35px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section:last-child {
+      border-bottom: none;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+
+    /* ========== SECTION HEADER ========== */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 28px;
+      padding-bottom: 18px;
+      border-bottom: 3px solid var(--primary);
+    }
+
+    .section-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+
+    /* ========== PICO BOX ========== */
+    .pico-box {
+      background: linear-gradient(135deg, #f0fdfa 0%, #ecfeff 100%);
+      border-radius: 18px;
+      padding: 28px;
+      border-left: 6px solid var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .pico-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pico-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .pico-item {
+      background: white;
+      padding: 16px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .pico-item.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .pico-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+
+    .pico-text {
+      font-size: 14px;
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* ========== HIGHLIGHT BOX ========== */
+    .highlight-box {
+      background: linear-gradient(135deg, var(--accent) 0%, #fcd34d 100%);
+      border-radius: 14px;
+      padding: 20px 25px;
+      margin: 22px 0;
+      color: var(--text-dark);
+    }
+
+    .highlight-box.blue {
+      background: linear-gradient(135deg, var(--secondary) 0%, #3b82f6 100%);
+      color: white;
+    }
+
+    .highlight-box.green {
+      background: linear-gradient(135deg, var(--success) 0%, #34d399 100%);
+      color: white;
+    }
+
+    .highlight-box.teal {
+      background: linear-gradient(135deg, var(--primary) 0%, #5eead4 100%);
+      color: white;
+    }
+
+    .highlight-box.red {
+      background: linear-gradient(135deg, var(--danger) 0%, #f87171 100%);
+      color: white;
+    }
+
+    .highlight-box-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .highlight-box-content {
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    /* ========== TABLE ========== */
+    .findings-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    .findings-table th {
+      background: var(--secondary);
+      color: white;
+      padding: 14px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+    }
+
+    .findings-table th:first-child {
+      border-radius: 12px 0 0 0;
+    }
+
+    .findings-table th:last-child {
+      border-radius: 0 12px 0 0;
+    }
+
+    .findings-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    .findings-table tr:last-child td:first-child {
+      border-radius: 0 0 0 12px;
+    }
+
+    .findings-table tr:last-child td:last-child {
+      border-radius: 0 0 12px 0;
+    }
+
+    .findings-table tr:nth-child(even) {
+      background: var(--bg-light);
+    }
+
+    .highlight-row {
+      background: #fef3c7 !important;
+      font-weight: 600;
+    }
+
+    /* ========== TWO COLUMN ========== */
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .card-list {
+      list-style: none;
+    }
+
+    .card-list li {
+      padding: 13px 16px;
+      margin-bottom: 10px;
+      background: var(--bg-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .card-list li i {
+      color: var(--primary);
+      margin-top: 3px;
+      flex-shrink: 0;
+      font-size: 15px;
+    }
+
+    .card-list.danger li i {
+      color: var(--danger);
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-subtitle.success {
+      color: var(--success);
+    }
+
+    .section-subtitle.danger {
+      color: var(--danger);
+    }
+
+    /* ========== DISCUSSION ========== */
+    .discussion-item {
+      background: var(--bg-light);
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 18px;
+      border-left: 5px solid var(--primary);
+    }
+
+    .discussion-q {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .discussion-a {
+      font-size: 14px;
+      color: var(--text-dark);
+      padding-left: 32px;
+      line-height: 1.7;
+    }
+
+    /* ========== ALGORITHM ========== */
+    .algorithm-box {
+      background: #1e293b;
+      border-radius: 18px;
+      padding: 28px;
+      color: white;
+    }
+
+    .algo-header {
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #5eead4;
+    }
+
+    .algo-step {
+      padding: 14px 20px;
+      margin: 10px 0;
+      border-radius: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .algo-step:nth-child(odd) {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .algo-num {
+      width: 32px;
+      height: 32px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .algo-text {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .algo-text strong {
+      color: #5eead4;
+    }
+
+    .algo-warning {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid var(--warning);
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin-top: 18px;
+      font-size: 14px;
+      color: #fbbf24;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* ========== TAKEAWAY ========== */
+    .takeaway-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .takeaway-card {
+      background: linear-gradient(145deg, var(--primary) 0%, var(--secondary) 100%);
+      border-radius: 18px;
+      padding: 28px 22px;
+      color: white;
+      text-align: center;
+    }
+
+    .takeaway-num {
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 auto 18px;
+    }
+
+    .takeaway-text {
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    /* ========== REFERENCE ========== */
+    .reference-box {
+      background: var(--bg-light);
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+
+    .reference-text {
+      font-size: 14px;
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    .reference-text a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-gray);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-line {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      margin: 0 auto 15px;
+      border-radius: 2px;
+    }
+
+    /* ========== PAGE NUMBER ========== */
+    @page {
+      size: A4;
+      margin: 20mm 15mm;
+    }
+
+    @page :first {
+      margin-top: 0;
+    }
+
+    /* ========== PRINT OPTIMIZATION ========== */
+    @media print {
+      body {
+        background: white;
+        font-size: 14px;
+      }
+
+      .section {
+        padding: 25px 30px;
+      }
+
+      .header {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .highlight-box,
+      .takeaway-card,
+      .pico-box,
+      .algorithm-box {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .findings-table th {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .section {
+        page-break-inside: avoid;
+      }
+
+      .discussion-item,
+      .takeaway-grid {
+        page-break-inside: avoid;
+      }
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .pico-grid,
+      .two-column,
+      .takeaway-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header h1 {
+        font-size: 30px;
+      }
+
+      .section {
+        padding: 25px 20px;
+      }
+
+      .header {
+        padding: 35px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-content">
+        <div class="badge"><i class="fas fa-microscope"></i> Journal Club ICU</div>
+        <h1>R2D2-ICU Trial</h1>
+        <p class="subtitle">Restrictive vs Liberal Physical Restraint Strategies in Critically Ill Patients</p>
+        <div class="meta-info">
+          <span><i class="fas fa-newspaper"></i> JAMA 2026</span>
+          <span><i class="fas fa-calendar"></i> March 17, 2026</span>
+          <span><i class="fas fa-users"></i> n = 405</span>
+          <span><i class="fas fa-hospital"></i> 10 ICUs, France</span>
+          <span><i class="fas fa-flask"></i> RCT</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- KEY FINDINGS -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon"><i class="fas fa-bullseye"></i></div>
+        <h2 class="section-title">Key Findings Summary</h2>
+      </div>
+
+      <div class="highlight-box blue">
+        <div class="highlight-box-title"><i class="fas fa-lightbulb"></i> Main Result</div>
+        <div class="highlight-box-content">
+          <strong>Low-use restraint strategy ไม่ลด delirium/coma ได้</strong> — ไม่มีความแตกต่างอย่างมีนัยสำคัญระหว่างกลุ่ม (6.67 vs 6.30 days, p = 0.51)
+        </div>
+      </div>
+
+      <table class="findings-table">
+        <thead>
+          <tr>
+            <th>Outcome</th>
+            <th>Low-use</th>
+            <th>High-use</th>
+            <th>ผลลัพธ์</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td><strong>Days free of delirium/coma (14 days)</strong></td>
+            <td><strong>6.67 days</strong></td>
+            <td><strong>6.30 days</strong></td>
+            <td><span style="color: var(--danger)">❌ ไม่ต่างกัน</span></td>
+          </tr>
+          <tr>
+            <td>Self-extubation</td>
+            <td>9.2%</td>
+            <td>8.5%</td>
+            <td><span style="color: var(--text-gray)">NS</span></td>
+          </tr>
+          <tr>
+            <td>Day-90 mortality</td>
+            <td>37.2%</td>
+            <td>41.0%</td>
+            <td><span style="color: var(--text-gray)">NS</span></td>
+          </tr>
+          <tr>
+            <td>Ventilator-free days</td>
+            <td colspan="2" style="text-align: center;">— ไม่ต่างกัน —</td>
+            <td><span style="color: var(--text-gray)">NS</span></td>
+          </tr>
+          <tr>
+            <td>ICU length of stay</td>
+            <td colspan="2" style="text-align: center;">— ไม่ต่างกัน —</td>
+            <td><span style="color: var(--text-gray)">NS</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box red">
+        <div class="highlight-box-title"><i class="fas fa-exclamation-triangle"></i> ⚠️ ข้อควรระวัง — Nonadherence สูงมาก!</div>
+        <div class="highlight-box-content">
+          <strong>Low-use group:</strong> 33.7% ได้ restraints > 4 ชม.โดยไม่มี severe agitation<br>
+          <strong>High-use group:</strong> 28.5% ถูกถอด restraints ทั้งที่ไม่ตรงเกณฑ์
+        </div>
+      </div>
+    </div>
+
+    <!-- PICO QUESTION -->
+    <div class="section page-break">
+      <div class="section-header">
+        <div class="section-icon"><i class="fas fa-clipboard-list"></i></div>
+        <h2 class="section-title">PICO Question</h2>
+      </div>
+
+      <div class="pico-box">
+        <div class="pico-title"><i class="fas fa-search"></i> Research Question</div>
+        <div class="pico-grid">
+          <div class="pico-item">
+            <div class="pico-label">P - Population</div>
+            <div class="pico-text">ผู้ใหญ่ที่รับ invasive mechanical ventilation < 6 ชม., คาดว่าต้องใช้ ≥ 48 ชม., อายุ median 65 ปี, 62% เป็นผู้ชาย</div>
+          </div>
+          <div class="pico-item">
+            <div class="pico-label">I - Intervention</div>
+            <div class="pico-text"><strong>Restrictive (low-use)</strong> — wrist straps เฉพาะเมื่อ RASS ≥ 3 (severe agitation)</div>
+          </div>
+          <div class="pico-item">
+            <div class="pico-label">C - Comparison</div>
+            <div class="pico-text"><strong>Liberal (high-use)</strong> — wrist straps ใช้ทุกราย + reassess ทุกวัน</div>
+          </div>
+          <div class="pico-item">
+            <div class="pico-label">O - Outcome</div>
+            <div class="pico-text"><strong>Primary:</strong> Days alive without delirium/coma ที่ 14 วัน<br><strong>Secondary:</strong> Self-extubation, Day-90 mortality, Cognitive/PTSD</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-box teal">
+        <div class="highlight-box-title"><i class="fas fa-info-circle"></i> Study Design</div>
+        <div class="highlight-box-content">
+          Open-label RCT | 10 ICUs ฝรั่งเศส | Jan 2021 - Jan 2024 | Follow-up สิ้นสุด May 2024<br>
+          <strong>Statistical analysis:</strong> Jun - Dec 2025
+        </div>
+      </div>
+    </div>
+
+    <!-- STRENGTHS & WEAKNESSES -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon"><i class="fas fa-balance-scale"></i></div>
+        <h2 class="section-title">Strengths & Weaknesses</h2>
+      </div>
+
+      <div class="two-column">
+        <div>
+          <div class="section-subtitle success"><i class="fas fa-thumbs-up"></i> Strengths</div>
+          <ul class="card-list">
+            <li><i class="fas fa-check-circle"></i> Pragmatic RCT — real-world ICU population</li>
+            <li><i class="fas fa-check-circle"></i> Pre-registered protocol + published SAP ล่วงหน้า</li>
+            <li><i class="fas fa-check-circle"></i> Stratified randomization (site, age, coma status)</li>
+            <li><i class="fas fa-check-circle"></i> มาตรฐาน sedation/delirium management ทุก center</li>
+            <li><i class="fas fa-check-circle"></i> 90-day outcomes (cognition, PTSD, functional)</li>
+            <li><i class="fas fa-check-circle"></i> Post hoc analysis with IP weighting</li>
+          </ul>
+        </div>
+        <div>
+          <div class="section-subtitle danger"><i class="fas fa-thumbs-down"></i> Weaknesses</div>
+          <ul class="card-list danger">
+            <li><i class="fas fa-exclamation-circle"></i> <strong>Nonadherence สูงมาก (30%+)</strong> — diluted effect</li>
+            <li><i class="fas fa-exclamation-circle"></i> Underpowered — target 422 ได้แค่ 396</li>
+            <li><i class="fas fa-exclamation-circle"></i> Open-label design — performance bias</li>
+            <li><i class="fas fa-exclamation-circle"></i> Excluded high-risk: dementia, alcohol withdrawal, neuro</li>
+            <li><i class="fas fa-exclamation-circle"></i> Single country (France) — limited generalizability</li>
+            <li><i class="fas fa-exclamation-circle"></i> CI กว้างมาก: −0.71 to 1.46</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- DISCUSSION -->
+    <div class="section page-break">
+      <div class="section-header">
+        <div class="section-icon"><i class="fas fa-comments"></i></div>
+        <h2 class="section-title">Discussion Points</h2>
+      </div>
+
+      <div class="discussion-item">
+        <div class="discussion-q"><i class="fas fa-question-circle" style="color: var(--primary)"></i> Q1: ทำไมผลจึง Negative?</div>
+        <div class="discussion-a">
+          <strong>สมมติฐาน:</strong> Restraints → ↑stress → ↑sedation → ↑delirium<br><br>
+          <strong>Possible explanations:</strong>
+          <ul style="margin-left: 20px; margin-top: 10px;">
+            <li>Sedation strategy มาตรฐานเดียวกันในทุกกลุ่ม เป็น <strong>effect modifier</strong> ที่สำคัญที่สุด</li>
+            <li>ABCDEF bundle อาจ override restraint effect</li>
+            <li>Delirium มาจาก underlying illness, drugs, sleep deprivation เป็นหลัก</li>
+            <li>RASS ≥ 3 threshold อาจ <strong>สูงเกินไป</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="discussion-item">
+        <div class="discussion-q"><i class="fas fa-question-circle" style="color: var(--primary)"></i> Q2: Self-extubation ไม่ต่างกัน — สำคัญตรงไหน?</div>
+        <div class="discussion-a">
+          <div class="highlight-box green">
+            <div class="highlight-box-title"><i class="fas fa-check"></i> Key Insight</div>
+            <div class="highlight-box-content">
+              Evidence ชี้ว่า <strong>restraints ไม่ได้ป้องกัน self-extubation</strong> — นี่ค้านความเชื่อทั่วไปที่ว่า restraints ช่วยความปลอดภัย
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="discussion-item">
+        <div class="discussion-q"><i class="fas fa-question-circle" style="color: var(--primary)"></i> Q3: Ethical Considerations</div>
+        <div class="discussion-a">
+          <strong>ถ้า restraints ไม่ได้ช่วย outcomes แต่มี potential harm</strong> — ใครควรตัดสินใจว่าใช้หรือไม่?<br>
+          แพทย์? ญาติ? ผู้ป่วยเอง (ถ้าประเมินได้)?
+        </div>
+      </div>
+
+      <div class="discussion-item">
+        <div class="discussion-q"><i class="fas fa-question-circle" style="color: var(--primary)"></i> Q4: Clinical Practice Implications</div>
+        <div class="discussion-a">
+          <ul style="margin-left: 20px;">
+            <li><strong>อย่าใช้ restraints เป็น first-line</strong> สำหรับ delirium prevention</li>
+            <li><strong>ABCDEF bundle</strong> remains key</li>
+            <li>ถ้าจะใช้ restraints — keep it <strong>time-limited + criteria-based</strong></li>
+            <li><strong>Family engagement + early mobility</strong> อาจลด agitation ได้ดีกว่า</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALGORITHM -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon"><i class="fas fa-project-diagram"></i></div>
+        <h2 class="section-title">Practical Algorithm</h2>
+      </div>
+
+      <div class="algorithm-box">
+        <div class="algo-header">
+          <i class="fas fa-user-injured"></i> วิตกกังวล/Agitation ใน ICU
+        </div>
+        <div class="algo-step">
+          <div class="algo-num">1</div>
+          <div class="algo-text">
+            <strong>ตรวจสอบสาเหตุก่อน:</strong><br>
+            Pain? → Analgesia optimization | Sleep deprivation? → Sleep bundle<br>
+            Bladder/bowel distension? → Catheter care | Hypoxia/CO2? → ABG/Vent check
+          </div>
+        </div>
+        <div class="algo-step">
+          <div class="algo-num">2</div>
+          <div class="algo-text">
+            <strong>Non-pharmacological first:</strong><br>
+            Reorient patient | Family presence/virtual reality | Early mobilization | Music therapy
+          </div>
+        </div>
+        <div class="algo-step">
+          <div class="algo-num">3</div>
+          <div class="algo-text">
+            <strong>Pharmacological if needed:</strong><br>
+            Dexmedetomidine (preferred) | Avoid benzodiazepines unless alcohol withdrawal/seizure
+          </div>
+        </div>
+        <div class="algo-step">
+          <div class="algo-num">4</div>
+          <div class="algo-text">
+            <strong>ONLY THEN consider restraints:</strong><br>
+            If immediate safety risk AND after trying steps 1-3<br>
+            Time-limited + criteria-based + daily reassessment
+          </div>
+        </div>
+        <div class="algo-warning">
+          <i class="fas fa-exclamation-triangle"></i> ไม่ใช่ restraints เป็น first-line!
+        </div>
+      </div>
+    </div>
+
+    <!-- TAKE HOME -->
+    <div class="section page-break">
+      <div class="section-header">
+        <div class="section-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h2 class="section-title">3 Key Take-home Messages</h2>
+      </div>
+
+      <div class="takeaway-grid">
+        <div class="takeaway-card">
+          <div class="takeaway-num">1</div>
+          <div class="takeaway-text">
+            <strong>Restraints alone won't prevent delirium</strong><br>
+            ต้องมี systematic sedation + delirium bundle
+          </div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-num">2</div>
+          <div class="takeaway-text">
+            <strong>Protocol-based restraint reduction is safe</strong><br>
+            Self-extubation ไม่เพิ่ม
+          </div>
+        </div>
+        <div class="takeaway-card">
+          <div class="takeaway-num">3</div>
+          <div class="takeaway-text">
+            <strong>Focus on what matters more</strong><br>
+            Analgesia-first, early mobility, sleep hygiene, family
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REFERENCE -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon"><i class="fas fa-book"></i></div>
+        <h2 class="section-title">Reference</h2>
+      </div>
+
+      <div class="reference-box">
+        <p class="reference-text">
+          <strong>Sonneville R, et al.</strong> Restrictive vs Liberal Physical Restraint Strategies in Critically Ill Patients. <em>The R2D2-ICU Randomized Clinical Trial.</em> JAMA. Published online March 17, 2026. doi:10.1001/jama.2026.2897<br><br>
+          <span style="color: var(--text-gray);">
+            <i class="fas fa-globe"></i> ClinicalTrials.gov: NCT04273360<br>
+            <i class="fas fa-university"></i> 10 ICUs, France | Bichat – Claude-Bernard Hospital, Paris
+          </span>
+        </p>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="footer-line"></div>
+      <p><i class="fas fa-robot"></i> Prepared by Journal Update Agent | R2D2-ICU Journal Club</p>
+      <p style="margin-top: 5px;">📅 April 2026 | <i class="fas fa-file-pdf"></i> Exported with Puppeteer + Chromium</p>
+    </div>
+
+  </div>
+</body>
+</html>

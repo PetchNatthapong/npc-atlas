@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARDS Guidelines 2024–2026 — Visual Summary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Fragment+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f0fdfb;
+    --surface: #ffffff;
+    --surface2: #f0fdfa;
+    --surface-elevated: #ffffff;
+    --border: rgba(0, 0, 0, 0.07);
+    --border-bright: rgba(0, 0, 0, 0.13);
+    --text: #0f172a;
+    --text-dim: #64748b;
+    --text-muted: #94a3b8;
+    --accent: #0891b2;
+    --accent-dark: #0e7490;
+    --accent-dim: rgba(8, 145, 178, 0.07);
+    --accent-mid: rgba(8, 145, 178, 0.15);
+    --teal2: #06b6d4;
+    --green: #059669;
+    --green-dim: rgba(5, 150, 105, 0.08);
+    --amber: #d97706;
+    --amber-dim: rgba(217, 119, 6, 0.08);
+    --red: #dc2626;
+    --red-dim: rgba(220, 38, 38, 0.08);
+    --violet: #7c3aed;
+    --violet-dim: rgba(124, 58, 237, 0.08);
+    --font-body: 'Bricolage Grotesque', system-ui, sans-serif;
+    --font-mono: 'Fragment Mono', 'Courier New', monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #020c10;
+      --surface: #0a1a1f;
+      --surface2: #0d2028;
+      --surface-elevated: #112530;
+      --border: rgba(255, 255, 255, 0.06);
+      --border-bright: rgba(255, 255, 255, 0.11);
+      --text: #f0fdfc;
+      --text-dim: #80d0dc;
+      --text-muted: #4a8a96;
+      --accent: #22d3ee;
+      --accent-dark: #06b6d4;
+      --accent-dim: rgba(34, 211, 238, 0.1);
+      --accent-mid: rgba(34, 211, 238, 0.18);
+      --teal2: #67e8f9;
+      --green: #34d399;
+      --amber: #fbbf24;
+      --red: #f87171;
+      --violet: #a78bfa;
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse at 10% 0%, var(--accent-dim) 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 80%, rgba(5,150,105,0.06) 0%, transparent 50%);
+    color: var(--text);
+    font-family: var(--font-body);
+    padding: 40px 24px;
+    min-height: 100vh;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 768px) { body { padding: 20px 14px; } }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .animate {
+    animation: fadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 0.06s);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  .container { max-width: 1060px; margin: 0 auto; }
+
+  /* === HEADER === */
+  .header {
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .badge-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .badge--source {
+    background: var(--accent-mid);
+    color: var(--accent-dark);
+    border: 1px solid var(--accent-mid);
+  }
+
+  .badge--year {
+    background: var(--green-dim);
+    color: var(--green);
+    border: 1px solid rgba(5,150,105,0.2);
+  }
+
+  .badge--topic {
+    background: var(--violet-dim);
+    color: var(--violet);
+    border: 1px solid rgba(124,58,237,0.2);
+  }
+
+  h1 {
+    font-size: clamp(26px, 5vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  h1 span { color: var(--accent); }
+
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 14px;
+    font-weight: 400;
+    max-width: 680px;
+  }
+
+  /* === SECTION HEADERS === */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    margin-top: 40px;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    background: var(--accent-dim);
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    color: var(--text);
+  }
+
+  /* === KEY CHANGE HERO === */
+  .change-hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.5s ease both;
+  }
+
+  .change-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--teal2), var(--green));
+  }
+
+  .change-hero__title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent-dark);
+    margin-bottom: 6px;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .change-hero__text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text);
+    max-width: 780px;
+  }
+
+  .change-hero__text em {
+    color: var(--accent);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  /* === CARDS GRID === */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    animation: fadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 0.07s);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    border-color: var(--accent-mid);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+
+  .card__tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .tag--strong-rec { background: var(--green-dim); color: var(--green); }
+  .tag--conditional { background: var(--amber-dim); color: var(--amber); }
+  .tag--against { background: var(--red-dim); color: var(--red); }
+  .tag--new { background: var(--accent-mid); color: var(--accent-dark); }
+  .tag--unchanged { background: var(--surface2); color: var(--text-muted); border: 1px solid var(--border); }
+
+  .card__title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .card__body {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+
+  .card__body code {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    background: var(--accent-dim);
+    color: var(--accent-dark);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* === TABLES === */
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 32px;
+    animation: fadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 0.07s);
+  }
+
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .data-table thead {
+    background: var(--surface2);
+    border-bottom: 2px solid var(--border-bright);
+  }
+
+  .data-table th {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-dim);
+    text-align: left;
+    padding: 13px 18px;
+    white-space: nowrap;
+  }
+
+  .data-table td {
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .data-table tbody tr:last-child td { border-bottom: none; }
+
+  .data-table tbody tr {
+    transition: background 0.15s;
+  }
+
+  .data-table tbody tr:hover { background: var(--accent-dim); }
+
+  .data-table code {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    background: var(--accent-dim);
+    color: var(--accent-dark);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  .data-table .new-text {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* Alternating rows */
+  .data-table tbody tr:nth-child(even) td { background: rgba(0,0,0,0.015); }
+  @media (prefers-color-scheme: dark) {
+    .data-table tbody tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  }
+
+  /* === SEVERITY CHIPS === */
+  .severity-chip {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin: 2px;
+  }
+
+  .chip--mild { background: var(--green-dim); color: var(--green); }
+  .chip--moderate { background: var(--amber-dim); color: var(--amber); }
+  .chip--severe { background: var(--red-dim); color: var(--red); }
+  .chip--all { background: var(--accent-dim); color: var(--accent-dark); }
+
+  /* === PHENOTYPE TABLE === */
+  .phenotype-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  @media (max-width: 640px) {
+    .phenotype-grid { grid-template-columns: 1fr; }
+  }
+
+  .phenotype-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    animation: fadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .phenotype-card--hyper {
+    border-top: 3px solid var(--red);
+  }
+
+  .phenotype-card--hypo {
+    border-top: 3px solid var(--green);
+  }
+
+  .phenotype-card__header {
+    padding: 16px 20px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .phenotype-card__title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .phenotype-card--hyper .phenotype-card__title { color: var(--red); }
+  .phenotype-card--hypo .phenotype-card__title { color: var(--green); }
+
+  .phenotype-card__subtitle {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .phenotype-card__body {
+    padding: 16px 20px;
+  }
+
+  .phenotype-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12.5px;
+  }
+
+  .phenotype-row:last-child { border-bottom: none; }
+
+  .phenotype-row__key {
+    color: var(--text-dim);
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-top: 2px;
+  }
+
+  .phenotype-row__val {
+    color: var(--text);
+    text-align: right;
+    font-size: 12.5px;
+  }
+
+  /* === TAKE-HOME LIST === */
+  .takeaway-list {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+
+  .takeaway-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    animation: fadeUp 0.35s ease both;
+    animation-delay: calc(var(--i, 0) * 0.05s);
+    transition: border-color 0.15s;
+  }
+
+  .takeaway-item:hover { border-color: var(--accent-mid); }
+
+  .takeaway-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-dim);
+    min-width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0.5px;
+  }
+
+  .takeaway-text {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+
+  .takeaway-text strong { color: var(--accent-dark); font-weight: 700; }
+
+  /* === FOOTER === */
+  .footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer__left {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  .footer__right {
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .footer__right a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* === SOURCES BAR === */
+  .sources-bar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .sources-bar__title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+
+  .sources-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .source-tag {
+    font-size: 11px;
+    color: var(--text-dim);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    line-height: 1.4;
+  }
+
+  .source-tag strong { color: var(--text); display: block; font-family: var(--font-body); font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="header animate" style="--i:0">
+    <div class="badge-row">
+      <span class="badge badge--source">ATS · ESICM · Global Definition</span>
+      <span class="badge badge--year">2024–2026</span>
+      <span class="badge badge--topic">Critical Care</span>
+    </div>
+    <h1>ARDS <span>Guidelines</span><br>Updates 2024–2026</h1>
+    <p class="subtitle">A visual summary of key changes: Berlin Definition (2012) → Global ARDS Definition 2024, ATS 2024, ESICM 2023, EMA 2025, and Nature Advances 2025.</p>
+  </header>
+
+  <!-- SOURCES -->
+  <div class="sources-bar animate" style="--i:1">
+    <div class="sources-bar__title">Sources Referenced</div>
+    <div class="sources-list">
+      <div class="source-tag"><strong>ATS 2024</strong>Am J Respir Crit Care Med</div>
+      <div class="source-tag"><strong>ESICM 2023</strong>Intensive Care Med</div>
+      <div class="source-tag"><strong>Global Def 2024</strong>PMC12784126</div>
+      <div class="source-tag"><strong>EMA 2025 Rev.2</strong>European Medicines Agency</div>
+      <div class="source-tag"><strong>Nature 2025</strong>Signal Transduct Target Ther</div>
+      <div class="source-tag"><strong>ATS 2017</strong>MV Guidelines</div>
+    </div>
+  </div>
+
+  <!-- KEY CHANGE HERO -->
+  <div class="change-hero animate" style="--i:2">
+    <div class="change-hero__title">▲ Key Paradigm Shift</div>
+    <p class="change-hero__text">
+      The <strong>2024 Global ARDS Definition</strong> is the first major revision since Berlin 2012. It introduces <em>three diagnostic categories</em> (non-intubated, intubated, resource-limited), formally accepts <em>lung ultrasound</em> and <em>SpO₂/FiO₂ ratio</em>, and enables ARDS diagnosis <em>without intubation</em> — transforming both clinical practice and research inclusion criteria.
+    </p>
+  </div>
+
+  <!-- SECTION: Key Changes Table -->
+  <div class="section-header animate" style="--i:3">
+    <span class="section-label">§ 1</span>
+    <h2 class="section-title">Berlin 2012 → Global Definition 2024: Key Changes</h2>
+  </div>
+
+  <div class="table-wrap animate" style="--i:4">
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Berlin Definition (2012)</th>
+            <th>Global ARDS Definition (2024)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Patient population</strong></td>
+            <td>Intubated, mechanically ventilated only</td>
+            <td class="new-text">Intubated + non-intubated + resource-limited settings</td>
+          </tr>
+          <tr>
+            <td><strong>Imaging</strong></td>
+            <td>Chest X-ray or CT only</td>
+            <td class="new-text">Lung ultrasound added as accepted modality</td>
+          </tr>
+          <tr>
+            <td><strong>Oxygenation</strong></td>
+            <td>PaO₂/FiO₂ ratio with PEEP ≥5 cmH₂O</td>
+            <td class="new-text">SpO₂/FiO₂ (SF) ratio accepted if SpO₂ ≤97%</td>
+          </tr>
+          <tr>
+            <td><strong>HFNO/NIV patients</strong></td>
+            <td>Excluded from diagnosis</td>
+            <td class="new-text">Included — non-intubated ARDS category</td>
+          </tr>
+          <tr>
+            <td><strong>HFNO criteria</strong></td>
+            <td>N/A</td>
+            <td class="new-text">≥30 L/min flow rate required</td>
+          </tr>
+          <tr>
+            <td><strong>NIV/CPAP criteria</strong></td>
+            <td>CPAP ≥5 cmH₂O (implicit)</td>
+            <td>CPAP/NIV with PEEP ≥5 cmH₂O (clarified)</td>
+          </tr>
+          <tr>
+            <td><strong>Resource-limited</strong></td>
+            <td>Not addressed</td>
+            <td class="new-text">Kigali modification adopted — no PEEP requirement</td>
+          </tr>
+          <tr>
+            <td><strong>Severity categories</strong></td>
+            <td>Mild / Moderate / Severe (PF only)</td>
+            <td class="new-text">Three categories with separate PF and SF cutoffs</td>
+          </tr>
+          <tr>
+            <td><strong>PaCO₂ / dead space</strong></td>
+            <td>Not addressed</td>
+            <td>Identified as important future direction</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION: Severity -->
+  <div class="section-header animate" style="--i:5">
+    <span class="section-label">§ 2</span>
+    <h2 class="section-title">Severity Classification — Intubated ARDS</h2>
+  </div>
+
+  <div class="table-wrap animate" style="--i:6">
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Severity</th>
+            <th>PaO₂/FiO₂ (PF ratio)</th>
+            <th>SpO₂/FiO₂ (SF ratio)</th>
+            <th>Mortality implication</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="severity-chip chip--mild">Mild</span></td>
+            <td>200 &lt; PF ≤ 300 mmHg</td>
+            <td>235 &lt; SF ≤ 315</td>
+            <td>~27%</td>
+          </tr>
+          <tr>
+            <td><span class="severity-chip chip--moderate">Moderate</span></td>
+            <td>100 &lt; PF ≤ 200 mmHg</td>
+            <td>148 &lt; SF ≤ 235</td>
+            <td>~32–45%</td>
+          </tr>
+          <tr>
+            <td><span class="severity-chip chip--severe">Severe</span></td>
+            <td>PF ≤ 100 mmHg</td>
+            <td>SF ≤ 148</td>
+            <td>~45–60%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION: Recommendations Cards -->
+  <div class="section-header animate" style="--i:7">
+    <span class="section-label">§ 3</span>
+    <h2 class="section-title">Clinical Recommendations — At a Glance</h2>
+  </div>
+
+  <div class="cards-grid" style="--i:8">
+    <!-- Card 1 -->
+    <div class="card">
+      <span class="card__tag tag--strong-rec">Strong Rec</span>
+      <div class="card__title">Lung-Protective Ventilation</div>
+      <div class="card__body">
+        Tidal volume <strong>4–8 mL/kg PBW</strong> (start 6), plateau pressure <strong>&lt;30 cmH₂O</strong>. Cornerstone of ARDS management. Unchanged since 2017.
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="card">
+      <span class="card__tag tag--strong-rec">Strong Rec</span>
+      <div class="card__title">Prone Positioning</div>
+      <div class="card__body">
+        <strong>&gt;12–16 h/day</strong> for severe ARDS (ATS 2024: &gt;12h; ESICM 2023: ≥16h). Reduces mortality ~50% in severe ARDS (PROSEVA).
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="card">
+      <span class="card__tag tag--strong-rec">Against</span>
+      <div class="card__title">Routine HFOV</div>
+      <div class="card__body">
+        Routine high-frequency oscillatory ventilation <strong>not recommended</strong> for moderate-to-severe ARDS. (ATS 2017 &amp; 2024 maintained)
+      </div>
+    </div>
+    <!-- Card 4 -->
+    <div class="card">
+      <span class="card__tag tag--strong-rec">Against</span>
+      <div class="card__title">Prolonged Recruitment Maneuvers</div>
+      <div class="card__body">
+        PEEP ≥35 cmH₂O for &gt;60 sec <strong>strongly discouraged</strong> in moderate-to-severe ARDS — associated with higher mortality. (ATS 2024)
+      </div>
+    </div>
+    <!-- Card 5 -->
+    <div class="card">
+      <span class="card__tag tag--conditional tag--new">Conditional · New</span>
+      <div class="card__title">Higher PEEP (no RM)</div>
+      <div class="card__body">
+        Conditional for <strong>higher PEEP without recruitment maneuvers</strong> in moderate-to-severe ARDS. ESICM 2023: insufficient data for specific PEEP recommendation.
+      </div>
+    </div>
+    <!-- Card 6 -->
+    <div class="card">
+      <span class="card__tag tag--conditional tag--new">Conditional · New</span>
+      <div class="card__title">VV-ECMO</div>
+      <div class="card__body">
+        Venovenous ECMO <strong>may be considered</strong> in selected patients with severe refractory ARDS (PF &lt;80, pH &lt;7.25). Prefer high-volume centers. (ATS 2024)
+      </div>
+    </div>
+    <!-- Card 7 -->
+    <div class="card">
+      <span class="card__tag tag--conditional tag--new">Conditional · New</span>
+      <div class="card__title">Corticosteroids</div>
+      <div class="card__body">
+        <strong>Dexamethasone 6 mg IV/day × 10 days</strong> conditionally recommended. Alternative: methylprednisolone 1 mg/kg/day. Evidence most robust in COVID-19 ARDS.
+      </div>
+    </div>
+    <!-- Card 8 -->
+    <div class="card">
+      <span class="card__tag tag--conditional tag--new">Conditional · New</span>
+      <div class="card__title">Early NMBA (48h)</div>
+      <div class="card__body">
+        Neuromuscular blocking agents <strong>first 48 hours</strong> in severe ARDS (ATS 2024). ESICM 2023: not for non-COVID. Risk: ICU-acquired weakness.
+      </div>
+    </div>
+    <!-- Card 9 -->
+    <div class="card">
+      <span class="card__tag tag--strong-rec">Strong Rec</span>
+      <div class="card__title">HFNO for AHRF</div>
+      <div class="card__body">
+        High-flow nasal oxygen <strong>strongly recommended</strong> for acute hypoxemic respiratory failure (non-cardiogenic, non-COPD). FLORALI trial basis. (ESICM 2023)
+      </div>
+    </div>
+    <!-- Card 10 -->
+    <div class="card">
+      <span class="card__tag tag--conditional tag--new">Conditional · New</span>
+      <div class="card__title">Awake Prone Positioning</div>
+      <div class="card__body">
+        Recommended for <strong>non-intubated patients</strong> with AHRF (COVID and non-COVID). Reduces intubation rates; adherence is the key practical challenge.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: Phenotyping -->
+  <div class="section-header animate" style="--i:9">
+    <span class="section-label">§ 4</span>
+    <h2 class="section-title">ARDS Subphenotypes — Precision Medicine Approach</h2>
+  </div>
+
+  <div class="phenotype-grid animate" style="--i:10">
+    <div class="phenotype-card phenotype-card--hyper">
+      <div class="phenotype-card__header">
+        <div class="phenotype-card__title">Hyperinflammatory Phenotype</div>
+        <div class="phenotype-card__subtitle">↑ Mortality · Different treatment response</div>
+      </div>
+      <div class="phenotype-card__body">
+        <div class="phenotype-row">
+          <span class="phenotype-row__key">Inflammation</span>
+          <span class="phenotype-row__val">High IL-6, IFN-γ, TNF-α</span>
+        </div>
+        <div class="phenotype-row">
+          <span class="phenotype-row__key">Biomarkers</span>
+          <span class="phenotype-row__val">↑ Angiopoietin-2/1, ↑ PAI-1</span>
+        </div>
+        <div class="phenotype-row">
+          <span class="phenotype-row__key">Clinical</span>
+          <span class="phenotype-row__val">More sepsis, vasopressors, metabolic acidosis</span>
+        </div>
+        <div class="phenotype-row">
+          <span class="phenotype-row__key">Lung morphology</span>
+          <span class="phenotype-row__val">Non-focal / diffuse infiltrates</span>
+        </div>
+        <div class="phenotype-row">
+          <span class="phenotype-row__key">Recruitability</span>
+          <span class="phenotype-row__val">High</span>
+        </div>
+        <div class="phenotype-row">
+          <span class="phenotype-row__key">90-day mortality</span>
+          <span class="phenotype-row__val" style="color: var(--red)">Significantly higher</span>
+        </div>
+        <div class="phenotype-row">
+          <span class="phenotype-row__key">PEEP response</span>
+          <span class="phenotype-row__val">May benefit more from higher PEEP</span>
+        </div>
+        <div class="phenotype-row">
+          <span class="phenotype-row__key">Fluid strategy</span>
+          <span class="phenotype-row__val">Conservative fluid management beneficial</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="phenotype-card phenotype-card--hypo">
+      <div class="phenotype-card__header">
+        <div class="phenotype-card__title">Hypo-inflammatory Phenotype</div>
+        <div class="phenotype-card__subtitle">↓ Mortality · Different treatment response</div>
+      </div>
+      <div class="phenotype-card__body">
+        <div class="phenotype-row">
+          <span class="phenotype-row__key">Inflammation</span>
+          <span class="phenotype-row__val">Lower systemic inflammatory markers</span>
+        </div>
+        <div class="phenotype-row">
+          <span class="phenotype-row__key">Biomarkers</span>
+          <span class="phenotype-row__val">Lower inflammatory mediators</span>
+        </div>
+        <div class="phenotype-row">
+          <span class="phenotype-row__key">Clinical</span>
+          <span class="phenotype-row__val">Fewer comorbidities, less vasopressor use</span>
+        </div>
+        <div class="phenotype-row">
+          <span class="phenotype-row__key">Lung morphology</span>
+          <span class="phenotype-row__val">Focal infiltrates</span>
+        </div>
+        <div class="phenotype-row">
+          <span class="phenotype-row__key">Recruitability</span>
+          <span class="phenotype-row__val">Lower</span>
+        </div>
+        <div class="phenotype-row">
+          <span class="phenotype-row__key">90-day mortality</span>
+          <span class="phenotype-row__val" style="color: var(--green)">Lower</span>
+        </div>
+        <div class="phenotype-row">
+          <span class="phenotype-row__key">PEEP response</span>
+          <span class="phenotype-row__val">May not benefit from higher PEEP</span>
+        </div>
+        <div class="phenotype-row">
+          <span class="phenotype-row__key">Limitation</span>
+          <span class="phenotype-row__val">Real-time biomarker testing unavailable at bedside</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:12px; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 32px; animation: fadeUp 0.4s ease both; animation-delay: 0.65s;">
+    Subphenotypes identified by latent class analysis (Calfee et al., Lancet Respir Med 2014). Clinical implementation requires prospective validation.
+  </p>
+
+  <!-- SECTION: Take-Home Points -->
+  <div class="section-header animate" style="--i:11">
+    <span class="section-label">§ 5</span>
+    <h2 class="section-title">10 Take-Home Points</h2>
+  </div>
+
+  <ol class="takeaway-list" style="--total: 10;">
+    <li class="takeaway-item" style="--i:0">
+      <span class="takeaway-num">01</span>
+      <span class="takeaway-text"><strong>2024 Global ARDS Definition</strong> introduces three categories (non-intubated, intubated, resource-limited) and accepts lung ultrasound and SF ratio — the first major revision in 12 years.</span>
+    </li>
+    <li class="takeaway-item" style="--i:1">
+      <span class="takeaway-num">02</span>
+      <span class="takeaway-text"><strong>HFNO (≥30 L/min)</strong> and <strong>NIV/CPAP (≥5 cmH₂O PEEP)</strong> patients now qualify for ARDS diagnosis — a paradigm shift from Berlin's intubation-only approach.</span>
+    </li>
+    <li class="takeaway-item" style="--i:2">
+      <span class="takeaway-num">03</span>
+      <span class="takeaway-text"><strong>Lung-protective ventilation</strong> (tidal volume 4–8 mL/kg PBW, plateau <30 cmH₂O) remains the cornerstone — unchanged since 2017.</span>
+    </li>
+    <li class="takeaway-item" style="--i:3">
+      <span class="takeaway-num">04</span>
+      <span class="takeaway-text"><strong>Higher PEEP without recruitment maneuvers</strong> is conditionally recommended for moderate-to-severe ARDS (ATS 2024); prolonged recruitment maneuvers are <strong>strongly discouraged</strong>.</span>
+    </li>
+    <li class="takeaway-item" style="--i:4">
+      <span class="takeaway-num">05</span>
+      <span class="takeaway-text"><strong>Prone positioning ≥12–16 hours/day</strong> reduces mortality in severe ARDS; awake prone positioning is recommended for non-intubated AHRF patients.</span>
+    </li>
+    <li class="takeaway-item" style="--i:5">
+      <span class="takeaway-num">06</span>
+      <span class="takeaway-text"><strong>VV-ECMO</strong> should be considered in selected patients with severe refractory ARDS (PF &lt;80, pH &lt;7.25), preferentially at high-volume centers.</span>
+    </li>
+    <li class="takeaway-item" style="--i:6">
+      <span class="takeaway-num">07</span>
+      <span class="takeaway-text"><strong>Corticosteroids</strong> (dexamethasone 6 mg/day × 10 days) are conditionally recommended for ARDS. <strong>No other pharmacotherapy</strong> has demonstrated survival benefit in large trials.</span>
+    </li>
+    <li class="takeaway-item" style="--i:7">
+      <span class="takeaway-num">08</span>
+      <span class="takeaway-text"><strong>ARDS subphenotypes</strong> (hyperinflammatory vs. hypo-inflammatory) demonstrate differential treatment responses — precision medicine is the future, but bedside phenotyping is not yet ready for routine clinical use.</span>
+    </li>
+    <li class="takeaway-item" style="--i:8">
+      <span class="takeaway-num">09</span>
+      <span class="takeaway-text"><strong>Under-recognition of ARDS</strong> remains critical — ~20% of severe ARDS cases are missed, leading to suboptimal lung-protective ventilation and worse outcomes.</span>
+    </li>
+    <li class="takeaway-item" style="--i:9">
+      <span class="takeaway-num">10</span>
+      <span class="takeaway-text"><strong>EMA 2025 (Rev.2)</strong> provides the regulatory framework for future ARDS drug trials; standard of care in trials must include conservative fluids, prone positioning, and lung-protective ventilation.</span>
+    </li>
+  </ol>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__left">
+      ARDS Guidelines Visual Summary &middot; 2024–2026 &middot; Notchiii AI Medical Review
+    </div>
+    <div class="footer__right">
+      Sources: <a href="https://doi.org/10.1001/jama.2012.5669">JAMA 2012</a> &middot;
+      <a href="https://doi.org/10.1164/rccm.201611-2212ST">ATS 2017</a> &middot;
+      <a href="https://doi.org/10.1007/s00134-023-07050-x">ICM 2023</a> &middot;
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12784126/">PMC 2025</a> &middot;
+      <a href="https://doi.org/10.1038/s41392-025-02127-9">STTT 2025</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

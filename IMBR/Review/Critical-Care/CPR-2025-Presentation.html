@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPR Guidelines 2025 — Presentation</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #dc2626;
+      --primary-dark: #991b1b;
+      --secondary: #1e3a8a;
+      --accent: #fbbf24;
+      --bg-light: #ffffff;
+      --bg-dark: #0f172a;
+      --bg-gray: #f8fafc;
+      --text-light: #ffffff;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --gradient-red: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+      --gradient-blue: linear-gradient(135deg, #1e3a8a 0%, #0d9488 100%);
+      --glass-bg: rgba(255, 255, 255, 0.1);
+    }
+
+    body {
+      font-family: 'DM Sans', 'Sarabun', sans-serif;
+      background: var(--bg-gray);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    .slide {
+      width: 100%;
+      min-height: 100vh;
+      padding: 60px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      page-break-after: always;
+    }
+
+    /* ===== SLIDE 1: Title ===== */
+    .slide-title {
+      background: var(--gradient-red);
+      color: var(--text-light);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide-title::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .slide-title .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--text-dark);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 30px;
+    }
+
+    .slide-title h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+
+    .slide-title .subtitle {
+      font-size: 1.8rem;
+      opacity: 0.9;
+      margin-bottom: 40px;
+    }
+
+    .slide-title .meta {
+      font-size: 1.1rem;
+      opacity: 0.7;
+    }
+
+    .heart-icon {
+      font-size: 5rem;
+      animation: pulse 1s infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    /* ===== SLIDE 2: Overview ===== */
+    .slide-overview {
+      background: var(--bg-light);
+    }
+
+    .slide-overview h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+      border-left: 6px solid var(--primary);
+      padding: 25px 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+
+    .highlight-box h3 {
+      color: var(--primary-dark);
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .stat-card.red {
+      border-top: 4px solid var(--primary);
+    }
+
+    .stat-card.blue {
+      border-top: 4px solid var(--secondary);
+    }
+
+    .stat-card.teal {
+      border-top: 4px solid #0d9488;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: block;
+    }
+
+    .stat-card.blue .stat-number {
+      color: var(--secondary);
+    }
+
+    .stat-card.teal .stat-number {
+      color: #0d9488;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-top: 8px;
+    }
+
+    /* ===== SLIDE 3: Chain of Survival ===== */
+    .slide-chain {
+      background: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    .slide-chain h2 {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .chain-steps {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .chain-step {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 16px;
+      padding: 25px 20px;
+      text-align: center;
+      width: 160px;
+      transition: transform 0.3s;
+    }
+
+    .chain-step:hover {
+      transform: translateY(-5px);
+    }
+
+    .chain-number {
+      width: 40px;
+      height: 40px;
+      background: var(--accent);
+      color: var(--text-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin: 0 auto 15px;
+    }
+
+    .chain-step h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    /* ===== SLIDE 4: BLS ===== */
+    .slide-bls {
+      background: var(--bg-light);
+    }
+
+    .slide-bls h2 {
+      font-size: 2.5rem;
+      color: var(--secondary);
+      margin-bottom: 40px;
+    }
+
+    .content-card {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 25px;
+    }
+
+    .content-card h3 {
+      color: var(--secondary);
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    .comparison-table th {
+      background: var(--secondary);
+      color: white;
+      padding: 12px 15px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .comparison-table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    .badge-new {
+      background: #dc2626;
+      color: white;
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .badge-updated {
+      background: #0d9488;
+      color: white;
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    /* ===== SLIDE 5: Infant CPR ===== */
+    .slide-infant {
+      background: linear-gradient(135deg, #fef2f2 0%, #fff 100%);
+    }
+
+    .slide-infant h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 30px;
+    }
+
+    .big-change {
+      background: var(--gradient-red);
+      color: white;
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .big-change h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .big-change .eliminated {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      text-decoration: line-through;
+    }
+
+    .big-change .preferred {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-top: 15px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .info-box {
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .info-box h4 {
+      color: var(--secondary);
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+
+    .info-box p {
+      color: var(--text-muted);
+    }
+
+    /* ===== SLIDE 6: Opioid ===== */
+    .slide-opioid {
+      background: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    .slide-opioid h2 {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 40px;
+    }
+
+    .alert-box {
+      background: rgba(251, 191, 36, 0.15);
+      border: 2px solid var(--accent);
+      border-radius: 16px;
+      padding: 25px 30px;
+      margin-bottom: 30px;
+    }
+
+    .alert-box h3 {
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    .step-list {
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .step-list li {
+      counter-increment: step;
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+
+    .step-list li::before {
+      content: counter(step);
+      background: var(--accent);
+      color: var(--text-dark);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ===== SLIDE 7: TTM ===== */
+    .slide-ttm {
+      background: var(--bg-light);
+    }
+
+    .slide-ttm h2 {
+      font-size: 2.5rem;
+      color: #0d9488;
+      margin-bottom: 30px;
+    }
+
+    .shift-box {
+      background: linear-gradient(135deg, #ccfbf1 0%, #f0fdfa 100%);
+      border-radius: 20px;
+      padding: 35px;
+      margin-bottom: 30px;
+      border: 2px solid #0d9488;
+    }
+
+    .shift-box h3 {
+      color: #0d9488;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+
+    .arrow-shift {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      margin: 25px 0;
+    }
+
+    .old-way, .new-way {
+      padding: 20px 30px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .old-way {
+      background: #f1f5f9;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .new-way {
+      background: #0d9488;
+      color: white;
+      font-weight: 700;
+    }
+
+    .arrow-shift .arrow {
+      font-size: 2rem;
+      color: #0d9488;
+    }
+
+    .param-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .param-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .param-card .value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0d9488;
+    }
+
+    .param-card .label {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
+    /* ===== SLIDE 8: Take Home ===== */
+    .slide-takehome {
+      background: var(--gradient-blue);
+      color: white;
+    }
+
+    .slide-takehome h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .takehome-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .takehome-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 16px;
+      padding: 25px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .takehome-card .number {
+      background: var(--accent);
+      color: var(--text-dark);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .takehome-card p {
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+
+    /* ===== SLIDE 9: End ===== */
+    .slide-end {
+      background: var(--gradient-red);
+      color: white;
+      text-align: center;
+    }
+
+    .slide-end h2 {
+      font-size: 3rem;
+      margin-bottom: 30px;
+    }
+
+    .slide-end p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+    }
+
+    .ref-note {
+      margin-top: 50px;
+      padding: 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Print */
+    @media print {
+      .slide {
+        page-break-after: always;
+        min-height: 100vh;
+      }
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- SLIDE 1: Title -->
+  <div class="slide slide-title">
+    <div class="heart-icon">❤️</div>
+    <div class="badge">2025 AHA Guidelines Update</div>
+    <h1>CPR Guidelines 2025</h1>
+    <p class="subtitle">Cardiopulmonary Resuscitation & Emergency Cardiovascular Care</p>
+    <p class="meta">IMBR Study Room | March 2026</p>
+  </div>
+
+  <!-- SLIDE 2: Overview -->
+  <div class="slide slide-overview">
+    <h2>📋 Overview — What's New in 2025</h2>
+    
+    <div class="highlight-box">
+      <h3>Major Changes Summary</h3>
+      <p>First comprehensive revision since 2020 — spanning BLS to post-cardiac arrest care, systems of care, and ethics.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="stat-card red">
+        <span class="stat-number">10+</span>
+        <span class="stat-label">Key Updates</span>
+      </div>
+      <div class="stat-card blue">
+        <span class="stat-number">NEW</span>
+        <span class="stat-label">Opioid Algorithm</span>
+      </div>
+      <div class="stat-card teal">
+        <span class="stat-number">≥36h</span>
+        <span class="stat-label">TTM Duration</span>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top: 40px;">
+      <div class="content-card">
+        <h3>🔄 Key Changes</h3>
+        <ul style="list-style: none;">
+          <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">• Infant two-finger <strong>ELIMINATED</strong></li>
+          <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">• Trained lay rescuers: <strong>30:2</strong> (not hands-only)</li>
+          <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">• FBAO: <strong>5+5</strong> alternating</li>
+          <li style="padding: 8px 0;">• Women: Clear defibrillation guidance</li>
+        </ul>
+      </div>
+      <div class="content-card">
+        <h3>📊 Topics Covered</h3>
+        <ul style="list-style: none;">
+          <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">• Chain of Survival</li>
+          <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">• Adult BLS & ACLS</li>
+          <li style="padding: 8px 0; border-bottom: 1px solid #e2e8f0;">• Infant CPR</li>
+          <li style="padding: 8px 0;">• Post-Cardiac Arrest Care</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: Chain of Survival -->
+  <div class="slide slide-chain">
+    <h2>⛓️ Unified Chain of Survival</h2>
+    <p style="text-align: center; opacity: 0.7; margin-bottom: 40px;">All ages, all settings — simplified and unified</p>
+    
+    <div class="chain-steps">
+      <div class="chain-step">
+        <div class="chain-number">1</div>
+        <h4>Recognition<br>& Activation</h4>
+      </div>
+      <div class="chain-step">
+        <div class="chain-number">2</div>
+        <h4>Early High-Quality<br>CPR</h4>
+      </div>
+      <div class="chain-step">
+        <div class="chain-number">3</div>
+        <h4>Rapid<br>Defibrillation</h4>
+      </div>
+      <div class="chain-step">
+        <div class="chain-number">4</div>
+        <h4>Effective<br>Advanced Care</h4>
+      </div>
+      <div class="chain-step">
+        <div class="chain-number">5</div>
+        <h4>Post-Cardiac<br>Arrest Care</h4>
+      </div>
+      <div class="chain-step">
+        <div class="chain-number">6</div>
+        <h4>Recovery &<br>Survivorship</h4>
+      </div>
+    </div>
+
+    <div style="margin-top: 50px; text-align: center; opacity: 0.8;">
+      <p>Key emphasis: Health equity, CPR disparities, dispatcher-guided CPR, public access to naloxone & AEDs</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: Adult BLS -->
+  <div class="slide slide-bls">
+    <h2>💪 Adult BLS — Key Updates</h2>
+
+    <div class="grid-2">
+      <div class="content-card">
+        <h3>📊 Compression Parameters</h3>
+        <table class="comparison-table">
+          <tr><th>Parameter</th><th>Value</th></tr>
+          <tr><td>Rate</td><td><strong>100–120/min</strong></td></tr>
+          <tr><td>Depth</td><td><strong>≥2 inches (≈5 cm)</strong></td></tr>
+          <tr><td>Recoil</td><td>Allow full chest recoil</td></tr>
+          <tr><td>Interruptions</td><td>Minimize to <10 sec</td></tr>
+        </table>
+      </div>
+
+      <div class="content-card">
+        <h3>👥 Lay Rescuer CPR <span class="badge-updated">UPDATED</span></h3>
+        <table class="comparison-table">
+          <tr><th>Type</th><th>2020</th><th>2025</th></tr>
+          <tr><td>Untrained</td><td>Hands-only</td><td>Hands-only ✓</td></tr>
+          <tr><td>Trained</td><td>Hands-only preferred</td><td><strong>30:2 ✓</strong></td></tr>
+          <tr><td>Healthcare</td><td>30:2</td><td>30:2</td></tr>
+        </table>
+        <p style="margin-top: 15px; color: var(--primary); font-weight: 600;">💡 Key change: Trained rescuers now advised to give ventilations</p>
+      </div>
+    </div>
+
+    <div class="content-card" style="margin-top: 25px;">
+      <h3>🚨 FBAO <span class="badge-new">NEW 5+5</span></h3>
+      <p><strong>2025:</strong> 5 back blows + 5 abdominal thrusts (alternating) — was "back blows OR abdominal thrusts"</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: Infant CPR -->
+  <div class="slide slide-infant">
+    <h2>👶 Infant CPR — Major Change</h2>
+
+    <div class="big-change">
+      <h3>Two-Finger Technique</h3>
+      <p class="eliminated">✗ ELIMINATED in 2025</p>
+      <p class="preferred">✓ Two-Thumb Encircling Hands — Preferred for ALL Rescuers</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-box">
+        <h4>📋 Ratio</h4>
+        <p><strong>15:2</strong> — Single or two rescuers</p>
+      </div>
+      <div class="info-box">
+        <h4>📏 Depth</h4>
+        <p>Approximately <strong>1.5 inches (4 cm)</strong></p>
+      </div>
+      <div class="info-box">
+        <h4>⚡ Rate</h4>
+        <p><strong>100–120/min</strong></p>
+      </div>
+      <div class="info-box">
+        <h4>✋ Technique</h4>
+        <p>Two-thumb encircling hands (preferred)</p>
+      </div>
+      <div class="info-box">
+        <h4>📞 Activation</h4>
+        <p>2 min CPR → then call emergency (if alone)</p>
+      </div>
+      <div class="info-box">
+        <h4>💡 Rationale</h4>
+        <p>Higher coronary perfusion pressure & systolic BP</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: Opioid Overdose -->
+  <div class="slide slide-opioid">
+    <h2>💊 Opioid Overdose — New Algorithm</h2>
+
+    <div class="alert-box">
+      <h3>🚨 Signs of Opioid Overdose</h3>
+      <p>Unresponsive • Respiratory depression/apnea • Pinpoint pupils (miosis) • Cyanosis</p>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <h3 style="color: var(--accent); margin-bottom: 20px;">📋 Response Steps</h3>
+        <ol class="step-list">
+          <li>Activate emergency response (call 1669/911)</li>
+          <li>Administer <strong>naloxone</strong> — repeat if no response in 2–5 min</li>
+          <li>Provide CPR if trained</li>
+          <li>Place in recovery position</li>
+        </ol>
+      </div>
+      <div>
+        <h3 style="color: var(--accent); margin-bottom: 20px;">💉 Naloxone Dosing</h3>
+        <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 25px;">
+          <table style="width: 100%; color: white;">
+            <tr><td style="padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.2);"><strong>IM/SQ</strong></td><td style="padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">0.4–1 mg</td></tr>
+            <tr><td style="padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.2);"><strong>Auto-injector</strong></td><td style="padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">Per device</td></tr>
+            <tr><td style="padding: 10px 0;"><strong>Nasal spray</strong></td><td style="padding: 10px 0;">Per device</td></tr>
+          </table>
+          <p style="margin-top: 20px; opacity: 0.8; font-size: 0.95rem;">💡 IM/SQ preferred by lay rescuers • No contraindications in suspected overdose</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: TTM -->
+  <div class="slide slide-ttm">
+    <h2>🌡️ Targeted Temperature Management</h2>
+
+    <div class="shift-box">
+      <h3>Major Paradigm Shift</h3>
+      <div class="arrow-shift">
+        <div class="old-way">
+          <div>32–36°C</div>
+          <small>24 hours</small>
+        </div>
+        <div class="arrow">→</div>
+        <div class="new-way">
+          <div>Normothermia</div>
+          <small>≥36 hours</small>
+        </div>
+      </div>
+      <p style="text-align: center; color: var(--text-muted);">
+        From routine induction of hypothermia → <strong>Actively prevent fever and maintain sustained controlled normothermia</strong>
+      </p>
+    </div>
+
+    <div class="param-grid">
+      <div class="param-card">
+        <div class="value">≥65</div>
+        <div class="label">MAP target (mmHg)</div>
+      </div>
+      <div class="param-card">
+        <div class="value">94–98%</div>
+        <div class="label">O₂ saturation</div>
+      </div>
+      <div class="param-card">
+        <div class="value">≥72h</div>
+        <div class="label">Neuroprognostication</div>
+      </div>
+    </div>
+
+    <div class="content-card" style="margin-top: 30px;">
+      <h3>🔬 Neuroprognostication</h3>
+      <p><strong>Timing:</strong> ≥72 hours after ROSC and normothermia • <strong>Method:</strong> Multimodal approach (clinical, EEG, imaging, biomarkers) — No single test is definitive</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: Take Home -->
+  <div class="slide slide-takehome">
+    <h2>🎯 10 Key Take-Home Points</h2>
+
+    <div class="takehome-grid">
+      <div class="takehome-card">
+        <div class="number">1</div>
+        <p>BLS fundamentals unchanged — 100–120/min, depth ≥2 inches, minimize interruptions</p>
+      </div>
+      <div class="takehome-card">
+        <div class="number">2</div>
+        <p>Trained lay rescuers: <strong>30:2</strong> — not hands-only if trained and willing</p>
+      </div>
+      <div class="takehome-card">
+        <div class="number">3</div>
+        <p>Infant CPR: <strong>Two-thumb only</strong> — two-finger technique eliminated</p>
+      </div>
+      <div class="takehome-card">
+        <div class="number">4</div>
+        <p>FBAO: <strong>5+5</strong> — alternate 5 back blows and 5 abdominal thrusts</p>
+      </div>
+      <div class="takehome-card">
+        <div class="number">5</div>
+        <p>Women: <strong>Defibrillate without hesitation</strong> — remove clothing quickly</p>
+      </div>
+      <div class="takehome-card">
+        <div class="number">6</div>
+        <p><strong>New opioid algorithm</strong> — naloxone is critical; give immediately</p>
+      </div>
+      <div class="takehome-card">
+        <div class="number">7</div>
+        <p>Head-up CPR & DSD: <strong>NOT recommended</strong> as routine ACLS</p>
+      </div>
+      <div class="takehome-card">
+        <div class="number">8</div>
+        <p>TTM: <strong>≥36 hours of normothermia</strong> — prevent fever, not induce hypothermia</p>
+      </div>
+      <div class="takehome-card">
+        <div class="number">9</div>
+        <p>Post-ROSC MAP ≥65 mmHg — hemodynamic optimization alongside TTM</p>
+      </div>
+      <div class="takehome-card">
+        <div class="number">10</div>
+        <p>Neuroprognostication: <strong>multimodal at ≥72 hours</strong> — no single test is definitive</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: End -->
+  <div class="slide slide-end">
+    <h2>Thank You</h2>
+    <p>Questions?</p>
+    <div class="ref-note">
+      <strong>Reference:</strong> 2025 AHA Guidelines for CPR and ECC<br>
+      <em>Circulation. doi:10.1161/CIR.0000000000001369</em>
+    </div>
+  </div>
+</body>
+</html>

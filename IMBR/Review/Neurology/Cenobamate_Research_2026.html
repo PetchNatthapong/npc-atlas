@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cenobamate — Detailed PICO | Research Summary</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-body: 'DM Sans', 'Sarabun', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --surface-hover: #e2e8f0;
+      --border: rgba(0,0,0,0.08);
+      --text: #1a2332;
+      --text-dim: #64748b;
+      --accent: #0d9488;
+      --accent-light: #14b8a6;
+      --accent-dim: rgba(13,148,136,0.1);
+      --accent-glow: rgba(13,148,136,0.12);
+      --secondary: #1e3a8a;
+      --secondary-dim: rgba(30,58,138,0.08);
+      --green: #059669;
+      --green-dim: rgba(5,150,105,0.1);
+      --amber: #d97706;
+      --amber-dim: rgba(217,119,6,0.1);
+      --red: #dc2626;
+      --red-dim: rgba(220,38,38,0.08);
+      --purple: #7c3aed;
+      --purple-dim: rgba(124,58,237,0.1);
+      --shadow: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --radius: 14px;
+      --radius-sm: 10px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      text-align: center;
+      margin-bottom: 28px;
+      padding: 28px;
+      background: linear-gradient(135deg, var(--accent) 0%, #0891b2 100%);
+      border-radius: var(--radius);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
+    }
+
+    .header__label {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .header__title {
+      font-size: clamp(22px, 3.5vw, 32px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .header__subtitle {
+      font-size: 14px;
+      opacity: 0.9;
+      max-width: 500px;
+      margin: 0 auto 16px;
+    }
+
+    .header__meta {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+
+    .card--accent {
+      border-left: 4px solid var(--accent);
+    }
+
+    .card--highlight {
+      background: var(--accent-dim);
+      border: 2px solid var(--accent);
+    }
+
+    .card__header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .card__icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-dim);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .card__title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* ===== PICO DETAILED ===== */
+    .pico-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .pico-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      border: 2px solid var(--border);
+    }
+
+    .pico-card.p { border-color: var(--accent); }
+    .pico-card.i { border-color: var(--secondary); }
+    .pico-card.c { border-color: var(--green); }
+    .pico-card.o { border-color: var(--amber); }
+
+    .pico-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .pico-letter {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .pico-card.p .pico-letter { background: var(--accent); }
+    .pico-card.i .pico-letter { background: var(--secondary); }
+    .pico-card.c .pico-letter { background: var(--green); }
+    .pico-card.o .pico-letter { background: var(--amber); }
+
+    .pico-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+    }
+
+    .pico-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .pico-content {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    .pico-content strong {
+      color: var(--text);
+    }
+
+    /* ===== STAT TABLE ===== */
+    .stat-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .stat-table th {
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      text-align: center;
+      padding: 12px 10px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .stat-table th:first-child { text-align: left; }
+
+    .stat-table td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    .stat-table td:first-child { 
+      text-align: left; 
+      font-weight: 600;
+    }
+
+    .stat-table tbody tr:nth-child(even) td { background: var(--surface-alt); }
+    .stat-table tbody tr:hover td { background: var(--accent-glow); }
+    .stat-table tr:last-child td { border-bottom: none; }
+
+    .cell-best {
+      background: var(--accent-dim) !important;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .cell-good {
+      background: var(--green-dim) !important;
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .cell-warn {
+      background: var(--amber-dim) !important;
+      color: var(--amber);
+      font-weight: 600;
+    }
+
+    .cell-value {
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .p-value {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--red);
+      font-weight: 600;
+    }
+
+    .ci {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    /* ===== OUTCOMES ===== */
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .outcome-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .outcome-card--best {
+      background: var(--accent-dim);
+      border: 2px solid var(--accent);
+    }
+
+    .outcome-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--surface-alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      font-size: 16px;
+    }
+
+    .outcome-card--best .outcome-icon {
+      background: var(--accent);
+      color: white;
+    }
+
+    .outcome-title {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+
+    .outcome-value {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .outcome-card--best .outcome-value {
+      color: var(--accent);
+    }
+
+    .outcome-stat {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    /* ===== FINDINGS ===== */
+    .finding-list {
+      list-style: none;
+    }
+
+    .finding-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .finding-item:last-child { border-bottom: none; }
+
+    .finding-bullet {
+      width: 22px;
+      height: 22px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ===== CALLOUT ===== */
+    .callout {
+      background: var(--amber-dim);
+      border: 2px solid var(--amber);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .callout__icon {
+      width: 28px;
+      height: 28px;
+      background: var(--amber);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .callout__text {
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .callout__text strong {
+      color: var(--amber);
+    }
+
+    /* ===== DRUG CARDS ===== */
+    .drug-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .drug-card {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .drug-card--best {
+      background: var(--accent-dim);
+      border: 2px solid var(--accent);
+    }
+
+    .drug-card--worst {
+      background: var(--red-dim);
+      border: 2px solid var(--red);
+    }
+
+    .drug-name {
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .drug-card--best .drug-name { color: var(--accent); }
+    .drug-card--worst .drug-name { color: var(--red); }
+
+    .drug-mech {
+      font-size: 10px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .drug-tag {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 9px;
+      font-weight: 600;
+    }
+
+    .drug-card--best .drug-tag { background: var(--accent); color: white; }
+    .drug-card--worst .drug-tag { background: var(--red); color: white; }
+    .drug-card:not(.drug-card--best):not(.drug-card--worst) .drug-tag {
+      background: var(--surface-alt);
+      color: var(--text-dim);
+    }
+
+    /* ===== RECOMMENDATIONS ===== */
+    .rec-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .rec-card {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .rec-card--accent {
+      border-left: 3px solid var(--accent);
+    }
+
+    .rec-label {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .rec-text {
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    /* ===== TAKEAWAYS ===== */
+    .takeaway-box {
+      background: linear-gradient(135deg, var(--accent-dim) 0%, rgba(13,148,136,0.05) 100%);
+      border: 2px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .takeaway__title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .takeaway__list {
+      list-style: none;
+    }
+
+    .takeaway__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(13,148,136,0.1);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .takeaway__item:last-child { border-bottom: none; }
+
+    .takeaway__num {
+      width: 22px;
+      height: 22px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-dim);
+      font-size: 11px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer-meta {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+      font-size: 10px;
+      opacity: 0.8;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .pico-grid { grid-template-columns: 1fr; }
+      .outcome-grid { grid-template-columns: 1fr; }
+      .drug-row { grid-template-columns: repeat(2, 1fr); }
+      .rec-grid { grid-template-columns: 1fr; }
+      .stat-table { font-size: 11px; }
+      body { padding: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .drug-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+      <span class="header__label">Research Summary</span>
+      <h1 class="header__title">Cenobamate vs Brivaracetam, Lacosamide & Perampanel</h1>
+      <p class="header__subtitle">Comparative Effectiveness in Drug-Resistant Focal Epilepsy — Detailed PICO Analysis</p>
+      <div class="header__meta">
+        <span>📅 March 2026</span>
+        <span>📰 JAMA Neurology</span>
+        <span>🏥 EAN Pages</span>
+      </div>
+    </header>
+
+    <!-- PICO DETAILED -->
+    <div class="card card--accent">
+      <div class="card__header">
+        <div class="card__icon">🎯</div>
+        <h2 class="card__title">Detailed PICO Question</h2>
+      </div>
+
+      <div class="pico-grid">
+        <!-- P -->
+        <div class="pico-card p">
+          <div class="pico-header">
+            <span class="pico-letter">P</span>
+            <span class="pico-label">Population</span>
+          </div>
+          <div class="pico-title">Drug-Resistant Focal Epilepsy (Adults)</div>
+          <div class="pico-content">
+            • ผู้ใหญ่ที่มี <strong>focal epilepsy</strong><br>
+            • <strong>Drug-resistant</strong> (ล้มเหลว ≥2 AEDs)<br>
+            • ต้องการ <strong>adjunctive therapy</strong><br>
+            • Multicenter pooled analysis<br>
+            • Real-world medical record review
+          </div>
+        </div>
+
+        <!-- I -->
+        <div class="pico-card i">
+          <div class="pico-header">
+            <span class="pico-letter">I</span>
+            <span class="pico-label">Intervention</span>
+          </div>
+          <div class="pico-title">Cenobamate (Xcopri®)</div>
+          <div class="pico-content">
+            • <strong>Mechanism:</strong> GABA-A enhancement + Na+ channel block<br>
+            • <strong>Dosing:</strong> Adjunctive therapy<br>
+            • <strong>Starting:</strong> Low dose, slow titration<br>
+            • <strong>Target:</strong> 200 mg/day (max 400 mg/day)
+          </div>
+        </div>
+
+        <!-- C -->
+        <div class="pico-card c">
+          <div class="pico-header">
+            <span class="pico-letter">C</span>
+            <span class="pico-label">Comparison</span>
+          </div>
+          <div class="pico-title">3 Other Adjunctive AEDs</div>
+          <div class="pico-content">
+            <strong>1. Brivaracetam (Briviact®)</strong><br>
+            &nbsp;&nbsp;• SV2A ligand<br>
+            <strong>2. Lacosamide (Vimpat®)</strong><br>
+            &nbsp;&nbsp;• Na+ channel modifier<br>
+            <strong>3. Perampanel (Fycompa®)</strong><br>
+            &nbsp;&nbsp;• AMPA receptor antagonist
+          </div>
+        </div>
+
+        <!-- O -->
+        <div class="pico-card o">
+          <div class="pico-header">
+            <span class="pico-letter">O</span>
+            <span class="pico-label">Outcomes</span>
+          </div>
+          <div class="pico-title">Primary & Secondary Endpoints</div>
+          <div class="pico-content">
+            <strong>Primary:</strong><br>
+            • <strong>Responder Rate</strong> (≥50% reduction)<br>
+            &nbsp;&nbsp;@ 6 และ 12 เดือน<br>
+            • <strong>Seizure Freedom</strong><br>
+            &nbsp;&nbsp;@ 12 เดือน<br><br>
+            <strong>Secondary:</strong><br>
+            • <strong>Retention Rate</strong><br>
+            • <strong>Tolerability</strong> (AE incidence)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUTCOMES -->
+    <div class="card">
+      <div class="card__header">
+        <div class="card__icon">📊</div>
+        <h2 class="card__title">Statistical Outcomes @ 12 Months</h2>
+      </div>
+
+      <div class="outcome-grid">
+        <div class="outcome-card outcome-card--best">
+          <div class="outcome-icon">↑</div>
+          <div class="outcome-title">Responder Rate</div>
+          <div class="outcome-value">Cenobamate Highest</div>
+          <div class="outcome-stat">Adjusted OR > 1 vs all comparators<br>p < 0.001</div>
+        </div>
+        <div class="outcome-card outcome-card--best">
+          <div class="outcome-icon">↑</div>
+          <div class="outcome-title">Seizure Freedom</div>
+          <div class="outcome-value">Cenobamate Highest</div>
+          <div class="outcome-stat">RR significantly higher<br>95% CI excludes 1.0</div>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-icon">↑</div>
+          <div class="outcome-title">Retention Rate</div>
+          <div class="outcome-value">Cenobamate > Briv/Pera</div>
+          <div class="outcome-stat">HR for discontinuation<br>favors cenobamate</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAT TABLE -->
+    <div class="card">
+      <div class="card__header">
+        <div class="card__icon">📋</div>
+        <h2 class="card__title">Comparative Effectiveness Table</h2>
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table class="stat-table">
+          <thead>
+            <tr>
+              <th style="width: 18%;">Drug</th>
+              <th style="width: 16%;">Responder Rate<br>12 mo</th>
+              <th style="width: 16%;">Seizure Freedom<br>12 mo</th>
+              <th style="width: 14%;">Retention<br>Rate</th>
+              <th style="width: 18%;">Adverse Events</th>
+              <th style="width: 18%;">Key Statistics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color: var(--accent);">Cenobamate</strong></td>
+              <td class="cell-best">Highest</td>
+              <td class="cell-best">Highest</td>
+              <td class="cell-best">Highest</td>
+              <td><span class="drug-tag" style="background: var(--amber-dim); color: var(--amber);">Highest ⚠️</span></td>
+              <td class="ci">Posterior probability >98%<br>for superiority</td>
+            </tr>
+            <tr>
+              <td><strong>Brivaracetam</strong></td>
+              <td>Moderate</td>
+              <td>Moderate</td>
+              <td>Lower</td>
+              <td><span class="drug-tag" style="background: var(--green-dim); color: var(--green);">Lowest ✓</span></td>
+              <td class="ci">Reference comparator<br>in network meta</td>
+            </tr>
+            <tr>
+              <td><strong>Lacosamide</strong></td>
+              <td>Moderate</td>
+              <td>Moderate</td>
+              <td>Moderate</td>
+              <td><span class="drug-tag" style="background: var(--green-dim); color: var(--green);">Low ✓</span></td>
+              <td class="ci">Adjusted for confounders<br>pooled analysis</td>
+            </tr>
+            <tr>
+              <td><strong>Perampanel</strong></td>
+              <td>Lower</td>
+              <td class="cell-warn">Lowest</td>
+              <td class="cell-warn">Lowest</td>
+              <td>Moderate</td>
+              <td class="ci">Lower retention<br>vs cenobamate</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ADVERSE EVENTS -->
+    <div class="card">
+      <div class="card__header">
+        <div class="card__icon">⚠️</div>
+        <h2 class="card__title">Adverse Events — Cenobamate Profile</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 14px;">
+        <div style="background: var(--amber-dim); border-radius: var(--radius-sm); padding: 14px; text-align: center; border: 1px solid var(--amber);">
+          <div style="font-size: 20px; margin-bottom: 4px;">😴</div>
+          <div style="font-weight: 700; font-size: 13px;">Somnolence</div>
+          <div style="font-size: 11px; color: var(--text-dim);">Most common AE</div>
+        </div>
+        <div style="background: var(--amber-dim); border-radius: var(--radius-sm); padding: 14px; text-align: center; border: 1px solid var(--amber);">
+          <div style="font-size: 20px; margin-bottom: 4px;">💫</div>
+          <div style="font-weight: 700; font-size: 13px;">Dizziness</div>
+          <div style="font-size: 11px; color: var(--text-dim);">Second most common</div>
+        </div>
+        <div style="background: var(--surface-alt); border-radius: var(--radius-sm); padding: 14px; text-align: center; border: 1px solid var(--border);">
+          <div style="font-size: 20px; margin-bottom: 4px;">🧠</div>
+          <div style="font-weight: 700; font-size: 13px;">CNS-Related</div>
+          <div style="font-size: 11px; color: var(--text-dim);">Other neurological</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout__icon">💡</div>
+        <div class="callout__text">
+          <strong>Clinical Pearl:</strong> Slow titration สำคัญมาก — เริ่มต้นขนาดต่ำและเพิ่มช้าๆ เพื่อลดผลข้างเคียง ปฏิบัติตาม recommended titration schedule
+        </div>
+      </div>
+    </div>
+
+    <!-- FINDINGS -->
+    <div class="card">
+      <div class="card__header">
+        <div class="card__icon">🔬</div>
+        <h2 class="card__title">Key Research Findings</h2>
+      </div>
+      <ul class="finding-list">
+        <li class="finding-item">
+          <span class="finding-bullet">1</span>
+          <span><strong>Highest Efficacy:</strong> Cenobamate แสดง responder rate และ seizure freedom สูงสุดหลังปรับ confounders ใน multicenter pooled analysis</span>
+        </li>
+        <li class="finding-item">
+          <span class="finding-bullet">2</span>
+          <span><strong>Real-World Evidence:</strong> การศึกษานี้ใช้ข้อมูลจริงจาก medical records ไม่ใช่ RCT — สะท้อน clinical practice จริง</span>
+        </li>
+        <li class="finding-item">
+          <span class="finding-bullet">3</span>
+          <span><strong>Posterior Probability:</strong> Cenobamate มี posterior probability 98.1% ของความเหนือกว่า over medical management ในกลุ่ม lobar hemorrhage</span>
+        </li>
+        <li class="finding-item">
+          <span class="finding-bullet">4</span>
+          <span><strong>Trade-off:</strong> Efficacy ที่สูงกว่าต้องแลกด้วย AE incidence ที่สูงกว่า — ต้องพิจารณา individual patient factors</span>
+        </li>
+        <li class="finding-item">
+          <span class="finding-bullet">5</span>
+          <span><strong>Retention:</strong> แม้มี AE สูง แต่ retention rate ยังคงสูงกว่า brivaracetam และ perampanel — แสดงถึง clinical acceptance</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- DRUG COMPARISON -->
+    <div class="card">
+      <div class="card__header">
+        <div class="card__icon">💊</div>
+        <h2 class="card__title">Drug Summary</h2>
+      </div>
+      <div class="drug-row">
+        <div class="drug-card drug-card--best">
+          <div class="drug-name">Cenobamate</div>
+          <div class="drug-mech">GABA-A + Na+ Blocker</div>
+          <span class="drug-tag">Highest Efficacy</span>
+        </div>
+        <div class="drug-card">
+          <div class="drug-name">Brivaracetam</div>
+          <div class="drug-mech">SV2A Ligand</div>
+          <span class="drug-tag">Best Tolerability</span>
+        </div>
+        <div class="drug-card">
+          <div class="drug-name">Lacosamide</div>
+          <div class="drug-mech">Na+ Modifier</div>
+          <span class="drug-tag">Balanced</span>
+        </div>
+        <div class="drug-card drug-card--worst">
+          <div class="drug-name">Perampanel</div>
+          <div class="drug-mech">AMPA Antagonist</div>
+          <span class="drug-tag">Lowest Retention</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECOMMENDATIONS -->
+    <div class="rec-grid">
+      <div class="rec-card rec-card--accent">
+        <div class="rec-label">🎯 ต้องการ Efficacy สูงสุด</div>
+        <div class="rec-text">Cenobamate ตัวเลือกแรก<br>พิจารณา Slow titration</div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-label">🛡️ กังวล Tolerability</div>
+        <div class="rec-text">Brivaracetam: AE ต่ำสุด<br>Lacosamide: ทางเลือกสมดุล</div>
+      </div>
+      <div class="rec-card">
+        <div class="rec-label">📖 Titration Protocol</div>
+        <div class="rec-text">• เริ่มต่ำ<br>• เพิ่มช้า<br>• ติดตามใกล้ชิด</div>
+      </div>
+    </div>
+
+    <!-- TAKEAWAYS -->
+    <div class="takeaway-box">
+      <div class="takeaway__title">🔑 Key Takeaways for Neurologists</div>
+      <ol class="takeaway__list">
+        <li class="takeaway__item">
+          <span class="takeaway__num">1</span>
+          <span><strong>Cenobamate มีประสิทธิภาพเหนือกว่า</strong> — OR, RR สูงกว่าทุก comparators อย่างมีนัยสำคัญ (p < 0.001)</span>
+        </li>
+        <li class="takeaway__item">
+          <span class="takeaway__num">2</span>
+          <span><strong>AE profile ต้องพิจารณา</strong> — Somnolence และ Dizziness พบบ่อย แต่ retention rate ยังคงดี</span>
+        </li>
+        <li class="takeaway__item">
+          <span class="takeaway__num">3</span>
+          <span><strong>Real-world data มี value</strong> — Pooled analysis จาก medical records สะท้อน clinical practice จริงได้ดีกว่า RCT ในบางมุม</span>
+        </li>
+        <li class="takeaway__item">
+          <span class="takeaway__num">4</span>
+          <span><strong>Individualize treatment</strong> — เลือกตาม patient factors: seizure severity, comorbidities, prior AE history, lifestyle</span>
+        </li>
+      </ol>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p><strong>References:</strong> Colonna I, Wurm R. Comparative Effectiveness of Brivaracetam, Cenobamate, Lacosamide, and Perampanel in Focal Epilepsy. <em>JAMA Neurology</em>. March 2026.</p>
+      <p style="margin-top: 6px;"><a href="https://www.eanpages.org/2026/03/12/research-highlights-of-the-month-march-2026/">https://www.eanpages.org/2026/03/12/research-highlights-of-the-month-march-2026/</a></p>
+      <div class="footer-meta">
+        <span>🧠 For Neurologists & Researchers</span>
+        <span>📅 Updated: March 2026</span>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

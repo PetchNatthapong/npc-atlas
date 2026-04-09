@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neurocritical Care Society Guidelines 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --border: rgba(0,0,0,0.08);
+      --text: #1a2332;
+      --text-dim: #64748b;
+      --accent: #0891b2;
+      --accent-dim: rgba(8,145,178,0.12);
+      --accent-2: #0e7490;
+      --success: #059669;
+      --warning: #d97706;
+      --danger: #dc2626;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-lg: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header__badge {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .header__title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .header__subtitle {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .header__meta {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .header__meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.875rem;
+      color: var(--text-dim);
+    }
+
+    .header__meta-item svg {
+      width: 16px;
+      height: 16px;
+      opacity: 0.7;
+    }
+
+    /* Section Cards */
+    .section {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .section--hero {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+      color: white;
+      border: none;
+    }
+
+    .section--hero .section__title,
+    .section--hero .header__subtitle {
+      color: white;
+    }
+
+    .section--hero .header__subtitle {
+      opacity: 0.9;
+    }
+
+    .section__header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section__number {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .section__title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .section__subtitle {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    /* Table Styles */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 16px 0;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background: var(--surface-alt);
+      font-weight: 600;
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--border);
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:nth-child(even) td {
+      background: var(--surface-alt);
+    }
+
+    tr:hover td {
+      background: var(--accent-dim);
+    }
+
+    /* Key Points */
+    .key-points {
+      display: grid;
+      gap: 12px;
+    }
+
+    .key-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+      background: var(--surface-alt);
+      border-radius: 10px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .key-point__icon {
+      width: 24px;
+      height: 24px;
+      background: var(--accent);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .key-point__icon svg {
+      width: 14px;
+      height: 14px;
+      color: white;
+    }
+
+    .key-point__text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .key-point__text strong {
+      color: var(--text);
+    }
+
+    /* Summary Cards */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .summary-card {
+      background: var(--surface-alt);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid var(--border);
+    }
+
+    .summary-card__title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .summary-card__value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    /* Takeaway Box */
+    .takeaway {
+      background: linear-gradient(135deg, var(--accent-dim) 0%, rgba(8,145,178,0.06) 100%);
+      border: 1px solid rgba(8,145,178,0.2);
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 24px;
+    }
+
+    .takeaway__title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .takeaway__title svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .takeaway__list {
+      list-style: none;
+    }
+
+    .takeaway__list li {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+      font-size: 0.95rem;
+      border-bottom: 1px solid rgba(8,145,178,0.1);
+    }
+
+    .takeaway__list li:last-child {
+      border-bottom: none;
+    }
+
+    .takeaway__list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    /* Tags */
+    .tag {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 32px 0;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .container {
+        padding: 24px 16px;
+      }
+      .header__title {
+        font-size: 1.75rem;
+      }
+      .section {
+        padding: 20px;
+      }
+      .section__title {
+        font-size: 1.15rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <span class="header__badge">Medical Guidelines 2026</span>
+      <h1 class="header__title">Neurocritical Care Society<br>Guidelines Review</h1>
+      <p class="header__subtitle">Comprehensive overview of NCS position statements, consensus statements, and endorsed guidelines for neurocritical care management</p>
+      <div class="header__meta">
+        <span class="header__meta-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          March 2026
+        </span>
+        <span class="header__meta-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          Neurocritical Care Society (NCS)
+        </span>
+        <span class="header__meta-item">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          4 Major Topics
+        </span>
+      </div>
+    </header>
+
+    <!-- Hero Summary -->
+    <section class="section section--hero">
+      <h2 style="font-size: 1.5rem; margin-bottom: 16px;">Key Guidelines Coverage</h2>
+      <div class="summary-grid" style="color: white;">
+        <div class="summary-card" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2);">
+          <div class="summary-card__title" style="color: rgba(255,255,255,0.8);">Position Statements</div>
+          <div class="summary-card__value" style="color: white;">Devastating Brain Injury<br>Prognostication & Ethics</div>
+        </div>
+        <div class="summary-card" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2);">
+          <div class="summary-card__title" style="color: rgba(255,255,255,0.8);">Consensus Statements</div>
+          <div class="summary-card__value" style="color: white;">EVD Management<br>Multimodality Monitoring<br>aSAH Care</div>
+        </div>
+        <div class="summary-card" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2);">
+          <div class="summary-card__title" style="color: rgba(255,255,255,0.8);">Endorsed Guidelines</div>
+          <div class="summary-card__value" style="color: white;">AAN, AHA/ASA, SNACC<br>2026 Stroke Guidelines</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1: Devastating Brain Injury -->
+    <section class="section">
+      <div class="section__header">
+        <span class="section__number">1</span>
+        <div>
+          <h2 class="section__title">Critical Care Management of Devastating Brain Injury</h2>
+          <p class="section__subtitle">Prognostication, Psychosocial & Ethical Management</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Domain</th>
+              <th>Key Recommendations</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Neuroprognostication</strong></td>
+              <td>Use multimodal assessment • Repeat evaluations over time • Avoid premature decisions</td>
+            </tr>
+            <tr>
+              <td><strong>Assessment Tools</strong></td>
+              <td>Combine clinical examination, neuroimaging, EEG, and neurophysiological studies</td>
+            </tr>
+            <tr>
+              <td><strong>Factors to Consider</strong></td>
+              <td>Etiology, severity, patient age, response to treatment, complications</td>
+            </tr>
+            <tr>
+              <td><strong>Family Communication</strong></td>
+              <td>Clear language • Regular updates • Shared decision-making framework</td>
+            </tr>
+            <tr>
+              <td><strong>Palliative Care</strong></td>
+              <td>Integrate early when cure is unlikely • Focus on comfort and dignity</td>
+            </tr>
+            <tr>
+              <td><strong>Brain Death</strong></td>
+              <td>Follow AAN Pediatric & Adult Brain Death/Death by Neurologic Criteria Consensus Guideline</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 2: EVD -->
+    <section class="section">
+      <div class="section__header">
+        <span class="section__number">2</span>
+        <div>
+          <h2 class="section__title">External Ventricular Drains (EVD)</h2>
+          <p class="section__subtitle">Evidence-Based Consensus Statement on Insertion & Management</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Indication</th>
+              <th>Management Principles</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Hydrocephalus (CSF obstruction)</td>
+              <td rowspan="5" style="background: var(--surface-alt); vertical-align: middle; text-align: center; font-weight: 600; color: var(--accent);">Sterile Technique<br>Antibiotic Prophylaxis<br>Neuronavigation Guidance<br>Daily ICP & CPP Monitoring<br>Complication Prevention</td>
+            </tr>
+            <tr>
+              <td>Intraventricular hemorrhage</td>
+            </tr>
+            <tr>
+              <td>Traumatic brain injury</td>
+            </tr>
+            <tr>
+              <td>Pseudotumor cerebri</td>
+            </tr>
+            <tr>
+              <td>CNS infection</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="key-points" style="margin-top: 20px;">
+        <div class="key-point">
+          <span class="key-point__icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          </span>
+          <span class="key-point__text"><strong>Infection Prevention:</strong> Maintain closed drainage system, minimize manipulations, use antibiotic-impregnated catheters when appropriate</span>
+        </div>
+        <div class="key-point">
+          <span class="key-point__icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          </span>
+          <span class="key-point__text"><strong>Bleeding Prevention:</strong> Careful insertion, monitor coagulation status, avoid excessive ICP lowering</span>
+        </div>
+        <div class="key-point">
+          <span class="key-point__icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          </span>
+          <span class="key-point__text"><strong>Obstruction Management:</strong> Regular flushing (per protocol), replacement if malfunction occurs</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: MMM -->
+    <section class="section">
+      <div class="section__header">
+        <span class="section__number">3</span>
+        <div>
+          <h2 class="section__title">Multimodality Monitoring (MMM)</h2>
+          <p class="section__subtitle">International Multidisciplinary Consensus Conference on Neurocritical Care</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Monitoring Type</th>
+              <th>Parameters</th>
+              <th>Clinical Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>ICP Monitoring</strong></td>
+              <td>ICP, CPP</td>
+              <td>Detect elevated ICP, guide therapy</td>
+            </tr>
+            <tr>
+              <td><strong>Brain Oxygenation</strong></td>
+              <td>PbtO₂, StO₂</td>
+              <td>Assess cerebral oxygen delivery</td>
+            </tr>
+            <tr>
+              <td><strong>Continuous EEG</strong></td>
+              <td>Seizures, ischemia</td>
+              <td>Detect non-convulsive seizures, cortical spreading depolarization</td>
+            </tr>
+            <tr>
+              <td><strong>Cerebral Microdialysis</strong></td>
+              <td>Glucose, lactate, pyruvate</td>
+              <td>Assess cellular metabolism, detect ischemia</td>
+            </tr>
+            <tr>
+              <td><strong>NIRS</strong></td>
+              <td>rSO₂</td>
+              <td>Non-invasive regional oxygen saturation</td>
+            </tr>
+            <tr>
+              <td><strong>Transcranial Doppler</strong></td>
+              <td>Blood flow velocity</td>
+              <td>Monitor vasospasm, cerebral blood flow</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="key-points" style="margin-top: 20px;">
+        <div class="key-point">
+          <span class="key-point__icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </span>
+          <span class="key-point__text"><strong>Best Practice:</strong> Combine multiple monitoring modalities for comprehensive assessment of cerebral physiology</span>
+        </div>
+        <div class="key-point">
+          <span class="key-point__icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </span>
+          <span class="key-point__text"><strong>Goal:</strong> Detect secondary brain injury early, guide targeted therapy, improve outcomes</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: aSAH -->
+    <section class="section">
+      <div class="section__header">
+        <span class="section__number">4</span>
+        <div>
+          <h2 class="section__title">Aneurysmal Subarachnoid Hemorrhage (aSAH)</h2>
+          <p class="section__subtitle">Critical Care Management — NCS Multidisciplinary Consensus</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Timeframe</th>
+              <th>Goals & Management</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Acute</strong></td>
+              <td>Hour 1-6</td>
+              <td>ABCs, CT angiography, BP control (SBP &lt;160), prepare for securing aneurysm</td>
+            </tr>
+            <tr>
+              <td><strong>Early</strong></td>
+              <td>Day 1-3</td>
+              <td>Prevent rebleeding: secure aneurysm (surgery/embolization), maintain euvolemia</td>
+            </tr>
+            <tr>
+              <td><strong>DCI Window</strong></td>
+              <td>Day 4-14</td>
+              <td>Nimodipine 60mg q4h × 21 days, maintain euvolemia (not hypervolemia)</td>
+            </tr>
+            <tr>
+              <td><strong>Recovery</strong></td>
+              <td>Day 14+</td>
+              <td>Rehabilitation, long-term BP management, aneurysm follow-up</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 20px;">
+        <div style="background: var(--surface-alt); padding: 16px; border-radius: 10px; text-align: center;">
+          <span class="tag" style="margin-bottom: 8px; display: inline-block;">Medication</span>
+          <p style="font-weight: 600;">Nimodipine</p>
+          <p style="font-size: 0.8rem; color: var(--text-dim);">60mg PO q4h × 21 days<br>Reduces DCI risk</p>
+        </div>
+        <div style="background: var(--surface-alt); padding: 16px; border-radius: 10px; text-align: center;">
+          <span class="tag" style="margin-bottom: 8px; display: inline-block;">Hemoglobin</span>
+          <p style="font-weight: 600;">Hgb Target</p>
+          <p style="font-size: 0.8rem; color: var(--text-dim);">Avoid &lt;7-8 g/dL<br>Transfusion risk/benefit</p>
+        </div>
+        <div style="background: var(--surface-alt); padding: 16px; border-radius: 10px; text-align: center;">
+          <span class="tag" style="margin-bottom: 8px; display: inline-block;">Monitoring</span>
+          <p style="font-weight: 600;">DCI Detection</p>
+          <p style="font-size: 0.8rem; color: var(--text-dim);">TCD, EEG bid-tid<br>Clinical neuro exam</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Takeaway -->
+    <section class="section">
+      <div class="takeaway">
+        <h3 class="takeaway__title">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Key Takeaways
+        </h3>
+        <ol class="takeaway__list">
+          <li><strong>Neuroprognostication</strong> — Use multimodal approach; avoid premature decisions in devastating brain injury</li>
+          <li><strong>EVD Management</strong> — Emphasize sterile technique, infection prevention, and careful monitoring</li>
+          <li><strong>Multimodality Monitoring</strong> — Combine ICP, brain oxygenation, EEG, and microdialysis for comprehensive assessment</li>
+          <li><strong>aSAH Care</strong> — Nimodipine + euvolemia (not hypervolemia) + close monitoring for DCI prevention</li>
+          <li><strong>2026 Updates</strong> — Extended EVT eligibility, new BP targets post-reperfusion therapy</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- References -->
+    <section class="section">
+      <h2 class="section__title" style="margin-bottom: 16px;">References</h2>
+      <div style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.8;">
+        <p>1. Neurocritical Care Society. Critical Care Management of Devastating Brain Injury: Prognostication, Psychosocial and Ethical Management. Position Statement 2026.</p>
+        <p>2. NCS Consensus Statement: The Insertion and Management of External Ventricular Drains. Neurocritical Care.</p>
+        <p>3. International Multidisciplinary Consensus Conference on Multimodality Monitoring in Neurocritical Care. Neurocritical Care 2014.</p>
+        <p>4. Critical Care Management of Patients Following Aneurysmal Subarachnoid Hemorrhage. NCS Consensus Conference Recommendations.</p>
+        <p>5. AHA/ASA 2026 Guideline for the Early Management of Patients With Acute Ischemic Stroke.</p>
+        <p>6. AAN Pediatric and Adult Brain Death/Death by Neurologic Criteria Consensus Guideline. Neurology 2023.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Document created by Journal Update Agent | March 2026</p>
+      <p style="margin-top: 4px; opacity: 0.7;">neurocriticalcare.org</p>
+    </footer>
+  </div>
+</body>
+</html>

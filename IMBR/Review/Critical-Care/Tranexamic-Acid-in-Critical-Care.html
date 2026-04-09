@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>&quot;&quot;</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans', Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 1cm auto;
+            padding: 1cm 1.5cm;
+        }
+        
+        h1 {
+            font-size: 20pt;
+            color: #1a3c6e;
+            border-bottom: 2px solid #1a3c6e;
+            padding-bottom: 0.3cm;
+            margin-top: 0;
+            page-break-after: avoid;
+        }
+        
+        h2 {
+            font-size: 15pt;
+            color: #2d5aa8;
+            margin-top: 0.8cm;
+            page-break-after: avoid;
+        }
+        
+        h3 {
+            font-size: 12pt;
+            color: #444;
+            margin-top: 0.5cm;
+            page-break-after: avoid;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.5cm 0;
+            font-size: 10pt;
+            page-break-inside: avoid;
+        }
+        
+        th {
+            background-color: #1a3c6e;
+            color: white;
+            padding: 0.3cm 0.4cm;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 0.25cm 0.4cm;
+            border: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f8fc;
+        }
+        
+        code {
+            background-color: #f4f4f4;
+            padding: 0.1cm 0.2cm;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 9pt;
+        }
+        
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 0.4cm;
+            overflow-x: auto;
+            page-break-inside: avoid;
+            font-size: 9pt;
+        }
+        
+        blockquote {
+            border-left: 4px solid #2d5aa8;
+            margin: 0.5cm 0;
+            padding: 0.3cm 0.5cm;
+            background-color: #f5f8fc;
+            font-style: italic;
+        }
+        
+        strong {
+            color: #1a3c6e;
+        }
+        
+        a {
+            color: #2d5aa8;
+            text-decoration: none;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 0.5cm 0;
+        }
+        
+        @page {
+            size: A4;
+            margin: 1.5cm 1.5cm 1.5cm 1.5cm;
+        }
+    
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">""</h1>
+</header>
+<h1 id="tranexamic-acid-in-critical-care">Tranexamic Acid in Critical
+Care</h1>
+<h2
+id="การทบทวนเชงวชาการเรอง-tranexamic-acid-ในผปวยวกฤต">การทบทวนเชิงวิชาการเรื่อง
+Tranexamic Acid ในผู้ป่วยวิกฤต</h2>
+<p><strong>Published:</strong> April 2026<br />
+<strong>Authors:</strong> IMBR Mentor<br />
+<strong>Topic:</strong> Pharmacology &amp; Critical Care</p>
+<hr />
+<h2 id="abstract">Abstract</h2>
+<p>Tranexamic acid (TXA) is an antifibrinolytic agent that has
+revolutionized the management of hemorrhagic conditions in critical
+care. Originally developed in the 1960s, TXA gained widespread attention
+following the CRASH-2 trial in 2010. This review article summarizes the
+current evidence, guidelines, and clinical applications of TXA in
+critical care settings, including trauma, surgery, obstetrics, and
+specific populations.</p>
+<hr />
+<h2 id="mechanism-of-action">1. Mechanism of Action</h2>
+<h3 id="pharmacodynamics">Pharmacodynamics</h3>
+<p>Tranexamic acid is a synthetic derivative of the amino acid lysine.
+Its antifibrinolytic effect works by:</p>
+<table>
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Competitive inhibition</strong></td>
+<td>Binds reversibly to lysine binding sites on plasminogen</td>
+</tr>
+<tr>
+<td><strong>Prevents plasminogen activation</strong></td>
+<td>Blocks conversion of plasminogen → plasmin</td>
+</tr>
+<tr>
+<td><strong>Stabilizes fibrin clot</strong></td>
+<td>Prevents fibrinolysis and clot breakdown</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-differences-from-aprotinin">Key Differences from
+Aprotinin</h3>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 45%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Tranexamic Acid</th>
+<th>Aprotinin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mechanism</td>
+<td>Direct plasminogen inhibition</td>
+<td>Serine protease inhibition</td>
+</tr>
+<tr>
+<td>Risk of thrombosis</td>
+<td>Lower</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Evidence base</td>
+<td>Large (CRASH-2)</td>
+<td>Limited</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="clinical-evidence-landmark-trials">2. Clinical Evidence —
+Landmark Trials</h2>
+<h3 id="crash-2-trial-2010">2.1 CRASH-2 Trial (2010)</h3>
+<p><strong>Large, Randomized, Placebo-Controlled Trial in
+Trauma</strong></p>
+<table>
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>N</strong></td>
+<td>20,211 adult trauma patients</td>
+</tr>
+<tr>
+<td><strong>Intervention</strong></td>
+<td>TXA 1g IV over 10 min, then 1g over 8 hrs vs placebo</td>
+</tr>
+<tr>
+<td><strong>Primary Outcome</strong></td>
+<td>All-cause mortality at 28 days</td>
+</tr>
+<tr>
+<td><strong>Result</strong></td>
+<td><strong>Reduced mortality</strong>: 14.5% vs 16.0% (RR 0.91, 95% CI
+0.85-0.97)</td>
+</tr>
+<tr>
+<td><strong>Number Needed to Treat (NNT)</strong></td>
+<td>67 patients to prevent 1 death</td>
+</tr>
+<tr>
+<td><strong>Key Finding</strong></td>
+<td>Greatest benefit when given within <strong>3 hours</strong> of
+injury</td>
+</tr>
+</tbody>
+</table>
+<p><strong>CRASH-2 Mortality Benefit by Time:</strong></p>
+<pre><code>&lt; 1 hour post-injury:  32% reduction in death
+1-3 hours:              21% reduction in death
+&gt; 3 hours:             No benefit (may increase mortality)</code></pre>
+<h3 id="crash-3-trial-2019">2.2 CRASH-3 Trial (2019)</h3>
+<p><strong>Tranexamic Acid for Traumatic Brain Injury</strong></p>
+<table>
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>N</strong></td>
+<td>12,737 patients with mild-moderate TBI</td>
+</tr>
+<tr>
+<td><strong>Result</strong></td>
+<td><strong>Non-statistically significant</strong> reduction in head
+injury-related death</td>
+</tr>
+<tr>
+<td><strong>Subgroup Analysis</strong></td>
+<td>Possible benefit in severe TBI with GCS ≤8</td>
+</tr>
+<tr>
+<td><strong>Safety</strong></td>
+<td>No increase in adverse events</td>
+</tr>
+</tbody>
+</table>
+<h3 id="woman-trial-2017">2.3 WOMAN Trial (2017)</h3>
+<p><strong>Tranexamic Acid for Postpartum Hemorrhage</strong></p>
+<table>
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>N</strong></td>
+<td>20,060 women with PPH</td>
+</tr>
+<tr>
+<td><strong>Result</strong></td>
+<td>Reduced death from PPH (1.5% vs 1.9%, p=0.03)</td>
+</tr>
+<tr>
+<td><strong>NNT</strong></td>
+<td>≥ 500 women (less effective than in trauma)</td>
+</tr>
+<tr>
+<td><strong>Key Finding</strong></td>
+<td>Greatest benefit when given <strong>within 3 hours</strong> of
+birth</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="current-guidelines-2024-2026">3. Current Guidelines
+(2024-2026)</h2>
+<h3 id="nice-guidelines-updated-2025-2026">3.1 NICE Guidelines — Updated
+2025-2026</h3>
+<p><strong>National Institute for Health and Care
+Excellence</strong></p>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Surgery with bleeding risk</strong></td>
+<td>Offer TXA if breach of skin/mucosa in operating theatre</td>
+</tr>
+<tr>
+<td><strong>Outside operating theatre</strong></td>
+<td>Consider TXA if expected blood loss &gt;500 mL</td>
+</tr>
+<tr>
+<td><strong>Trauma</strong></td>
+<td>Continue current practice per CRASH-2 protocol</td>
+</tr>
+<tr>
+<td><strong>Pediatric surgery</strong></td>
+<td>Draft guidance extending to children (2025)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="east-guidelines-updated-2025">3.2 EAST Guidelines — Updated
+2025</h3>
+<p><strong>Eastern Association for the Surgery of Trauma</strong></p>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 44%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Recommendation</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pre-hospital TXA</strong></td>
+<td>Conditional recommendation</td>
+<td>Low-quality evidence</td>
+</tr>
+<tr>
+<td><strong>In-hospital TXA</strong></td>
+<td>Conditional recommendation</td>
+<td>Significant mortality reduction at 24 hrs and 1 month</td>
+</tr>
+<tr>
+<td><strong>Dosing</strong></td>
+<td>1g bolus + 1g infusion over 8 hrs (standard)</td>
+<td>CRASH-2 protocol</td>
+</tr>
+</tbody>
+</table>
+<h3 id="naemspacepacs-cot-position-statement-2025">3.3
+NAEMSP/ACEP/ACS-COT Position Statement (2025)</h3>
+<p><strong>Prehospital TXA Administration</strong></p>
+<table>
+<colgroup>
+<col style="width: 64%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr>
+<th>Recommendation</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Adult trauma with hemorrhagic shock</strong></td>
+<td>Recommend prehospital TXA</td>
+</tr>
+<tr>
+<td><strong>Timing</strong></td>
+<td>Administer within <strong>3 hours</strong> of injury</td>
+</tr>
+<tr>
+<td><strong>Pediatric trauma</strong></td>
+<td>Role not extensively studied; if used, within 3 hours</td>
+</tr>
+<tr>
+<td><strong>Safety</strong></td>
+<td>Low risk of thromboembolic events and seizures</td>
+</tr>
+</tbody>
+</table>
+<h3 id="acg-guidelines-gi-bleeding-2023">3.4 ACG Guidelines — GI
+Bleeding (2023)</h3>
+<table>
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr>
+<th>GI Bleeding Type</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Upper GI bleeding</strong></td>
+<td>Possible mortality reduction (mixed evidence)</td>
+</tr>
+<tr>
+<td><strong>Lower GI bleeding</strong></td>
+<td><strong>Strong recommendation AGAINST</strong>
+antifibrinolytics</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="standard-dosing-protocol">4. Standard Dosing Protocol</h2>
+<h3 id="adult-dosing-based-on-crash-2">4.1 Adult Dosing (Based on
+CRASH-2)</h3>
+<pre><code>╔════════════════════════════════════════════════════════════╗
+║  TRANEXAMIC ACID — STANDARD ADULT PROTOCOL                 ║
+╠════════════════════════════════════════════════════════════╣
+║  Loading dose:   1 gram IV over 10 minutes                 ║
+║  Maintenance:    1 gram IV over 8 hours                   ║
+║  Total dose:     2 grams over 8 hours                      ║
+║                                                            ║
+║  Alternative (hemorrhagic shock):                          ║
+║  • 1g IV bolus over 10 min, repeat once over 8 hrs        ║
+║  • Maximum: 2 grams total                                 ║
+╚════════════════════════════════════════════════════════════╝</code></pre>
+<h3 id="pediatric-dosing">4.2 Pediatric Dosing</h3>
+<table>
+<thead>
+<tr>
+<th>Weight</th>
+<th>Loading Dose</th>
+<th>Maintenance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;50 kg</td>
+<td>20 mg/kg IV over 10 min</td>
+<td>10 mg/kg/hr over 8 hrs</td>
+</tr>
+<tr>
+<td>≥50 kg</td>
+<td>Adult dosing</td>
+<td>Adult dosing</td>
+</tr>
+</tbody>
+</table>
+<h3 id="special-populations">4.3 Special Populations</h3>
+<table>
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr>
+<th>Population</th>
+<th>Consideration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Renal impairment</strong></td>
+<td>Reduce dose (TXA is renally excreted)</td>
+</tr>
+<tr>
+<td><strong>History of seizures</strong></td>
+<td>Relative contraindication (TXA lowers seizure threshold)</td>
+</tr>
+<tr>
+<td><strong>DIC</strong></td>
+<td>Relative contraindication</td>
+</tr>
+<tr>
+<td><strong>Pregnancy</strong></td>
+<td>Can use in PPH (WOMAN trial data)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="contraindications-cautions">5. Contraindications &amp;
+Cautions</h2>
+<h3 id="absolute-contraindications">Absolute Contraindications</h3>
+<table>
+<thead>
+<tr>
+<th>Contraindication</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hypersensitivity to TXA</td>
+<td>Risk of anaphylaxis</td>
+</tr>
+<tr>
+<td>Active venous or arterial thrombosis</td>
+<td>Risk of extension</td>
+</tr>
+<tr>
+<td>Subarachnoid hemorrhage</td>
+<td>Theoretical risk of vasospasm</td>
+</tr>
+</tbody>
+</table>
+<h3 id="relative-contraindications">Relative Contraindications</h3>
+<table>
+<thead>
+<tr>
+<th>Caution</th>
+<th>Clinical Concern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>History of convulsions</strong></td>
+<td>TXA can precipitate seizures</td>
+</tr>
+<tr>
+<td><strong>Severe renal impairment</strong></td>
+<td>Drug accumulation</td>
+</tr>
+<tr>
+<td><strong>DIC</strong></td>
+<td>May worsen coagulopathy</td>
+</tr>
+<tr>
+<td><strong>History of thromboembolism</strong></td>
+<td>Risk of recurrence</td>
+</tr>
+</tbody>
+</table>
+<h3 id="adverse-effects">Adverse Effects</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Adverse Effect</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GI</strong></td>
+<td>Nausea, vomiting, diarrhea</td>
+<td>Common</td>
+</tr>
+<tr>
+<td><strong>CNS</strong></td>
+<td>Seizures (especially with high dose/rapid infusion)</td>
+<td>Rare</td>
+</tr>
+<tr>
+<td><strong>CV</strong></td>
+<td>Hypotension (with rapid IV push)</td>
+<td>Rare</td>
+</tr>
+<tr>
+<td><strong>Thromboembolic</strong></td>
+<td>DVT, PE (low risk per CRASH-2)</td>
+<td>Rare</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="clinical-applications-in-critical-care">6. Clinical Applications
+in Critical Care</h2>
+<h3 id="trauma-hemorrhage">6.1 Trauma Hemorrhage</h3>
+<p><strong>Algorithm for TXA in Trauma:</strong></p>
+<pre><code>Trauma Patient with Bleeding
+           │
+           ▼
+    Hemorrhagic shock?
+    (SBP &lt;90, HR &gt;110)
+           │
+     ┌─────┴─────┐
+     │           │
+     ▼           ▼
+    YES         NO
+     │           │
+     ▼           ▼
+Give TXA      Monitor closely
+within 3 hrs  Consider TXA if
+              significant bleeding
+              develops</code></pre>
+<h3 id="surgical-blood-conservation">6.2 Surgical Blood
+Conservation</h3>
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 25%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th>Surgery Type</th>
+<th>Evidence</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cardiac surgery</strong></td>
+<td>Mixed results</td>
+<td>Consider in high-risk patients</td>
+</tr>
+<tr>
+<td><strong>Orthopedic surgery</strong></td>
+<td>Effective for reducing blood loss</td>
+<td>Recommend</td>
+</tr>
+<tr>
+<td><strong>Spinal surgery</strong></td>
+<td>Effective</td>
+<td>Recommend</td>
+</tr>
+<tr>
+<td><strong>Major abdominal surgery</strong></td>
+<td>Limited data</td>
+<td>Case-by-case</td>
+</tr>
+</tbody>
+</table>
+<h3 id="obstetric-hemorrhage">6.3 Obstetric Hemorrhage</h3>
+<ul>
+<li><strong>Indication:</strong> Postpartum hemorrhage (PPH) &gt;500 mL
+or ongoing bleeding</li>
+<li><strong>Timing:</strong> Within <strong>3 hours</strong> of
+childbirth</li>
+<li><strong>Dosing:</strong> Same as adult protocol (1g loading + 1g
+maintenance)</li>
+<li><strong>Evidence:</strong> WOMAN trial showed reduced mortality</li>
+</ul>
+<h3 id="massive-transfusion-protocol">6.4 Massive Transfusion
+Protocol</h3>
+<p>TXA is recommended as part of massive transfusion in:</p>
+<table>
+<colgroup>
+<col style="width: 62%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1:1:1 (PRBC:FFP:Platelets)</strong></td>
+<td>TXA added as 1g loading dose</td>
+</tr>
+<tr>
+<td><strong>Critical bleeding protocols</strong></td>
+<td>Early administration within 3 hours</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="recent-updates-2025-2026">7. Recent Updates 2025-2026</h2>
+<h3 id="key-developments">Key Developments</h3>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 48%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr>
+<th>Year</th>
+<th>Development</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2025</strong></td>
+<td>NICE draft — wider TXA use in surgery</td>
+<td>More patients eligible</td>
+</tr>
+<tr>
+<td><strong>2025</strong></td>
+<td>EAST updated guidelines — in-hospital TXA</td>
+<td>Stronger recommendation</td>
+</tr>
+<tr>
+<td><strong>2025</strong></td>
+<td>NAEMSP/ACEP/ACS-COT position — prehospital TXA</td>
+<td>Standardizes prehospital use</td>
+</tr>
+<tr>
+<td><strong>2026</strong></td>
+<td>NICE final guidance (simplified criteria)</td>
+<td>Easier clinical decision-making</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ongoing-debates">Ongoing Debates</h3>
+<table>
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr>
+<th>Question</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Optimal dose in severe trauma</strong></td>
+<td>Under investigation (TXA loading dose study)</td>
+</tr>
+<tr>
+<td><strong>TXA in pediatric trauma</strong></td>
+<td>Limited evidence, ongoing research</td>
+</tr>
+<tr>
+<td><strong>Topical TXA vs IV TXA</strong></td>
+<td>Topical appears effective with lower systemic risk</td>
+</tr>
+<tr>
+<td><strong>TXA in gastrointestinal bleeding</strong></td>
+<td>Evidence remains mixed</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="summary-take-home-points">8. Summary &amp; Take-Home Points</h2>
+<h3 id="key-recommendations">Key Recommendations</h3>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                    TAKE-HOME POINTS                        │
+├─────────────────────────────────────────────────────────────┤
+│  1. TXA works best when given EARLY — within 3 hours        │
+│     of injury/bleeding onset                               │
+│                                                              │
+│  2. Standard dose: 1g IV bolus + 1g over 8 hours           │
+│     (or 2g total over 8 hours)                             │
+│                                                              │
+│  3. In trauma with hemorrhage: GIVE TXA                    │
+│     (NNT = 67 to prevent 1 death)                          │
+│                                                              │
+│  4. TXA is underutilized — benefit-risk ratio is favorable │
+│                                                              │
+│  5. Contraindications: active thrombosis, seizures,       │
+│     severe renal impairment                                 │
+│                                                              │
+│  6. Do NOT give TXA &gt;3 hours post-injury                   │
+│     (may increase mortality)                               │
+└─────────────────────────────────────────────────────────────┘</code></pre>
+<h3 id="comparison-txa-vs-other-antifibrinolytics">Comparison: TXA vs
+Other Antifibrinolytics</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Tranexamic Acid</th>
+<th>Aminocaproic Acid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Potency</strong></td>
+<td>Higher</td>
+<td>Lower</td>
+</tr>
+<tr>
+<td><strong>Dosing frequency</strong></td>
+<td>Lower (longer half-life)</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td><strong>Evidence</strong></td>
+<td>Extensive (CRASH-2, etc.)</td>
+<td>Limited</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Low</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Clinical use</strong></td>
+<td>First-line</td>
+<td>Alternative</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="references">References</h2>
+<ol type="1">
+<li><p>CRASH-2 trial collaborators. Effects of tranexamic acid on death,
+vascular occlusive events, and blood transfusion in trauma patients with
+significant haemorrhage (CRASH-2): a randomised, placebo-controlled
+trial. <em>Lancet</em>. 2010;376(9734):23-32.
+doi:10.1016/S0140-6736(10)60835-5</p></li>
+<li><p>CRASH-3 trial collaborators. Effects of tranexamic acid on death,
+disability, vascular occlusive events and other morbidities in patients
+with acute traumatic brain injury (CRASH-3): a randomised,
+placebo-controlled trial. <em>Lancet</em>. 2019;394(10210):1713-1723.
+doi:10.1016/S0140-6736(19)30500-X</p></li>
+<li><p>WOMAN Trial Collaborators. Effect of early tranexamic acid
+administration on mortality, hysterectomy, and other morbidities in
+women with post-partum haemorrhage (WOMAN): an international,
+randomised, double-blind, placebo-controlled trial. <em>Lancet</em>.
+2017;389(10084):2105-2116. doi:10.1016/S0140-6736(17)30638-4</p></li>
+<li><p>NICE. Tranexamic acid for reducing the need for blood cell
+transfusion and managing bleeding. Draft guidance. November
+2025.</p></li>
+<li><p>EAST Guidelines. Updated trauma guidelines for TXA use.
+2025.</p></li>
+<li><p>National Association of EMS Physicians (NAEMSP), American College
+of Emergency Physicians (ACEP), American College of Surgeons Committee
+on Trauma (ACS-COT). Joint position statement on prehospital TXA.
+September 2025.</p></li>
+<li><p>American College of Gastroenterology. ACG Clinical Guidelines:
+Gastrointestinal Bleeding. 2023.</p></li>
+<li><p>Frontiers in Medicine. The benefit-risk profile of tranexamic
+acid in trauma, obstetrics, and at-risk surgeries: A narrative review.
+2024. doi:10.3389/fmed.2024.1416998</p></li>
+</ol>
+<hr />
+<p><strong>Document Info:</strong> - Created: April 2026 - Last updated:
+April 2026 - Version: 1.0 - File: FOR
+OPENCLAW/IMBR/Review/Tranexamic-Acid-in-Critical-Care.md</p>
+</body>
+</html>

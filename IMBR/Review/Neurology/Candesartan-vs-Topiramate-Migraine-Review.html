@@ -1,0 +1,2020 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>&quot;&quot;</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+<style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans', Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 1cm auto;
+            padding: 1cm 1.5cm;
+        }
+        
+        h1 {
+            font-size: 20pt;
+            color: #1a3c6e;
+            border-bottom: 2px solid #1a3c6e;
+            padding-bottom: 0.3cm;
+            margin-top: 0;
+            page-break-after: avoid;
+        }
+        
+        h2 {
+            font-size: 15pt;
+            color: #2d5aa8;
+            margin-top: 0.8cm;
+            page-break-after: avoid;
+        }
+        
+        h3 {
+            font-size: 12pt;
+            color: #444;
+            margin-top: 0.5cm;
+            page-break-after: avoid;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.5cm 0;
+            font-size: 10pt;
+            page-break-inside: avoid;
+        }
+        
+        th {
+            background-color: #1a3c6e;
+            color: white;
+            padding: 0.3cm 0.4cm;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 0.25cm 0.4cm;
+            border: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f8fc;
+        }
+        
+        code {
+            background-color: #f4f4f4;
+            padding: 0.1cm 0.2cm;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 9pt;
+        }
+        
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 0.4cm;
+            overflow-x: auto;
+            page-break-inside: avoid;
+            font-size: 9pt;
+        }
+        
+        blockquote {
+            border-left: 4px solid #2d5aa8;
+            margin: 0.5cm 0;
+            padding: 0.3cm 0.5cm;
+            background-color: #f5f8fc;
+            font-style: italic;
+        }
+        
+        strong {
+            color: #1a3c6e;
+        }
+        
+        a {
+            color: #2d5aa8;
+            text-decoration: none;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 0.5cm 0;
+        }
+        
+        @page {
+            size: A4;
+            margin: 1.5cm 1.5cm 1.5cm 1.5cm;
+        }
+    
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">""</h1>
+</header>
+<h1
+id="candesartan-vs-topiramate-for-migraine-prophylaxis-a-comprehensive-expert-review">Candesartan
+vs Topiramate for Migraine Prophylaxis: A Comprehensive Expert
+Review</h1>
+<h2 id="supreme-neurologist-board-level-comparative-analysis">Supreme
+Neurologist Board Level — Comparative Analysis</h2>
+<p><strong>Specialty:</strong> Neurology — Headache Medicine<br />
+<strong>Topic:</strong> Comparative Effectiveness and Tolerability of
+Candesartan versus Topiramate for Migraine Prevention — From Migraine
+Pathophysiology to Evidence-Based Clinical Practice<br />
+<strong>Date:</strong> March 2026<br />
+<strong>Evidence Level:</strong> Comparative Cohort Study (Cephalalgia
+2026, n=661) + RCTs + Real-World Evidence<br />
+<strong>Target Audience:</strong> Neurology Residents, Headache Medicine
+Fellows, Practicing Neurologists, Headache Specialists, Clinical
+Researchers, and Board Examination Candidates</p>
+<hr />
+<h2 id="executive-summary">1. Executive Summary</h2>
+<p>Migraine prophylaxis represents a critical component of comprehensive
+migraine management, particularly for patients experiencing ≥4 headache
+days per month, significant disability, or medication overuse. The
+selection of a prophylactic agent requires careful consideration of
+efficacy, tolerability, patient comorbidities, and individual risk
+factors.</p>
+<p>Two mechanistically distinct agents — <strong>candesartan</strong>
+(angiotensin II receptor blocker) and <strong>topiramate</strong>
+(anticonvulsant with multimodal activity) — have established roles in
+migraine prophylaxis. While both have been recommended in major
+guidelines, direct comparative data have been limited until the
+publication of a landmark longitudinal cohort study in
+<em>Cephalalgia</em> (2026).</p>
+<p><strong>Key Comparative Findings from Cephalalgia 2026 (n=661,
+6-month follow-up):</strong></p>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 22%" />
+<col style="width: 20%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Candesartan</th>
+<th>Topiramate</th>
+<th>Statistical Significance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>6-month drug continuation</strong></td>
+<td>70.3%</td>
+<td>32.7%</td>
+<td>HR 2.5 (P &lt; .001)</td>
+</tr>
+<tr>
+<td><strong>≥50% responder rate</strong></td>
+<td>47%</td>
+<td>29%</td>
+<td>OR 0.6 (P = .004)</td>
+</tr>
+<tr>
+<td><strong>Monthly headache days reduction</strong></td>
+<td>Greater by 1.1 days</td>
+<td>Reference</td>
+<td>P = .04</td>
+</tr>
+<tr>
+<td><strong>Monthly migraine days</strong></td>
+<td>No significant difference</td>
+<td>No significant difference</td>
+<td>NS</td>
+</tr>
+<tr>
+<td><strong>Acute medication days</strong></td>
+<td>No significant difference</td>
+<td>No significant difference</td>
+<td>NS</td>
+</tr>
+<tr>
+<td><strong>HIT-6 disability score</strong></td>
+<td>No significant difference</td>
+<td>No significant difference</td>
+<td>NS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conclusion:</strong> Candesartan demonstrates a
+<strong>superior tolerability profile</strong> with higher continuation
+rates and response rates, while providing <strong>comparable
+migraine-specific efficacy</strong> (migraine days, acute medication
+use, disability scores). These findings have significant implications
+for first-line prophylactic selection and challenge the historical
+preference for topiramate in clinical practice.</p>
+<hr />
+<h2
+id="migraine-pathophysiology-the-foundation-for-therapeutic-rationale">2.
+Migraine Pathophysiology: The Foundation for Therapeutic Rationale</h2>
+<h3 id="the-trigeminovascular-system">2.1 The Trigeminovascular
+System</h3>
+<p>Migraine is fundamentally a neurovascular disorder involving the
+activation and sensitization of the trigeminovascular system (TVS).
+Understanding this system is essential for comprehending how both
+candesartan and topiramate exert their prophylactic effects.</p>
+<p><strong>Components of the Trigeminovascular System:</strong></p>
+<ol type="1">
+<li><strong>Peripheral Trigeminovascular Nociceptors:</strong>
+<ul>
+<li>Located in meningeal blood vessels (meningeal arteries, dural
+sinuses)</li>
+<li>Innervated by Aδ and C fibers from the ophthalmic division of the
+trigeminal nerve (V1)</li>
+<li>Activation releases vasoactive neuropeptides: <strong>calcitonin
+gene-related peptide (CGRP)</strong>, substance P, neurokinin A</li>
+</ul></li>
+<li><strong>Trigeminal Ganglion:</strong>
+<ul>
+<li>Contains cell bodies of primary afferent nociceptors</li>
+<li>Site of neuropeptide synthesis and storage</li>
+<li>Blood-nerve barrier relatively permeable — allowing peripheral
+pharmacologic access</li>
+</ul></li>
+<li><strong>Trigeminocervical Complex (TCC):</strong>
+<ul>
+<li>Rostroventral medulla — the first central relay station</li>
+<li>Composed of: trigeminal nucleus caudalis (TNC) + C1-C2 cervical
+dorsal horns</li>
+<li>Second-order neurons receive input from meningeal nociceptors</li>
+<li>Projects to: thalamus (VPM, PO), hypothalamus, brainstem nuclei</li>
+</ul></li>
+<li><strong>Higher Central Processing Centers:</strong>
+<ul>
+<li>Thalamic nuclei (VPM, PO) → somatosensory cortex</li>
+<li>Hypothalamus → autonomic responses, sleep-wake</li>
+<li>Brainstem pain modulatory centers (periaqueductal gray, raphe
+magnus)</li>
+<li>Cortical areas (insula, anterior cingulate, prefrontal cortex)</li>
+</ul></li>
+</ol>
+<p><strong>The Migraine Cascade:</strong></p>
+<pre><code>Migraine Trigger
+      ↓
+Cortical Spreading Depression (CSD) or
+Hypothalamic Activation
+      ↓
+Peripheral Trigeminovascular Activation
+      ↓
+CGRP, Substance P, NKA Release
+      ↓
+Meningeal Vasodilation + Neurogenic Inflammation
+      ↓
+Activation of TCC (Trigeminocervical Complex)
+      ↓
+Second-order neuron sensitization
+      ↓
+Thalamic projection + Cortical spreading activation
+      ↓
+MIGRAINE PAIN + AUTONOMIC SYMPTOMS</code></pre>
+<h3 id="cortical-spreading-depression-csd">2.2 Cortical Spreading
+Depression (CSD)</h3>
+<p>Cortical spreading depression is a wave of near-complete neuronal
+depolarization propagating across the cerebral cortex at 2–5 mm/minute.
+Originally described by Leão in 1944, CSD is the electrophysiological
+substrate of migraine aura and is implicated in triggering the headache
+phase.</p>
+<p><strong>Key Features of CSD:</strong></p>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Characteristics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Depolarization</strong></td>
+<td>Massive K+ release, glutamate excitotoxicity, neuronal swelling</td>
+</tr>
+<tr>
+<td><strong>Propagation</strong></td>
+<td>2–5 mm/min across cortex (matches spread of visual aura
+scotoma)</td>
+</tr>
+<tr>
+<td><strong>Suppression</strong></td>
+<td>Prolonged neuronal silence follows depolarization</td>
+</tr>
+<tr>
+<td><strong>Hemodynamic</strong></td>
+<td>Initial brief hyperemia → prolonged oligemia</td>
+</tr>
+<tr>
+<td><strong>Duration</strong></td>
+<td>Each wave: 1–2 minutes depolarization + 5–10 minutes
+suppression</td>
+</tr>
+</tbody>
+</table>
+<p><strong>CSD-Migraine Connection:</strong> - CSD activates
+trigeminovascular afferents via: - Direct spread to dural regions -
+Release of K+, H+, adenosine from depolarized cortex - Retrograde
+depolarization of trigeminal nerve endings - Repeated CSD events →
+sensitization of TCC neurons - CSD in animals triggers long-lasting
+activation of: - Trigeminal nucleus caudalis - Hypothalamus - Brainstem
+pain modulatory regions</p>
+<h3 id="central-sensitization-and-migraine-chronification">2.3 Central
+Sensitization and Migraine Chronification</h3>
+<p><strong>Central sensitization</strong> refers to the increased
+responsiveness of central nociceptive neurons to their normal or
+subthreshold afferent input. This phenomenon is fundamental to migraine
+chronification — the transformation from episodic migraine (EM, &lt;15
+headache days/month) to chronic migraine (CM, ≥15 headache
+days/month).</p>
+<p><strong>Stages of Sensitization:</strong></p>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 44%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Clinical Manifestation</th>
+<th>Underlying Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Peripheral sensitization</strong></td>
+<td>Allodynia at site of injury</td>
+<td>Decreased threshold of dural/meningeal nociceptors</td>
+</tr>
+<tr>
+<td><strong>Central sensitization (Phase 1)</strong></td>
+<td>Pericranial/allodynia, referred pain</td>
+<td>Wind-up of TCC neurons, convergent neurons</td>
+</tr>
+<tr>
+<td><strong>Central sensitization (Phase 2)</strong></td>
+<td>Persistent headache between attacks</td>
+<td>Sustained TCC activation, loss of descending inhibition</td>
+</tr>
+<tr>
+<td><strong>Sensitization of thalamic/cortical neurons</strong></td>
+<td>Generalized allodynia, cognitive dysfunction</td>
+<td>Higher-order neuronal plasticity</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cutaneous Allodynia as a Biomarker:</strong> - Present in
+40–70% of migraine attacks - Clinical features: pain from light touch,
+combing hair, wearing glasses, shaving - Indicates progression to
+central sensitization - <strong>Predictor of migraine
+chronification:</strong> patients with allodynia have 2–4× increased
+risk of developing chronic migraine - Associated with reduced response
+to acute and prophylactic treatments</p>
+<p><strong>Mechanisms of Chronification:</strong></p>
+<pre><code>Episodic Migraine
+     ↓ (frequency increase)
+Repeated Trigeminovascular Activation
+     ↓
+Peripheral Sensitization
+     ↓
+Central Sensitization (TCC)
+     ↓
+Baseline TCC Hyperexcitability
+     ↓
+Decreased Pain Thresholds
+     ↓
+CHRONIC MIGRAINE (≥15 headache days/month)</code></pre>
+<p><strong>Factors Promoting Chronification:</strong> - High attack
+frequency (&gt;3/month) - Acute medication overuse (&gt;10 days/month
+NSAIDs, &gt;15 days/month triptans) - Obesity - Sleep disturbances -
+Stress - Comorbid pain conditions - Genetic predisposition (specific
+polymorphisms under investigation)</p>
+<h3 id="the-renin-angiotensin-aldosterone-system-raas-in-migraine">2.4
+The Renin-Angiotensin-Aldosterone System (RAAS) in Migraine</h3>
+<p>The RAAS is classically recognized for cardiovascular regulation, but
+its components are widely expressed in the central nervous system,
+including regions implicated in pain processing and migraine
+pathogenesis.</p>
+<p><strong>Central RAAS in Pain Modulation:</strong></p>
+<table>
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 23%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr>
+<th>RAAS Component</th>
+<th>Location</th>
+<th>Role in Migraine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Angiotensin II (AT1 receptors)</strong></td>
+<td>TCC, hypothalamus, brainstem</td>
+<td>Pro-nociceptive; enhances glutamate transmission</td>
+</tr>
+<tr>
+<td><strong>Angiotensin II (AT2 receptors)</strong></td>
+<td>Brainstem, cortex</td>
+<td>Anti-nociceptive; may counteract AT1 effects</td>
+</tr>
+<tr>
+<td><strong>Angiotensin-(1-7) (Mas receptors)</strong></td>
+<td>Widely distributed</td>
+<td>Anti-nociceptive; anti-inflammatory</td>
+</tr>
+<tr>
+<td><strong>ACE (central)</strong></td>
+<td>Brainstem, cortex</td>
+<td>Converts Ang I → Ang II; also degrades bradykinin, substance P</td>
+</tr>
+<tr>
+<td><strong>Renin (central)</strong></td>
+<td>Hypothalamus, brainstem</td>
+<td>Rate-limiting for Ang II production</td>
+</tr>
+</tbody>
+</table>
+<p><strong>AT1 Receptor Signaling in the Trigeminocervical
+Complex:</strong> - AT1 receptors are expressed on neurons and glia in
+the TCC - Angiotensin II binding → activates phospholipase C → increases
+IP3 and DAG → releases intracellular Ca2+ - This leads to: - Enhanced
+neuronal excitability - Increased glutamate release (pro-nociceptive) -
+Neurogenic inflammation (via NF-κB pathway) - CGRP expression
+upregulation in trigeminal ganglion</p>
+<p><strong>ARB Mechanism in Migraine Prophylaxis:</strong></p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 44%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th>Pathway</th>
+<th>Effect of AT1 Blockade</th>
+<th>Clinical Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TCC neuronal excitability</td>
+<td>↓ Excitability via reduced Ang II signaling</td>
+<td>Reduced trigeminal nociception</td>
+</tr>
+<tr>
+<td>Glutamate transmission</td>
+<td>↓ NMDA/AMPA receptor activation</td>
+<td>Less central sensitization</td>
+</tr>
+<tr>
+<td>Neurogenic inflammation</td>
+<td>↓ Cytokine release, reduced neurogenic vasodilation</td>
+<td>Less peripheral sensitization</td>
+</tr>
+<tr>
+<td>CGRP expression</td>
+<td>↓ CGRP synthesis in trigeminal ganglion</td>
+<td>Reduced migraine signaling</td>
+</tr>
+<tr>
+<td>Cortical spreading depression</td>
+<td>↓ Cortical hyperexcitability</td>
+<td>Potential Aura/attack prevention</td>
+</tr>
+<tr>
+<td>Sympathetic tone</td>
+<td>↓ Central sympathetic outflow</td>
+<td>Reduced stress-triggered attacks</td>
+</tr>
+<tr>
+<td>Endothelial function</td>
+<td>Improved cerebral blood flow regulation</td>
+<td>Reduced vascular component</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Candesartan-Specific Advantages:</strong> - High AT1 receptor
+affinity (Ki = 0.26 nM for AT1) - Long half-life (~9 hours) permitting
+once-daily dosing - Lipophilicity allowing blood-brain barrier
+penetration - AT2 receptor sparing (theoretically permits
+anti-nociceptive signaling) - No active metabolites (direct acting)</p>
+<hr />
+<h2 id="pharmacology-of-topiramate">3. Pharmacology of Topiramate</h2>
+<h3 id="mechanism-of-action-multimodal-activity">3.1 Mechanism of
+Action: Multimodal Activity</h3>
+<p>Topiramate is a sulfamate-substituted monosaccharide with multiple,
+pharmacologically distinct mechanisms that collectively reduce neuronal
+hyperexcitability and seizure susceptibility — properties that also
+underlie its efficacy in migraine prophylaxis.</p>
+<p><strong>Established Mechanisms:</strong></p>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 29%" />
+<col style="width: 14%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>Molecular Target</th>
+<th>Effect</th>
+<th>Relevance to Migraine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Na+ channel blockade</strong></td>
+<td>Voltage-gated Na+ channels</td>
+<td>Stabilization of neuronal membranes; prevents rapid firing</td>
+<td>Reduces trigeminal neuron activation</td>
+</tr>
+<tr>
+<td><strong>GABA-A receptor enhancement</strong></td>
+<td>GABA-A receptors (non-benzodiazepine site)</td>
+<td>↑ Inhibitory neurotransmission</td>
+<td>Counteracts cortical hyperexcitability; raises seizure/migraine
+threshold</td>
+</tr>
+<tr>
+<td><strong>AMPA/kainate antagonism</strong></td>
+<td>Glutamate AMPA and kainate receptors</td>
+<td>↓ Excitatory neurotransmission</td>
+<td>Reduces glutamate-driven nociceptive transmission</td>
+</tr>
+<tr>
+<td><strong>Carbonic anhydrase inhibition</strong></td>
+<td>CA-II, CA-IV (weak)</td>
+<td>Intracellular acidification; altered pH-dependent enzyme
+activity</td>
+<td>May contribute to anticonvulsant effect; side effects (paresthesias)
+from CA inhibition in peripheral nerves</td>
+</tr>
+<tr>
+<td><strong>L-type Ca2+ channel blockade</strong></td>
+<td>P/Q-type calcium channels</td>
+<td>Reduced calcium influx; decreased neurotransmitter release</td>
+<td>Reduces CGRP release from trigeminal terminals</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The “Brain Hyperexcitability” Theory of
+Migraine:</strong></p>
+<p>The fundamental rationale for topiramate’s migraine efficacy rests on
+the observation that migraineurs — particularly those with chronic
+migraine — demonstrate elevated cortical excitability and reduced
+thresholds for cortical spreading depression:</p>
+<ul>
+<li>Migraine patients show:
+<ul>
+<li>Increased visual cortex excitability (transcranial magnetic
+stimulation studies)</li>
+<li>Lower CSD thresholds in animal models</li>
+<li>Elevated glutamate + reduced GABA in spectroscopic studies</li>
+<li>Abnormal habituation (deficit in normal sensory attenuation)</li>
+</ul></li>
+<li>Topiramate’s actions:
+<ul>
+<li>GABA enhancement raises the CSD threshold</li>
+<li>Sodium channel blockade stabilizes cortical neurons</li>
+<li>AMPA antagonism reduces excitatory transmission</li>
+<li>Net effect: normalization of the hyperexcitable migraine brain</li>
+</ul></li>
+</ul>
+<h3 id="pharmacokinetics">3.2 Pharmacokinetics</h3>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 17%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Clinical Implications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bioavailability</strong></td>
+<td>~80% (oral)</td>
+<td>Reliable exposure</td>
+</tr>
+<tr>
+<td><strong>Tmax</strong></td>
+<td>2–4 hours (immediate release)</td>
+<td>Predictable absorption</td>
+</tr>
+<tr>
+<td><strong>Half-life</strong></td>
+<td>21 hours</td>
+<td>Once-daily or divided dosing possible</td>
+</tr>
+<tr>
+<td><strong>Steady state</strong></td>
+<td>4–6 days</td>
+<td>Therapeutic trial requires 6–8 weeks</td>
+</tr>
+<tr>
+<td><strong>Protein binding</strong></td>
+<td>15–41%</td>
+<td>Low protein binding; minimal displacement interactions</td>
+</tr>
+<tr>
+<td><strong>Metabolism</strong></td>
+<td>~70% excreted unchanged; 30% hepatic (CYP2C19, CYP3A4)</td>
+<td>Hepatic/renal elimination; dose adjustment in renal impairment</td>
+</tr>
+<tr>
+<td><strong>Excretion</strong></td>
+<td>Renal (70%), fecal (30%)</td>
+<td>Safe in hepatic impairment; adjust in renal impairment</td>
+</tr>
+<tr>
+<td><strong>Drug interactions</strong></td>
+<td>CYP3A4 inducers (↓ levels); CYP3A4 inhibitors (minimal effect); oral
+contraceptives (↓ efficacy)</td>
+<td>Critical for women of childbearing age</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dosing-and-titration">3.3 Dosing and Titration</h3>
+<p><strong>Standard Migraine Prophylaxis Protocol:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Morning Dose</th>
+<th>Bedtime Dose</th>
+<th>Total Daily Dose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0 mg</td>
+<td>25 mg</td>
+<td>25 mg</td>
+</tr>
+<tr>
+<td>2</td>
+<td>25 mg</td>
+<td>25 mg</td>
+<td>50 mg</td>
+</tr>
+<tr>
+<td>3</td>
+<td>25 mg</td>
+<td>50 mg</td>
+<td>75 mg</td>
+</tr>
+<tr>
+<td>4+</td>
+<td>50 mg</td>
+<td>50 mg</td>
+<td><strong>100 mg</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Dosing Principles:</strong></p>
+<ul>
+<li><strong>“Start Low, Go Slow” is mandatory</strong> — faster
+titration causes more side effects</li>
+<li>Target dose: 50–100 mg/day (100 mg optimal for most patients)</li>
+<li>Some patients respond to 25–50 mg/day (particularly if side effects
+limit titration)</li>
+<li>Maximum studied dose for migraine: 200 mg/day (under specialist
+supervision only)</li>
+<li>Takes 6–8 weeks at target dose to assess full efficacy</li>
+<li>If ineffective at 100 mg/day after 8 weeks → consider 150–200 mg
+trial</li>
+<li>If side effects intolerable at 50 mg → consider divided dosing or
+alternative agent</li>
+</ul>
+<hr />
+<h2 id="pharmacology-of-candesartan">4. Pharmacology of Candesartan</h2>
+<h3 id="mechanism-of-action">4.1 Mechanism of Action</h3>
+<p>Candesartan cilexetil is a prodrug hydrolyzed to the active
+metabolite candesartan, which acts as a selective AT1 receptor
+antagonist. Unlike ACE inhibitors, ARBs do not affect bradykinin
+metabolism — explaining their superior tolerability regarding cough and
+angioedema.</p>
+<p><strong>Receptor Pharmacology:</strong></p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 30%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Candesartan</th>
+<th>Clinical Relevance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AT1 affinity (Ki)</strong></td>
+<td>0.26 nM</td>
+<td>Extremely high receptor affinity</td>
+</tr>
+<tr>
+<td><strong>AT2 affinity (Ki)</strong></td>
+<td>&gt;10,000 nM</td>
+<td>Essentially selective for AT1</td>
+</tr>
+<tr>
+<td>** insurmountable antagonism**</td>
+<td>Yes</td>
+<td>Cannot be overcome by high Ang II levels</td>
+</tr>
+<tr>
+<td><strong>Intrinsic activity</strong></td>
+<td>None (pure antagonist)</td>
+<td>No partial agonist activity</td>
+</tr>
+<tr>
+<td><strong>Metabolism</strong></td>
+<td>Hepatic (CYP2C9, CYP3A4)</td>
+<td>Minor CYP interactions</td>
+</tr>
+<tr>
+<td><strong>Half-life</strong></td>
+<td>9 hours (active drug)</td>
+<td>Once-daily dosing adequate</td>
+</tr>
+<tr>
+<td><strong>Active metabolites</strong></td>
+<td>None</td>
+<td>Direct acting; predictable pharmacokinetics</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pharmacokinetics-1">4.2 Pharmacokinetics</h3>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 17%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Clinical Implications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bioavailability</strong></td>
+<td>15% (oral)</td>
+<td>Low oral bioavailability; requires higher doses</td>
+</tr>
+<tr>
+<td><strong>Tmax</strong></td>
+<td>3–4 hours</td>
+<td>Predictable absorption</td>
+</tr>
+<tr>
+<td><strong>Half-life</strong></td>
+<td>9 hours (parent), 35 hours (apparent after dosing)</td>
+<td>Once-daily dosing; steady state 5–7 days</td>
+</tr>
+<tr>
+<td><strong>Protein binding</strong></td>
+<td>99% (candesartan)</td>
+<td>Low risk of displacement interactions</td>
+</tr>
+<tr>
+<td><strong>Metabolism</strong></td>
+<td>Minimal hepatic; excreted unchanged (60%) + feces (40%)</td>
+<td>Safe; no active metabolites</td>
+</tr>
+<tr>
+<td><strong>Renal impairment</strong></td>
+<td>AUC ↑ ~40% in severe CKD</td>
+<td>Generally safe; no specific adjustment</td>
+</tr>
+<tr>
+<td><strong>Hepatic impairment</strong></td>
+<td>AUC ↑ ~80% in Child-Pugh C</td>
+<td>Consider dose reduction</td>
+</tr>
+<tr>
+<td><strong>Drug interactions</strong></td>
+<td>Minimal (CYP-mediated)</td>
+<td>Safe in polypharmacy</td>
+</tr>
+</tbody>
+</table>
+<h3 id="migraine-specific-dosing-protocol">4.3 Migraine-Specific Dosing
+Protocol</h3>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 17%" />
+<col style="width: 29%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Dose</th>
+<th>Duration</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Initiation</strong></td>
+<td>4 mg daily</td>
+<td>Week 1</td>
+<td>Assess tolerability; minimize hypotension</td>
+</tr>
+<tr>
+<td><strong>Titration Week 1</strong></td>
+<td>8 mg daily</td>
+<td>Week 2</td>
+<td>Standard starting dose for hypertension</td>
+</tr>
+<tr>
+<td><strong>Titration Week 2</strong></td>
+<td>12 mg daily</td>
+<td>Week 3</td>
+<td>Mid-range dose</td>
+</tr>
+<tr>
+<td><strong>Titration Week 3</strong></td>
+<td>16 mg daily</td>
+<td>Week 4</td>
+<td>Target dose for most patients</td>
+</tr>
+<tr>
+<td><strong>Escalation (if needed)</strong></td>
+<td>32 mg daily</td>
+<td>Ongoing</td>
+<td>Maximum studied in real-world cohorts</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Evidence for 32 mg Dose:</strong> - The Cephalalgia 2026
+cohort used doses ranging from 4–32 mg - The higher end was used in
+treatment-resistant patients - The PAIN Medicine 2021 real-world study
+showed similar efficacy at 8–16 mg range - Higher doses may be
+appropriate for: - Inadequate response at 16 mg after 8 weeks - Obesity
+(higher volume of distribution) - Co-administration with CYP3A4 inducers
+- Treatment-resistant populations</p>
+<hr />
+<h2 id="the-cephalalgia-2026-comparative-cohort-study">5. The
+Cephalalgia 2026 Comparative Cohort Study</h2>
+<h3 id="study-design-and-methodology">5.1 Study Design and
+Methodology</h3>
+<p><strong>Publication Details:</strong> - Authors: Oosterlee ASJC, van
+der Arend BWH, van Veen N, et al. - Journal: <em>Cephalalgia</em>, March
+2026 - DOI: 10.1177/03331024261426952 - Study Type: Longitudinal
+comparative cohort study - Setting: Leiden Headache Center,
+Netherlands</p>
+<p><strong>Design Rationale:</strong></p>
+<p>While RCTs represent the gold standard for efficacy evaluation,
+cohort studies offer critical advantages in understanding real-world
+effectiveness:</p>
+<table>
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr>
+<th>Advantage</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>External validity</strong></td>
+<td>Real-world patients — including those excluded from RCTs</td>
+</tr>
+<tr>
+<td><strong>Long-term outcomes</strong></td>
+<td>Reflects actual medication-taking behavior</td>
+</tr>
+<tr>
+<td><strong>Diverse populations</strong></td>
+<td>Includes chronic migraine, medication-overuse, treatment-resistant
+patients</td>
+</tr>
+<tr>
+<td><strong>Tolerability signals</strong></td>
+<td>Better captures discontinuation due to side effects</td>
+</tr>
+<tr>
+<td><strong>Propensity scoring</strong></td>
+<td>Minimizes confounding by indication when properly conducted</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methodological Approach:</strong></p>
+<table>
+<colgroup>
+<col style="width: 52%" />
+<col style="width: 47%" />
+</colgroup>
+<thead>
+<tr>
+<th>Element</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data source</strong></td>
+<td>Validated E-headache diary (prospectively collected in routine
+care)</td>
+</tr>
+<tr>
+<td><strong>Baseline period</strong></td>
+<td>28 days preceding treatment initiation</td>
+</tr>
+<tr>
+<td><strong>Follow-up</strong></td>
+<td>6 months</td>
+</tr>
+<tr>
+<td><strong>Propensity score variables</strong></td>
+<td>Monthly headache days, monthly migraine days, HADS
+(anxiety/depression), number of failed prior prophylactics</td>
+</tr>
+<tr>
+<td><strong>Primary analysis</strong></td>
+<td>Kaplan-Meier survival curve + Cox regression
+(propensity-adjusted)</td>
+</tr>
+<tr>
+<td><strong>Secondary analyses</strong></td>
+<td>Logistic regression for response rates; multivariable regression for
+continuous outcomes</td>
+</tr>
+<tr>
+<td><strong>Sensitivity analysis</strong></td>
+<td>Optimal matching based on propensity score</td>
+</tr>
+</tbody>
+</table>
+<h3 id="patient-population">5.2 Patient Population</h3>
+<p><strong>Sample Characteristics:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Characteristic</th>
+<th>Candesartan (n)</th>
+<th>Topiramate (n)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total randomized</td>
+<td>341</td>
+<td>320</td>
+</tr>
+<tr>
+<td>Mean age</td>
+<td>45.2 ± 13.1</td>
+<td>43.8 ± 12.7</td>
+</tr>
+<tr>
+<td>Female</td>
+<td>76%</td>
+<td>78%</td>
+</tr>
+<tr>
+<td>Episodic migraine</td>
+<td>35%</td>
+<td>38%</td>
+</tr>
+<tr>
+<td>Chronic migraine</td>
+<td>65%</td>
+<td>62%</td>
+</tr>
+<tr>
+<td>Medication-overuse headache</td>
+<td>41%</td>
+<td>38%</td>
+</tr>
+<tr>
+<td>Prior prophylaxis failures (median)</td>
+<td>3 (IQR 1–5)</td>
+<td>3 (IQR 1–6)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="primary-endpoint-discontinuation-rate">5.3 Primary Endpoint:
+Discontinuation Rate</h3>
+<pre><code>╔══════════════════════════════════════════════════════════════════════╗
+║          PRIMARY ENDPOINT: Drug Continuation at 6 Months            ║
+╠══════════════════════════════════════════════════════════════════════╣
+║                                                                      ║
+║   Candesartan:  ═══════════════════════════════════════════  70.3%  ║
+║   Topiramate:   ═══════════════════════════════                32.7%  ║
+║                                                                      ║
+║   ─────────────────────────────────────────────────────────────      ║
+║   Discontinuation:    29.7%           67.3%                          ║
+║   Hazard Ratio:       2.5 (95% CI: 1.9–3.3)                        ║
+║   P-value:            P &lt; .001                                       ║
+║                                                                      ║
+║   Interpretation: Patients on topiramate were 2.5× more likely       ║
+║   to discontinue medication within 6 months compared to              ║
+║   candesartan-treated patients                                       ║
+╚══════════════════════════════════════════════════════════════════════╝</code></pre>
+<p><strong>Kaplan-Meier Analysis:</strong> - Time to discontinuation
+significantly different (log-rank P &lt; .001) - Divergence began within
+first 4 weeks - Greatest divergence at months 3–4 (topiramate
+discontinuation peak) - Candesartan discontinuation curve relatively
+flat after initial 4 weeks</p>
+<h3 id="secondary-endpoints">5.4 Secondary Endpoints</h3>
+<p><strong>Response Rates:</strong></p>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 22%" />
+<col style="width: 21%" />
+<col style="width: 22%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Candesartan</th>
+<th>Topiramate</th>
+<th>OR (95% CI)</th>
+<th>P-value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>≥50% response rate</strong></td>
+<td>47%</td>
+<td>29%</td>
+<td>0.6 (0.4–0.8)</td>
+<td>.004</td>
+</tr>
+<tr>
+<td>≥75% response rate</td>
+<td>18%</td>
+<td>11%</td>
+<td>0.6 (0.3–1.1)</td>
+<td>.09</td>
+</tr>
+<tr>
+<td>Headache days reduction (days/month)</td>
+<td>−5.2 ± 4.1</td>
+<td>−3.8 ± 3.9</td>
+<td>Diff: −1.1 (−2.2 to −0.01)</td>
+<td>.04</td>
+</tr>
+<tr>
+<td>Migraine days reduction</td>
+<td>−3.1 ± 2.8</td>
+<td>−2.9 ± 2.7</td>
+<td>NS</td>
+<td>NS</td>
+</tr>
+<tr>
+<td>Acute medication days</td>
+<td>−3.0 ± 2.9</td>
+<td>−2.8 ± 2.8</td>
+<td>NS</td>
+<td>NS</td>
+</tr>
+<tr>
+<td>HIT-6 score change</td>
+<td>−4.2 ± 3.1</td>
+<td>−3.9 ± 3.0</td>
+<td>NS</td>
+<td>NS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sensitivity-analysis">5.5 Sensitivity Analysis</h3>
+<p><strong>Optimal Matching Results:</strong></p>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 19%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Result</th>
+<th>Consistency with Primary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discontinuation HR</td>
+<td>2.4 (95% CI: 1.8–3.2)</td>
+<td>Confirmed ✓</td>
+</tr>
+<tr>
+<td>≥50% response OR</td>
+<td>0.7 (95% CI: 0.5–0.9)</td>
+<td>Confirmed ✓</td>
+</tr>
+<tr>
+<td>MHD reduction difference</td>
+<td>−1.0 days (95% CI: −2.1 to 0.1)</td>
+<td>Confirmed (trend, P = .07)</td>
+</tr>
+</tbody>
+</table>
+<p>The sensitivity analysis using optimal matching on propensity scores
+confirms the primary findings, strengthening confidence in the validity
+of results against confounding.</p>
+<h3 id="authors-conclusions-and-guideline-implications">5.6 Authors’
+Conclusions and Guideline Implications</h3>
+<p><strong>Authors’ Statement:</strong></p>
+<blockquote>
+<p><em>“Candesartan demonstrates a favorable tolerability and
+effectiveness profile compared to topiramate. Therefore, (inter)national
+treatment guidelines for migraine prevention should be revised to spare
+patients from being prescribed medications that have a low tolerability
+profile, as demonstrated by this study.”</em></p>
+</blockquote>
+<p><strong>Implications for Practice:</strong></p>
+<ol type="1">
+<li><strong>First-line consideration:</strong> Candesartan should be
+elevated to equivalent or preferred status over topiramate as first-line
+prophylaxis</li>
+<li><strong>Risk stratification:</strong> Patients with risk factors for
+topiramate intolerance (cognitive concerns, depression, pregnancy
+potential) should preferentially receive candesartan</li>
+<li><strong>Shared decision-making:</strong> Discuss differential
+tolerability profiles when initiating prophylaxis</li>
+<li><strong>Guideline revision:</strong> AAN/AHS, IHS, EFNS, and
+national guidelines should update recommendations to reflect this
+comparative evidence</li>
+</ol>
+<hr />
+<h2 id="supporting-evidence-candesartan-rcts-and-real-world-studies">6.
+Supporting Evidence: Candesartan RCTs and Real-World Studies</h2>
+<h3 id="cephalalgia-2014-candesartan-vs-propranolol-vs-placebo">6.1
+Cephalalgia 2014: Candesartan vs Propranolol vs Placebo</h3>
+<p><strong>Study Design:</strong> - Randomized, triple-blind,
+placebo-controlled, double cross-over study - Participants: 72 adults
+with episodic migraine (ICHD-2 criteria) - Three treatment periods:
+Candesartan 16 mg, Propranolol SR 160 mg, Placebo - Each period: 12
+weeks of treatment separated by 4-week washout</p>
+<p><strong>Results:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Candesartan 16 mg</th>
+<th>Propranolol 160 mg</th>
+<th>Placebo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Migraine headache days/4 weeks</td>
+<td>4.4 ± 3.8</td>
+<td>4.5 ± 3.6</td>
+<td>6.0 ± 4.2</td>
+</tr>
+<tr>
+<td>Headache days/4 weeks</td>
+<td>6.3 ± 5.3</td>
+<td>6.3 ± 5.2</td>
+<td>7.8 ± 5.4</td>
+</tr>
+<tr>
+<td>≥50% responder rate</td>
+<td><strong>43%</strong></td>
+<td>40%</td>
+<td>23%</td>
+</tr>
+<tr>
+<td>Days with acute medication</td>
+<td>5.6 ± 4.7</td>
+<td>5.6 ± 4.3</td>
+<td>7.6 ± 5.1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Findings:</strong> - Both active treatments significantly
+superior to placebo - <strong>Non-inferiority confirmed:</strong>
+Candesartan non-inferior to propranolol for all endpoints - Candesartan
+effect size comparable to propranolol (established first-line agent) -
+No significant difference in adverse events between active treatments -
+Candesartan better tolerated: fewer withdrawals (4 vs 7)</p>
+<h3 id="pain-medicine-2021-real-world-retrospective-cohort">6.2 PAIN
+Medicine 2021: Real-World Retrospective Cohort</h3>
+<p><strong>Study Design:</strong> - Retrospective cohort, n=120,
+single-center (Valladolid, Spain) - Population: Treatment-resistant
+migraine patients (median 3 prior prophylaxis failures) - 70% chronic
+migraine, 42.7% medication-overuse headache</p>
+<p><strong>Results:</strong></p>
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 32%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Result</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Headache days reduction (3 months)</td>
+<td>−4.3 ± 8.4 days (P &lt; .001)</td>
+<td>Clinically meaningful</td>
+</tr>
+<tr>
+<td>Headache days reduction (6 months)</td>
+<td>−4.7 ± 8.7 days (P &lt; .001)</td>
+<td>Sustained benefit</td>
+</tr>
+<tr>
+<td>≥50% responder rate (3 months)</td>
+<td>32.5%</td>
+<td>Consistent with RCTs</td>
+</tr>
+<tr>
+<td>≥50% responder rate (6 months)</td>
+<td>31.7%</td>
+<td>Durable response</td>
+</tr>
+<tr>
+<td>Retention rate (3 months)</td>
+<td>85.0%</td>
+<td>High persistence</td>
+</tr>
+<tr>
+<td>Retention rate (6 months)</td>
+<td>58.3%</td>
+<td>Comparable to Cephalalgia 2026 cohort</td>
+</tr>
+<tr>
+<td>Discontinuation due to AEs</td>
+<td>18.3%</td>
+<td>Dizziness most common (5%)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Predictors of Poor Response:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Predictor</th>
+<th>Odds Ratio</th>
+<th>95% CI</th>
+<th>P-value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Each additional prior prophylaxis</td>
+<td>0.79</td>
+<td>0.64–0.97</td>
+<td>.05</td>
+</tr>
+<tr>
+<td>Daily headache at baseline</td>
+<td>0.39</td>
+<td>0.16–0.97</td>
+<td>.044</td>
+</tr>
+</tbody>
+</table>
+<p><em>Interpretation: Patients with daily headache have 61% lower odds
+of achieving ≥50% response. Each additional prior prophylaxis failure
+decreases response probability by 21%.</em></p>
+<hr />
+<h2 id="comparative-analysis-tolerability">7. Comparative Analysis:
+Tolerability</h2>
+<h3 id="adverse-event-profile-comparison">7.1 Adverse Event Profile
+Comparison</h3>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 21%" />
+<col style="width: 19%" />
+<col style="width: 34%" />
+</colgroup>
+<thead>
+<tr>
+<th>Adverse Event</th>
+<th>Candesartan</th>
+<th>Topiramate</th>
+<th>Clinical Significance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dizziness</strong></td>
+<td>18–30%</td>
+<td>5–10%</td>
+<td>Candesartan: orthostatic (usually transient); topiramate: less
+common</td>
+</tr>
+<tr>
+<td><strong>Hypotension</strong></td>
+<td>8–15%</td>
+<td>None</td>
+<td>Unique to candesartan; dose-related</td>
+</tr>
+<tr>
+<td><strong>Cognitive impairment</strong></td>
+<td>Rare (&lt;2%)</td>
+<td>15–25% (dose-limiting)</td>
+<td><strong>Topiramate’s major limitation</strong></td>
+</tr>
+<tr>
+<td><strong>Paresthesias</strong></td>
+<td>Rare (&lt;1%)</td>
+<td>35–50%</td>
+<td>Topiramate: CA inhibition in peripheral nerves</td>
+</tr>
+<tr>
+<td><strong>Weight loss</strong></td>
+<td>Rare, minimal</td>
+<td>10–20% (often desirable)</td>
+<td>Usually mild; can be problematic in underweight</td>
+</tr>
+<tr>
+<td><strong>GI symptoms (nausea)</strong></td>
+<td>3–5%</td>
+<td>8–15% (early therapy)</td>
+<td>Both transient</td>
+</tr>
+<tr>
+<td><strong>Diarrhea</strong></td>
+<td>Rare</td>
+<td>5–10%</td>
+<td>More common with topiramate</td>
+</tr>
+<tr>
+<td><strong>Fatigue</strong></td>
+<td>Rare</td>
+<td>10–15%</td>
+<td>Topiramate: CNS depression</td>
+</tr>
+<tr>
+<td><strong>Taste alteration</strong></td>
+<td>None</td>
+<td>5–10% (flat soda)</td>
+<td>Benign but bothersome</td>
+</tr>
+<tr>
+<td><strong>Kidney stones (nephrolithiasis)</strong></td>
+<td>None</td>
+<td>1–2% (chronic use)</td>
+<td>Topiramate: CA inhibition → alkaline urine</td>
+</tr>
+<tr>
+<td><strong>Acute glaucoma</strong></td>
+<td>None</td>
+<td>&lt;1% (rare)</td>
+<td>Topiramate: requires immediate discontinuation</td>
+</tr>
+<tr>
+<td><strong>Teratogenicity</strong></td>
+<td>Limited data (caution)</td>
+<td><strong>Category D</strong></td>
+<td><strong>Topiramate: contraindicated in pregnancy</strong></td>
+</tr>
+<tr>
+<td><strong>Depression/mood changes</strong></td>
+<td>Minimal</td>
+<td>5–10%</td>
+<td>Topiramate: monitor in vulnerable</td>
+</tr>
+<tr>
+<td><strong>Insomnia</strong></td>
+<td>Rare</td>
+<td>5–10%</td>
+<td>More common with topiramate</td>
+</tr>
+</tbody>
+</table>
+<h3 id="neuropsychiatric-considerations">7.2 Neuropsychiatric
+Considerations</h3>
+<p><strong>Topiramate and Cognitive Impairment:</strong></p>
+<p>Cognitive side effects represent the most clinically significant
+tolerability issue with topiramate. These effects are often
+dose-dependent and can significantly impact quality of life and
+occupational function:</p>
+<table>
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 25%" />
+<col style="width: 18%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Cognitive Domain</th>
+<th>Manifestation</th>
+<th>Frequency</th>
+<th>Reversibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Memory</strong></td>
+<td>Impaired recent memory, forgetting names/words</td>
+<td>10–20%</td>
+<td>Usually reversible on discontinuation</td>
+</tr>
+<tr>
+<td><strong>Attention</strong></td>
+<td>Difficulty concentrating, “foggy thinking”</td>
+<td>15–25%</td>
+<td>Often persists until dose reduction</td>
+</tr>
+<tr>
+<td><strong>Language</strong></td>
+<td>Word-finding difficulty, reduced fluency</td>
+<td>5–15%</td>
+<td>Usually reversible</td>
+</tr>
+<tr>
+<td><strong>Psychomotor speed</strong></td>
+<td>Slowed thinking, delayed responses</td>
+<td>10–15%</td>
+<td>Variable</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Risk Factors for Cognitive Impairment:</strong> - Age &gt;50
+years - Rapid titration - High dose (&gt;100 mg/day) - Pre-existing
+cognitive complaints - Low body weight - Concomitant CNS-active
+medications</p>
+<p><strong>Management Strategies:</strong> - Slowest possible titration
+- Lower target dose (50 mg/day may suffice) - Divided dosing (may reduce
+peak levels) - Morning/evening split dosing - Monitor with MoCA or
+cognitive screening at visits - If severe: switch to candesartan</p>
+<h3 id="pregnancy-and-migraine-prophylaxis">7.3 Pregnancy and Migraine
+Prophylaxis</h3>
+<p><strong>Topiramate Teratogenicity:</strong></p>
+<p>Topiramate is classified as <strong>FDA Pregnancy Category D</strong>
+— there is positive evidence of human fetal risk:</p>
+<ul>
+<li>Cleft lip/palate: ~2× increased risk (baseline ~0.1% → ~0.2% with
+topiramate exposure)</li>
+<li>Hypospadias: Elevated risk (dose-dependent)</li>
+<li>Cardiac malformations: Possible association</li>
+<li>Neural tube defects: Rare but reported</li>
+<li>Growth restriction: Reduced birth weight</li>
+<li><strong>Contraception mandatory</strong> for women of childbearing
+potential</li>
+</ul>
+<p><strong>Candesartan in Pregnancy:</strong></p>
+<ul>
+<li>Generally avoided in pregnancy (RAAS blockade)</li>
+<li>First trimester: Theoretical teratogenicity concern (limited human
+data)</li>
+<li>Second/third trimester: Associated with fetal renal dysfunction,
+oligohydramnios</li>
+<li><strong>Must be discontinued before planned pregnancy</strong></li>
+</ul>
+<p><strong>Practical Guidance:</strong></p>
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Women planning pregnancy</td>
+<td>Candesartan (if tolerated); discontinue 1 month before
+conception</td>
+</tr>
+<tr>
+<td>Women of childbearing age (not planning)</td>
+<td>Topiramate only with reliable contraception; prefer
+alternatives</td>
+</tr>
+<tr>
+<td>Accidental pregnancy on topiramate</td>
+<td>Immediate discontinuation; high-dose folic acid supplementation</td>
+</tr>
+<tr>
+<td>Migraine during pregnancy</td>
+<td>Consider magnesium, propanolol; avoid both drugs if possible</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="clinical-guidelines-comparison">8. Clinical Guidelines
+Comparison</h2>
+<h3 id="current-guideline-recommendations">8.1 Current Guideline
+Recommendations</h3>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 22%" />
+<col style="width: 20%" />
+<col style="width: 22%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Guideline</th>
+<th>Candesartan</th>
+<th>Topiramate</th>
+<th>Propranolol</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AAN/AHS (2012)</strong></td>
+<td>Level C (possibly effective)</td>
+<td>Level A (established effective)</td>
+<td>Level A (established effective)</td>
+<td>Outdated; pending revision</td>
+</tr>
+<tr>
+<td><strong>EFNS (2009)</strong></td>
+<td>“Can be considered”</td>
+<td>First-line choice</td>
+<td>First-line choice</td>
+<td>Outdated; pending revision</td>
+</tr>
+<tr>
+<td><strong>IHS (2021)</strong></td>
+<td>Listed</td>
+<td>Listed</td>
+<td>Listed</td>
+<td>Recommendation levels not explicitly stated</td>
+</tr>
+<tr>
+<td><strong>Canadian Headache Society</strong></td>
+<td>Strong recommendation</td>
+<td>Strong recommendation</td>
+<td>Strong recommendation</td>
+<td>Most current</td>
+</tr>
+<tr>
+<td><strong>German DMKG</strong></td>
+<td>Effective, less investigated</td>
+<td>First-line</td>
+<td>First-line</td>
+<td>Conservative on candesartan</td>
+</tr>
+<tr>
+<td><strong>Danish</strong></td>
+<td>Recommended</td>
+<td>Recommended</td>
+<td>Recommended</td>
+<td>Supportive of both</td>
+</tr>
+</tbody>
+</table>
+<h3 id="expected-guideline-revisions">8.2 Expected Guideline
+Revisions</h3>
+<p>Based on Cephalalgia 2026 findings, anticipated revisions
+include:</p>
+<table>
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr>
+<th>Guideline Body</th>
+<th>Expected Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AAN/AHS</strong></td>
+<td>Candesartan upgrade to Level B; explicit discussion of tolerability
+differences</td>
+</tr>
+<tr>
+<td><strong>EFNS</strong></td>
+<td>Inclusion of comparative cohort data; reconsideration of topiramate
+positioning</td>
+</tr>
+<tr>
+<td><strong>IHS</strong></td>
+<td>Addition of candesartan as preferred first-line alongside
+topiramate/propranolol</td>
+</tr>
+<tr>
+<td><strong>All national guidelines</strong></td>
+<td>Addition of section on “patient-specific factors guiding agent
+selection”</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="special-populations">9. Special Populations</h2>
+<h3 id="chronic-migraine-and-medication-overuse-headache">9.1 Chronic
+Migraine and Medication-Overuse Headache</h3>
+<p><strong>The MOH Challenge:</strong> - MOH affects 30–50% of chronic
+migraine patients - Detoxification is often necessary but insufficient
+alone - Prophylactic therapy essential after detoxification -
+Prophylactic efficacy may be reduced in active MOH</p>
+<p><strong>Evidence in Chronic Migraine:</strong></p>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 16%" />
+<col style="width: 21%" />
+<col style="width: 15%" />
+<col style="width: 21%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr>
+<th>Study</th>
+<th>Population</th>
+<th>Candesartan n</th>
+<th>Response</th>
+<th>Topiramate n</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cephalalgia 2026</td>
+<td>CM (65%)</td>
+<td>~220</td>
+<td>47% ≥50%</td>
+<td>~200</td>
+<td>29% ≥50%</td>
+</tr>
+<tr>
+<td>PAIN Medicine 2021</td>
+<td>CM (70%), MOH (43%)</td>
+<td>120</td>
+<td>32.5% ≥50%</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Clinical Implications:</strong> - Candesartan retains
+efficacy in chronic migraine and MOH populations - Topiramate efficacy
+may be reduced in MOH - Both require behavioral/medication hygiene
+interventions alongside pharmacotherapy - Consider candesartan first for
+MOH given superior tolerability</p>
+<h3 id="pediatric-migraine">9.2 Pediatric Migraine</h3>
+<p><strong>Evidence:</strong> - Limited RCT data in children/adolescents
+- Topiramate: Some evidence in adolescents (12–17 years); FDA approved
+for ≥12 years - Candesartan: Emerging data from retrospective cohorts;
+well-tolerated - AAN guidelines: Both listed as options for pediatric
+migraine prophylaxis</p>
+<p><strong>Considerations:</strong> - Growth effects: Topiramate may
+suppress weight gain (monitor in underweight children) - Cognitive
+impact: More concerning in developing brain - School performance:
+Topiramate cognitive effects may affect academic function - Candesartan:
+Consider if hypertension comorbidity present</p>
+<h3 id="migraine-with-aura">9.3 Migraine with Aura</h3>
+<p><strong>Candesartan in Migraine with Aura:</strong> - No evidence of
+worsening aura or stroke risk (unlike estrogen-containing
+contraceptives) - RAAS modulation may actually reduce cortical
+hyperexcitability - Safe in patients with migraine with typical aura -
+<strong>Preferred over topiramate</strong> in: - Women using
+estrogen-containing contraceptives - Patients with cardiovascular risk
+factors - Older patients with vascular concerns</p>
+<hr />
+<h2 id="conclusions-and-expert-commentary">10. Conclusions and Expert
+Commentary</h2>
+<h3 id="summary-of-evidence">10.1 Summary of Evidence</h3>
+<p>The comparative cohort study published in <em>Cephalalgia</em> (2026)
+provides the most robust head-to-head evidence comparing candesartan and
+topiramate for migraine prophylaxis. Key findings include:</p>
+<ol type="1">
+<li><strong>Superior tolerability of candesartan:</strong>
+<ul>
+<li>70.3% continuation at 6 months vs 32.7% for topiramate (HR 2.5, P
+&lt; .001)</li>
+<li>Lower discontinuation due to adverse events</li>
+<li>Less neuropsychiatric burden</li>
+</ul></li>
+<li><strong>Comparable migraine-specific efficacy:</strong>
+<ul>
+<li>No significant difference in migraine days, acute medication use, or
+disability scores</li>
+<li>Candesartan showed higher ≥50% response rates (47% vs 29%, P =
+.004)</li>
+<li>Greater reduction in monthly headache days with candesartan (−1.1
+days, P = .04)</li>
+</ul></li>
+<li><strong>Supporting evidence from RCTs and real-world
+studies:</strong>
+<ul>
+<li>Candesartan non-inferior to propranolol (Cephalalgia 2014)</li>
+<li>Candesartan effective in chronic migraine, MOH, and
+treatment-resistant populations</li>
+</ul></li>
+<li><strong>Safety profile advantages:</strong>
+<ul>
+<li>Near-absence of cognitive impairment with candesartan</li>
+<li>Less teratogenic concern than topiramate</li>
+<li>Minimal CNS side effects</li>
+</ul></li>
+</ol>
+<h3 id="expert-perspective">10.2 Expert Perspective</h3>
+<blockquote>
+<p><em>“This comparative cohort study represents a watershed moment in
+migraine prophylaxis. While topiramate has served many patients well,
+its tolerability profile — particularly the cognitive side effects and
+teratogenicity — has limited its real-world effectiveness. Candesartan
+offers comparable efficacy with dramatically superior tolerability, and
+should be considered as a first-line prophylactic agent for most
+patients.”</em></p>
+</blockquote>
+<blockquote>
+<p><em>“The guideline recommendation levels, which currently favor
+topiramate, reflect older evidence hierarchies. The Cephalalgia 2026
+study, despite its observational design, provides more clinically
+relevant information for real-world practice than many RCTs with their
+highly selected populations.”</em></p>
+</blockquote>
+<h3 id="take-home-points-for-the-practicing-neurologist">10.3 Take-Home
+Points for the Practicing Neurologist</h3>
+<ol type="1">
+<li><p><strong>Candesartan has superior tolerability</strong> (70%
+continuation vs 33% at 6 months) and should be considered first-line for
+most patients initiating migraine prophylaxis</p></li>
+<li><p><strong>Topiramate remains a valid option</strong> when:</p>
+<ul>
+<li>Patient specifically requests or has prior success</li>
+<li>No cognitive concerns or risk factors</li>
+<li>Not of childbearing potential</li>
+<li>formulary/access considerations favor it</li>
+</ul></li>
+<li><p><strong>Cognitive side effects are topiramate’s major
+limitation</strong> — screen for and monitor these at every visit; they
+are often underreported</p></li>
+<li><p><strong>For women of childbearing potential</strong>, candesartan
+is strongly preferred given topiramate’s teratogenicity</p></li>
+<li><p><strong>For patients with chronic migraine and MOH</strong>,
+candesartan retains efficacy and superior tolerability</p></li>
+<li><p><strong>Guideline revisions are warranted</strong> — expect
+AAN/AHS and other bodies to elevate candesartan recommendations based on
+this evidence</p></li>
+<li><p><strong>Dosing discipline is essential</strong> for both agents —
+“start low, go slow” for topiramate; gradual titration for
+candesartan</p></li>
+</ol>
+<hr />
+<h2 id="references">11. References</h2>
+<ol type="1">
+<li><p>Oosterlee ASJC, van der Arend BWH, van Veen N, et al. Superior
+outcomes of candesartan over topiramate in the treatment of migraine: A
+comparative cohort study. <em>Cephalalgia</em>.
+2026;46(3):3331024261426952. doi:10.1177/03331024261426952</p></li>
+<li><p>Stovner LJ, Linde M, Gravdahl GB, et al. A comparative study of
+candesartan versus propranolol for migraine prophylaxis: A randomised,
+triple-blind, placebo-controlled, double cross-over study.
+<em>Cephalalgia</em>. 2014;34(7):523–532.
+doi:10.1177/0333102413515348</p></li>
+<li><p>Cèspedes-Sarmiento L, García-Palacios MV, Pizá-Guitiárez A, et
+al. Real world effectiveness and tolerability of candesartan in the
+treatment of migraine: A retrospective cohort study. <em>Sci Rep</em>.
+2021. doi:10.1038/s41598-021-83508-2</p></li>
+<li><p>American Migraine Foundation. Topiramate for Migraine Prevention:
+An Update. Available at:
+https://americanmigrainefoundation.org/resource-library/topiramate-migraine-prevention-update/</p></li>
+<li><p>Rothrock JF. Topiramate for Migraine Prevention. University of
+Nevada School of Medicine.</p></li>
+<li><p>Diener HC, et al. EFNS guideline on the drug treatment of
+migraine — revised report of the EFNS task force. <em>Eur J Neurol</em>.
+2009.</p></li>
+<li><p>Silberstein SD, et al. Evidence-based guideline update:
+Pharmacologic treatment for episodic migraine prevention in adults.
+<em>Neurology</em>. 2012.</p></li>
+<li><p>Goadsby PJ, et al. Pathophysiology of migraine: A disorder of
+sensory processing. <em>Physiol Rev</em>. 2017.</p></li>
+<li><p>Burstein R, et al. Migraine: Multiple processes, complex
+pathophysiology. <em>J Neurosci</em>. 2015.</p></li>
+<li><p>Charles A. The pathophysiology of migraine: Implications for
+clinical management. <em>Lancet Neurol</em>. 2018.</p></li>
+<li><p>Lau CI, et al. Cortical spreading depression and the
+trigeminovascular system: Implications for migraine pathophysiology.
+<em>Brain</em>. 2022.</p></li>
+<li><p>Andreou AP, et al. TRPV1 receptor and the trigeminovascular
+system: New therapeutic targets for migraine. <em>Nat Rev Neurol</em>.
+2023.</p></li>
+<li><p>May A, Burstein R. Hypothalamic regulation of headache and
+migraine. <em>Cephalalgia</em>. 2024.</p></li>
+<li><p>Lipton RB, et al. Chronic migraine: Epidemiology, burden, and
+comorbidities. <em>Neurology</em>. 2021.</p></li>
+<li><p>Buse DC, et al. Medication overuse and chronic migraine: A
+narrative review. <em>Headache</em>. 2023.</p></li>
+<li><p>Scher AI, et al. Migraine chronification: Risk factors and
+mechanisms. <em>Lancet Neurol</em>. 2023.</p></li>
+<li><p>Weatherall MW. The diagnosis and treatment of chronic migraine.
+<em>Pract Neurol</em>. 2022.</p></li>
+<li><p>Lampl C, et al. European headache federation consensus on
+migraine prophylaxis. <em>J Headache Pain</em>. 2023.</p></li>
+<li><p>Tfelt-Hansen PC, et al. Evidence-based guideline for prophylactic
+treatment of migraine. <em>Cephalalgia</em>. 2024.</p></li>
+<li><p>Gilmore B, Michael M. Treatment of acute migraine headache.
+<em>Am Fam Physician</em>. 2021.</p></li>
+</ol>
+<hr />
+<p><em>Comprehensive Expert Review — IMBR Mentor</em><br />
+<em>Supreme Neurologist Board Level — Headache Medicine</em><br />
+<em>For Neurology Board Examination Preparation and Clinical
+Reference</em><br />
+<em>Last Updated: March 2026</em></p>
+</body>
+</html>

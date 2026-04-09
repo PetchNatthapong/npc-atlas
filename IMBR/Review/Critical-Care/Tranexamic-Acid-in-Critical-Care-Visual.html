@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tranexamic Acid in Critical Care — Visual Summary</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f8f9fc;
+      --surface: #ffffff;
+      --border: rgba(0,0,0,0.08);
+      --text: #1a1d27;
+      --text-dim: #6b7280;
+      --accent: #0891b2;
+      --accent-light: #e0f7fa;
+      --accent2: #059669;
+      --accent2-light: #d1fae5;
+      --warning: #d97706;
+      --warning-light: #fef3c7;
+      --danger: #dc2626;
+      --danger-light: #fee2e2;
+      --purple: #7c3aed;
+      --purple-light: #ede9fe;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 48px 0 40px;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 40px;
+    }
+
+    .header__badge {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .header__title {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .header__subtitle {
+      font-size: 16px;
+      color: var(--text-dim);
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section__label {
+      font-family: 'Fira Code', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section__label::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .section__title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .card--hero {
+      background: linear-gradient(135deg, #0c4a6e 0%, #0891b2 100%);
+      color: white;
+      border: none;
+    }
+
+    .card--warning {
+      background: var(--warning-light);
+      border-color: var(--warning);
+    }
+
+    .card--success {
+      background: var(--accent2-light);
+      border-color: var(--accent2);
+    }
+
+    .card--danger {
+      background: var(--danger-light);
+      border-color: var(--danger);
+    }
+
+    .card--purple {
+      background: var(--purple-light);
+      border-color: var(--purple);
+    }
+
+    .card__title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--accent);
+    }
+
+    .timeline__item {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .timeline__item::before {
+      content: '';
+      position: absolute;
+      left: -29px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 3px solid var(--bg);
+    }
+
+    .timeline__time {
+      font-family: 'Fira Code', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .timeline__text {
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    /* Table */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th {
+      background: var(--bg-alt);
+      font-weight: 600;
+      text-align: left;
+      padding: 14px 16px;
+      border-bottom: 2px solid var(--border);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-dim);
+    }
+
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--bg-alt); }
+
+    /* Protocol Box */
+    .protocol {
+      background: var(--bg-alt);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      padding: 24px;
+      font-family: 'Fira Code', monospace;
+      font-size: 14px;
+    }
+
+    .protocol__line {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .protocol__label {
+      color: var(--accent);
+      font-weight: 600;
+      min-width: 140px;
+    }
+
+    /* Alert */
+    .alert {
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .alert--danger {
+      background: var(--danger-light);
+      border-left: 4px solid var(--danger);
+      color: #991b1b;
+    }
+
+    .alert--warning {
+      background: var(--warning-light);
+      border-left: 4px solid var(--warning);
+      color: #92400e;
+    }
+
+    /* Trial Card */
+    .trial-card {
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0 12px 12px 0;
+    }
+
+    .trial-card--positive { border-color: var(--accent2); }
+    .trial-card--negative { border-color: var(--danger); }
+    .trial-card--caution { border-color: var(--warning); }
+
+    .trial-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .trial-card__name {
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .trial-card__year {
+      font-family: 'Fira Code', monospace;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .trial-card__population {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .trial-card__result {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* Comparison */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .comparison { grid-template-columns: 1fr; }
+    }
+
+    .comparison__col {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .comparison__title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .comparison__item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+
+    .comparison__key { color: var(--text-dim); }
+    .comparison__val { font-weight: 500; text-align: right; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      margin-top: 48px;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .badge--green { background: var(--accent2-light); color: var(--accent2); }
+    .badge--red { background: var(--danger-light); color: var(--danger); }
+    .badge--amber { background: var(--warning-light); color: var(--warning); }
+    .badge--blue { background: var(--accent-light); color: var(--accent); }
+    .badge--purple { background: var(--purple-light); color: var(--purple); }
+
+    h3 { font-size: 16px; font-weight: 600; margin-bottom: 12px; }
+    p { margin-bottom: 12px; }
+    ul, ol { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header__badge">Critical Care Pharmacology</div>
+    <h1 class="header__title">Tranexamic Acid in Critical Care</h1>
+    <p class="header__subtitle">Comprehensive Appraisal of Landmark Trials &amp; Clinical Guidelines 2025–2026</p>
+  </div>
+
+  <!-- Take-Home Points -->
+  <div class="section">
+    <div class="section__label">Key Takeaways</div>
+    <div class="card card--hero">
+      <h2 class="card__title" style="color:white; font-size:20px;">🎯 Most Important Points</h2>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
+        <div>
+          <div style="font-size:32px; font-weight:700; color:#fef08a;">3 hrs</div>
+          <div style="color:rgba(255,255,255,0.8); font-size:13px;">Window for TXA efficacy — give ASAP</div>
+        </div>
+        <div>
+          <div style="font-size:32px; font-weight:700; color:#fef08a;">NNT 67</div>
+          <div style="color:rgba(255,255,255,0.8); font-size:13px;">Patients to prevent 1 trauma death (CRASH-2)</div>
+        </div>
+        <div>
+          <div style="font-size:32px; font-weight:700; color:#fef08a;">1 + 1 g</div>
+          <div style="color:rgba(255,255,255,0.8); font-size:13px;">Standard dose: 1g bolus + 1g/8hrs</div>
+        </div>
+        <div>
+          <div style="font-size:32px; font-weight:700; color:#ff6b6b;">HALT-IT</div>
+          <div style="color:rgba(255,255,255,0.8); font-size:13px;">GI Bleed: NO benefit — avoid TXA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alert Box -->
+  <div class="section">
+    <div class="alert alert--danger">
+      <strong>⚠️ Critical Warning:</strong> Do <strong>NOT</strong> give TXA &gt;3 hours after injury — may increase mortality. Efficacy diminishes 10% for every 15-minute delay.
+    </div>
+  </div>
+
+  <!-- Landmark Trials -->
+  <div class="section">
+    <div class="section__label">Evidence Base</div>
+    <h2 class="section__title">Landmark Trials — Comprehensive Appraisal</h2>
+
+    <!-- CRASH-2 -->
+    <div class="trial-card trial-card--positive">
+      <div class="trial-card__header">
+        <span class="trial-card__name">CRASH-2</span>
+        <span class="trial-card__year">2010</span>
+      </div>
+      <div class="trial-card__population">Trauma hemorrhage | n=20,211</div>
+      <div class="trial-card__result">
+        ✅ <strong>14.5% vs 16.0% mortality</strong> (RR 0.91) | <strong>NNT = 67</strong><br>
+        <span style="font-size:12px; color:var(--text-dim);">&lt;1hr: ↓32% death | 1-3hr: ↓21% death | &gt;3hr: no benefit</span>
+      </div>
+    </div>
+
+    <!-- WOMAN -->
+    <div class="trial-card trial-card--positive">
+      <div class="trial-card__header">
+        <span class="trial-card__name">WOMAN</span>
+        <span class="trial-card__year">2017</span>
+      </div>
+      <div class="trial-card__population">Postpartum hemorrhage | n=20,060 women</div>
+      <div class="trial-card__result">
+        ✅ <strong>1.5% vs 1.9% death from PPH</strong> (p=0.03) | <strong>NNT ≥500</strong><br>
+        <span style="font-size:12px; color:var(--text-dim);">Greatest benefit within 3 hours of childbirth</span>
+      </div>
+    </div>
+
+    <!-- CRASH-3 -->
+    <div class="trial-card trial-card--caution">
+      <div class="trial-card__header">
+        <span class="trial-card__name">CRASH-3</span>
+        <span class="trial-card__year">2019</span>
+      </div>
+      <div class="trial-card__population">Traumatic brain injury | n=12,737</div>
+      <div class="trial-card__result">
+        ⚠️ <strong>Non-statistically significant</strong> reduction in head injury death<br>
+        <span style="font-size:12px; color:var(--text-dim);">Possible benefit in severe TBI (GCS ≤8) | No safety concerns</span>
+      </div>
+    </div>
+
+    <!-- PATCH -->
+    <div class="trial-card trial-card--caution">
+      <div class="trial-card__header">
+        <span class="trial-card__name">PATCH-Trauma</span>
+        <span class="trial-card__year">2023</span>
+      </div>
+      <div class="trial-card__population">Pre-hospital TXA | n=1,310 | Australia, NZ, Germany</div>
+      <div class="trial-card__result">
+        ⚠️ 4 extra survivors/100 at 6 months — but <strong>more severely disabled</strong><br>
+        <span style="font-size:12px; color:var(--text-dim);">Confirmed mortality benefit at 24hrs/28days | No ↑ VTE</span>
+      </div>
+    </div>
+
+    <!-- HALT-IT -->
+    <div class="trial-card trial-card--negative">
+      <div class="trial-card__header">
+        <span class="trial-card__name">HALT-IT</span>
+        <span class="trial-card__year">2024</span>
+      </div>
+      <div class="trial-card__population">Acute GI bleeding | n=12,009</div>
+      <div class="trial-card__result">
+        ❌ <strong>NO mortality benefit</strong> | ↑ Seizures | ↑ VTE<br>
+        <span style="font-size:12px; color:var(--text-dim);">TXA should NOT be used for GI bleeding outside RCT</span>
+      </div>
+    </div>
+
+    <!-- POISE-3 -->
+    <div class="trial-card trial-card--positive">
+      <div class="trial-card__header">
+        <span class="trial-card__name">POISE-3</span>
+        <span class="trial-card__year">2022</span>
+      </div>
+      <div class="trial-card__population">Non-cardiac surgery | n=9,535</div>
+      <div class="trial-card__result">
+        ✅ ↓ Major bleeding by <strong>~25%</strong> (9% vs 12%) | No ↑ CV events<br>
+        <span style="font-size:12px; color:var(--text-dim);">Consistent across surgery types</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mechanism -->
+  <div class="section">
+    <div class="section__label">Pharmacology</div>
+    <h2 class="section__title">Mechanism of Action</h2>
+    <div class="card">
+      <h3>Antifibrinolytic Effect</h3>
+      <p>TXA is a synthetic lysine derivative that works by:</p>
+      <ul>
+        <li><strong>Competitive inhibition</strong> — binds to lysine binding sites on plasminogen</li>
+        <li><strong>Prevents plasminogen activation</strong> — blocks conversion to plasmin</li>
+        <li><strong>Stabilizes fibrin clot</strong> — prevents clot breakdown</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Dosing Protocol -->
+  <div class="section">
+    <div class="section__label">Dosing</div>
+    <h2 class="section__title">Standard Protocol (CRASH-2)</h2>
+    <div class="protocol">
+      <div class="protocol__line">
+        <span class="protocol__label">Loading dose:</span>
+        <span>1 gram IV over 10 minutes</span>
+      </div>
+      <div class="protocol__line">
+        <span class="protocol__label">Maintenance:</span>
+        <span>1 gram IV over 8 hours</span>
+      </div>
+      <div class="protocol__line">
+        <span class="protocol__label">Total dose:</span>
+        <span>2 grams over 8 hours</span>
+      </div>
+      <div class="protocol__line" style="margin-top:16px; padding-top:16px; border-top: 1px dashed var(--accent);">
+        <span class="protocol__label">Alternative:</span>
+        <span>1g bolus IV over 10 min, repeat once over 8 hrs (max 2g)</span>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <h3>Pediatric Dosing</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Weight</th>
+              <th>Loading Dose</th>
+              <th>Maintenance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>&lt;50 kg</td>
+              <td>20 mg/kg IV over 10 min</td>
+              <td>10 mg/kg/hr over 8 hrs</td>
+            </tr>
+            <tr>
+              <td>≥50 kg</td>
+              <td>Adult dosing</td>
+              <td>Adult dosing</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Guidelines 2025 -->
+  <div class="section">
+    <div class="section__label">Guidelines</div>
+    <h2 class="section__title">2025–2026 Clinical Recommendations</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="badge badge--green" style="margin-bottom:12px;">NICE 2025-2026</div>
+        <h3>Surgery</h3>
+        <ul>
+          <li>Offer TXA if breach of skin/mucosa in operating theatre</li>
+          <li>Consider if expected blood loss &gt;500 mL outside OR</li>
+          <li>Draft guidance extends to pediatric surgery</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="badge badge--blue" style="margin-bottom:12px;">EAST 2025</div>
+        <h3>Trauma</h3>
+        <ul>
+          <li>Conditional recommendation for pre-hospital TXA</li>
+          <li>Conditional recommendation for in-hospital TXA</li>
+          <li>Mortality benefit at 24 hrs and 1 month</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="badge badge--amber" style="margin-bottom:12px;">NAEMSP/ACEP/ACS-COT 2025</div>
+        <h3>Prehospital</h3>
+        <ul>
+          <li>Recommend prehospital TXA in hemorrhagic shock</li>
+          <li>Within 3 hours of injury</li>
+          <li>Low risk of thromboembolic events</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="badge badge--red" style="margin-bottom:12px;">ACG 2023-2024</div>
+        <h3>GI Bleeding</h3>
+        <ul>
+          <li>Upper GI: Mixed evidence (possible benefit)</li>
+          <li>Lower GI: <strong>Strong recommendation AGAINST</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contraindications -->
+  <div class="section">
+    <div class="section__label">Safety</div>
+    <h2 class="section__title">Contraindications &amp; Cautions</h2>
+    <div class="grid">
+      <div class="card card--danger">
+        <h3 class="card__title">❌ Absolute Contraindications</h3>
+        <ul>
+          <li>Hypersensitivity to TXA</li>
+          <li>Active venous or arterial thrombosis</li>
+          <li>Subarachnoid hemorrhage</li>
+        </ul>
+      </div>
+      <div class="card card--warning">
+        <h3 class="card__title">⚠️ Relative Contraindications</h3>
+        <ul>
+          <li>History of convulsions (TXA lowers seizure threshold)</li>
+          <li>Severe renal impairment (drug accumulation)</li>
+          <li>DIC</li>
+          <li>History of thromboembolism</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px;">
+      <h3>Adverse Effects</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>System</th>
+              <th>Adverse Effect</th>
+              <th>Frequency</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GI</td>
+              <td>Nausea, vomiting, diarrhea</td>
+              <td><span class="badge badge--amber">Common</span></td>
+            </tr>
+            <tr>
+              <td>CNS</td>
+              <td>Seizures (especially high dose/rapid infusion)</td>
+              <td><span class="badge badge--red">Rare</span></td>
+            </tr>
+            <tr>
+              <td>CV</td>
+              <td>Hypotension (rapid IV push)</td>
+              <td><span class="badge badge--red">Rare</span></td>
+            </tr>
+            <tr>
+              <td>Thromboembolic</td>
+              <td>DVT, PE (low risk per CRASH-2)</td>
+              <td><span class="badge badge--red">Rare</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary Table -->
+  <div class="section">
+    <div class="section__label">Summary</div>
+    <h2 class="section__title">Clinical Applications</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Setting</th>
+            <th>Recommendation</th>
+            <th>Key Evidence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Trauma hemorrhage</strong></td>
+            <td><span class="badge badge--green">Strong recommend</span></td>
+            <td>CRASH-2: NNT 67, ↓mortality 32% (&lt;1hr)</td>
+          </tr>
+          <tr>
+            <td><strong>TBI</strong></td>
+            <td><span class="badge badge--amber">Conditional</span></td>
+            <td>CRASH-3: Possible benefit in severe TBI</td>
+          </tr>
+          <tr>
+            <td><strong>Postpartum hemorrhage</strong></td>
+            <td><span class="badge badge--green">Recommend</span></td>
+            <td>WOMAN: ↓death from PPH</td>
+          </tr>
+          <tr>
+            <td><strong>Non-cardiac surgery</strong></td>
+            <td><span class="badge badge--green">Recommend</span></td>
+            <td>POISE-3: ↓bleeding 25%</td>
+          </tr>
+          <tr>
+            <td><strong>Pre-hospital trauma</strong></td>
+            <td><span class="badge badge--amber">Conditional</span></td>
+            <td>PATCH: 4 extra survivors but more disabled</td>
+          </tr>
+          <tr>
+            <td><strong>Upper GI bleeding</strong></td>
+            <td><span class="badge badge--amber">Mixed evidence</span></td>
+            <td>HALT-IT: No mortality benefit shown</td>
+          </tr>
+          <tr>
+            <td><strong>Lower GI bleeding</strong></td>
+            <td><span class="badge badge--red">Against</span></td>
+            <td>HALT-IT: ↑seizures/VTE, no benefit</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p><strong>Tranexamic Acid in Critical Care</strong> — IMBR Review Article v2.0</p>
+    <p>Updated: April 2026 | Sources: CRASH-2, CRASH-3, WOMAN, PATCH, HALT-IT, POISE-3, NICE 2025-2026, EAST 2025</p>
+  </div>
+
+</div>
+</body>
+</html>

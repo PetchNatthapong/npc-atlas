@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tavapadon — Supreme Neurologist Visual Summary</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-2: #f1f5f9;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-dim: #64748b;
+      --accent: #0369a1;
+      --accent-2: #0891b2;
+      --accent-bg: #e0f2fe;
+      --success: #059669;
+      --success-bg: #d1fae5;
+      --warning: #d97706;
+      --warning-bg: #fef3c7;
+      --danger: #dc2626;
+      --danger-bg: #fee2e2;
+      --purple: #7c3aed;
+      --purple-bg: #ede9fe;
+      --font-body: 'IBM Plex Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100dvh;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 3rem 2rem 2.5rem;
+      background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0891b2 100%);
+      color: white;
+      margin-bottom: 2.5rem;
+      border-radius: 0 0 1.5rem 1.5rem;
+    }
+    .header__tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.15);
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      margin-bottom: 1rem;
+    }
+    .header__title {
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    .header__subtitle {
+      font-size: 1rem;
+      opacity: 0.85;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .header__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+    .header__meta span {
+      background: rgba(255,255,255,0.1);
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+    }
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .card--hero {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-color: #bae6fd;
+      padding: 2.5rem;
+    }
+    .card__label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .card__title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    /* Stats grid */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+    }
+    .stat__value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .stat__value--success { color: var(--success); }
+    .stat__value--danger { color: var(--danger); }
+    .stat__label {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+    .stat__sub {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-top: 0.25rem;
+    }
+    /* Badges */
+    .badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.25rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.25rem;
+    }
+    .badge--success { background: var(--success-bg); color: var(--success); }
+    .badge--warning { background: var(--warning-bg); color: var(--warning); }
+    .badge--accent { background: var(--accent-bg); color: var(--accent); }
+    .badge--danger { background: var(--danger-bg); color: var(--danger); }
+    .badge--purple { background: var(--purple-bg); color: var(--purple); }
+    /* Tables */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0;
+      border-radius: 0.75rem;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    th, td {
+      padding: 0.85rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: var(--surface-2);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-dim);
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--surface-2); }
+    /* Mechanism boxes */
+    .mech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    @media (max-width: 580px) {
+      .mech-grid { grid-template-columns: 1fr; }
+    }
+    .mech-box {
+      background: var(--surface-2);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      border-left: 3px solid var(--accent);
+    }
+    .mech-box--new { border-left-color: var(--success); }
+    .mech-box--old { border-left-color: var(--danger); }
+    .mech-box__title {
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+    .mech-box__text {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+    /* Circuit diagram */
+    .circuit {
+      background: var(--surface-2);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      text-align: center;
+    }
+    .circuit__title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    .circuit__path {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      margin-bottom: 0.75rem;
+    }
+    .circuit__node {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      font-weight: 500;
+    }
+    .circuit__node--d1 { border-left: 3px solid var(--success); }
+    .circuit__node--d2 { border-left: 3px solid var(--danger); }
+    .circuit__arrow {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    /* Trial cards */
+    .trial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+    @media (max-width: 700px) {
+      .trial-grid { grid-template-columns: 1fr; }
+    }
+    .trial-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1rem;
+      position: relative;
+    }
+    .trial-card::before {
+      content: attr(data-trial);
+      position: absolute;
+      top: -0.6rem;
+      left: 1rem;
+      background: var(--accent);
+      color: white;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      padding: 0.15rem 0.5rem;
+      border-radius: 0.25rem;
+    }
+    .trial-card--active::before { background: var(--success); }
+    .trial-card__name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+      margin-top: 0.25rem;
+    }
+    .trial-card__desc {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+    /* ICD comparison callout */
+    .callout {
+      background: var(--danger-bg);
+      border: 1px solid #fca5a5;
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      margin: 1rem 0;
+      border-left: 3px solid var(--danger);
+    }
+    .callout__title {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--danger);
+      margin-bottom: 0.5rem;
+    }
+    .callout__text {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+    .callout--success {
+      background: var(--success-bg);
+      border-color: #86efac;
+    }
+    .callout--success .callout__title { color: var(--success); }
+    /* PK box */
+    .pk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .pk-item {
+      background: var(--surface-2);
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      text-align: center;
+    }
+    .pk-item__value {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+    .pk-item__label {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+    /* Key points */
+    .points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .points li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.9rem;
+    }
+    .points li::before {
+      content: "→";
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    /* Take-home */
+    .takeaway {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border: 1px solid #86efac;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    .takeaway__title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--success);
+      margin-bottom: 1rem;
+    }
+    .takeaway__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .takeaway__list li {
+      display: flex;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      align-items: baseline;
+    }
+    .takeaway__list li::before {
+      content: "✓";
+      color: var(--success);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card, .stat, .trial-card, .takeaway {
+      animation: fadeUp 0.5s ease-out both;
+    }
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.1s; }
+    .card:nth-child(3) { animation-delay: 0.15s; }
+    .card:nth-child(4) { animation-delay: 0.2s; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header__tag">Neurology — Movement Disorders</div>
+  <h1 class="header__title">Tavapadon: TEMPO Phase 3 Trials</h1>
+  <p class="header__subtitle">First-in-Class Selective D1/D5 Dopamine Partial Agonist for Parkinson's Disease — Supreme Neurologist Level</p>
+  <div class="header__meta">
+    <span>Phase 3 RCT</span>
+    <span>n=1,340 (TEMPO-1/2/3)</span>
+    <span>JAMA Neurology 2026</span>
+    <span>NDA Submitted FDA 2025</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Key Results -->
+  <div class="card card--hero">
+    <div class="card__label">TEMPO Program — Primary Endpoints Summary</div>
+    <h2 class="card__title">Efficacy + Unprecedented ICD Safety Profile</h2>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat__value">−9.1 pts</div>
+        <div class="stat__label">MDS-UPDRS II+III (TEMPO-2)</div>
+        <div class="stat__sub">vs placebo −1.2 pts | P < .001</div>
+      </div>
+      <div class="stat">
+        <div class="stat__value stat__value--success">+1.10 hr</div>
+        <div class="stat__label">Good ON-Time (TEMPO-3)</div>
+        <div class="stat__sub">vs placebo | P < .001</div>
+      </div>
+      <div class="stat">
+        <div class="stat__value stat__value--danger">1.2%</div>
+        <div class="stat__label">ICD Incidence (All TEMPO)</div>
+        <div class="stat__sub">vs D2/D3 agonists: 17–28%</div>
+      </div>
+      <div class="stat">
+        <div class="stat__value">~1%</div>
+        <div class="stat__label">Sleep Attacks (NS vs placebo)</div>
+        <div class="stat__sub">vs D2/D3: 1–9%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Receptor Profile -->
+  <div class="card">
+    <div class="card__label">Pharmacology — Receptor Binding Profile</div>
+    <h2 class="card__title">D1/D5 Selective: Ki Values and Intrinsic Activity</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Receptor</th>
+            <th>Ki (nM)</th>
+            <th>Functional Activity</th>
+            <th>EC50 (nM)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>D1</strong></td>
+            <td><span class="badge badge--success">9</span></td>
+            <td>Partial agonist (65% intrinsic)</td>
+            <td>19</td>
+          </tr>
+          <tr>
+            <td><strong>D5</strong></td>
+            <td><span class="badge badge--success">13</span></td>
+            <td>Partial agonist (81% intrinsic)</td>
+            <td>17</td>
+          </tr>
+          <tr>
+            <td>D2</td>
+            <td><span class="badge badge--danger">>6,720</span></td>
+            <td>Negligible</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>D3</td>
+            <td><span class="badge badge--danger">5,240</span></td>
+            <td>Negligible</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>D4</td>
+            <td><span class="badge badge--danger">4,870</span></td>
+            <td>Negligible</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.75rem;">
+      <strong>Selectivity:</strong> D1 vs D2 >700-fold | D1 vs D3 >580-fold | D5 vs D3 >400-fold
+    </p>
+  </div>
+
+  <!-- PK -->
+  <div class="card">
+    <div class="card__label">Pharmacokinetics</div>
+    <h2 class="card__title">24-Hour Half-Life Supports Once-Daily Dosing</h2>
+    <div class="pk-grid">
+      <div class="pk-item">
+        <div class="pk-item__value">~24 hr</div>
+        <div class="pk-item__label">Half-life (t½)</div>
+      </div>
+      <div class="pk-item">
+        <div class="pk-item__value">1–3 hr</div>
+        <div class="pk-item__label">Tmax</div>
+      </div>
+      <div class="pk-item">
+        <div class="pk-item__value">CYP3A4</div>
+        <div class="pk-item__label">Metabolism</div>
+      </div>
+      <div class="pk-item">
+        <div class="pk-item__value">5–15 mg</div>
+        <div class="pk-item__label">Dose Range</div>
+      </div>
+      <div class="pk-item">
+        <div class="pk-item__value">QD</div>
+        <div class="pk-item__label">Frequency</div>
+      </div>
+      <div class="pk-item">
+        <div class="pk-item__value">None</div>
+        <div class="pk-item__label">Food Effect</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Basal Ganglia Circuit -->
+  <div class="card">
+    <div class="card__label">Mechanism — Basal Ganglia Motor Circuit</div>
+    <h2 class="card__title">D1 vs D2 Pathway: Motor Circuit Dysfunction in PD</h2>
+    <div class="circuit">
+      <div class="circuit__title">Direct Pathway (D1) — "GO" Signal</div>
+      <div class="circuit__path">
+        <div class="circuit__node circuit__node--d1">SNc Dopamine</div>
+        <div class="circuit__arrow">→</div>
+        <div class="circuit__node circuit__node--d1">D1 MSNs (Striatum)</div>
+        <div class="circuit__arrow">→</div>
+        <div class="circuit__node">GPi/SNr</div>
+        <div class="circuit__arrow">→</div>
+        <div class="circuit__node">Thalamus</div>
+        <div class="circuit__arrow">→</div>
+        <div class="circuit__node">Cortex → Movement</div>
+      </div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 1rem;">
+        In PD: Dopamine loss → ↓D1 activation → ↓direct pathway → ↑GPi output → Thalamic suppression → <strong>Bradykinesia</strong>
+      </p>
+      <div class="circuit__title">Indirect Pathway (D2) — "STOP" Signal</div>
+      <div class="circuit__path">
+        <div class="circuit__node circuit__node--d2">SNc Dopamine</div>
+        <div class="circuit__arrow">→</div>
+        <div class="circuit__node circuit__node--d2">D2 MSNs (Striatum)</div>
+        <div class="circuit__arrow">→</div>
+        <div class="circuit__node">GPe</div>
+        <div class="circuit__arrow">→</div>
+        <div class="circuit__node">STN</div>
+        <div class="circuit__arrow">→</div>
+        <div class="circuit__node">GPi</div>
+        <div class="circuit__arrow">→</div>
+        <div class="circuit__node">Thalamus</div>
+      </div>
+      <p style="font-size: 0.75rem; color: var(--text-dim);">
+        In PD: Dopamine loss → ↓D2 activation → ↑indirect pathway → ↑GPi output → Thalamic suppression → <strong>Bradykinesia</strong>
+      </p>
+    </div>
+  </div>
+
+  <!-- ICD Mechanism -->
+  <div class="callout">
+    <div class="callout__title">Critical Differentiator: ICD Mechanism</div>
+    <div class="callout__text">
+      <strong>D2/D3 agonists (Pramipexole, Ropinirole):</strong> Stimulate D3 receptors in nucleus accumbens (VTA-NAc mesolimbic pathway) → Excessive reward signaling → ICD (pathological gambling, compulsive shopping, binge eating, hypersexuality) in 17–28% of patients.<br><br>
+      <strong>Tavapadon:</strong> D1/D5 selective, negligible D3 affinity (Ki >5,000 nM) → No mesolimbic activation → ICD rate ~1% across all TEMPO trials.
+    </div>
+  </div>
+
+  <!-- TEMPO Trials -->
+  <div class="card">
+    <div class="card__label">TEMPO Clinical Development Program</div>
+    <h2 class="card__title">Phase 3 Trials: Monotherapy + Adjunctive</h2>
+    <div class="trial-grid">
+      <div class="trial-card" data-trial="Phase 3">
+        <div class="trial-card__name">TEMPO-1</div>
+        <div class="trial-card__desc">Monotherapy, Fixed dose<br>n=529 | 27 weeks<br>MDS-UPDRS II+III: −9.7 to −10.2 pts ✓<br>ICD: 0%</div>
+      </div>
+      <div class="trial-card" data-trial="Phase 3">
+        <div class="trial-card__name">TEMPO-2</div>
+        <div class="trial-card__desc">Monotherapy, Flexible 5–15mg<br>n=304 | 27 weeks<br>MDS-UPDRS II+III: −9.1 pts ✓<br>ICD: 1.3%</div>
+      </div>
+      <div class="trial-card trial-card--active" data-trial="Phase 3">
+        <div class="trial-card__name">TEMPO-3</div>
+        <div class="trial-card__desc">Adjunctive to Levodopa<br>n=507 | 27 weeks<br>Good ON-time: +1.1 hr ✓<br>ICD: 1.2%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ICD Comparison -->
+  <div class="card">
+    <div class="card__label">Safety — ICD Comparison</div>
+    <h2 class="card__title">Tavapadon vs D2/D3 Agonists: Paradigm Shift in Safety</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Adverse Event</th>
+            <th>Tavapadon (TEMPO)</th>
+            <th>D2/D3 Agonists (Historical)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Impulse Control Disorders</strong></td>
+            <td><span class="badge badge--success">1.2–1.3%</span></td>
+            <td><span class="badge badge--danger">17–28%</span></td>
+          </tr>
+          <tr>
+            <td>Sleep Attacks</td>
+            <td><span class="badge badge--success">~1%</span> (NS vs placebo)</td>
+            <td><span class="badge badge--danger">1–9%</span></td>
+          </tr>
+          <tr>
+            <td>Somnolence</td>
+            <td><span class="badge badge--success">1–3%</span></td>
+            <td><span class="badge badge--warning">5–15%</span></td>
+          </tr>
+          <tr>
+            <td>Hallucinations</td>
+            <td>4–6%</td>
+            <td>5–10%</td>
+          </tr>
+          <tr>
+            <td>Dyskinesia</td>
+            <td>1–2%</td>
+            <td>2–5%</td>
+          </tr>
+          <tr>
+            <td>Nausea</td>
+            <td>10–18%</td>
+            <td>15–25%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout--success" style="margin-top: 1rem; padding: 1rem; border-radius: 0.5rem; border: 1px solid #86efac;">
+      <div class="callout__title" style="color: var(--success);">Bottom Line</div>
+      <div class="callout__text">
+        Comparable motor efficacy + <strong>20× lower ICD rate</strong> + comparable motor efficacy = potential paradigm shift in dopamine agonist selection
+      </div>
+    </div>
+  </div>
+
+  <!-- Comparison with Current Therapies -->
+  <div class="card">
+    <div class="card__label">Clinical Comparison</div>
+    <h2 class="card__title">vs Current Adjunctive Therapies for Motor Fluctuations</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Therapy</th>
+            <th>Mechanism</th>
+            <th>ON-time</th>
+            <th>ICD Risk</th>
+            <th>Dosing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tavapadon</strong></td>
+            <td>D1/D5 partial agonist</td>
+            <td><span class="badge badge--success">↑↑</span></td>
+            <td><span class="badge badge--success">~1%</span></td>
+            <td>QD</td>
+          </tr>
+          <tr>
+            <td>Pramipexole</td>
+            <td>D2/D3 full agonist</td>
+            <td><span class="badge badge--accent">↑</span></td>
+            <td><span class="badge badge--danger">17–28%</span></td>
+            <td>TID/QD</td>
+          </tr>
+          <tr>
+            <td>Ropinirole</td>
+            <td>D2/D3 partial agonist</td>
+            <td><span class="badge badge--accent">↑</span></td>
+            <td><span class="badge badge--danger">12–20%</span></td>
+            <td>TID/QD</td>
+          </tr>
+          <tr>
+            <td>Opicapone (COMT-I)</td>
+            <td>Extend levodopa</td>
+            <td><span class="badge badge--accent">↑</span></td>
+            <td>Minimal</td>
+            <td>QD</td>
+          </tr>
+          <tr>
+            <td>Amantadine (ER)</td>
+            <td>NMDA antagonist</td>
+            <td>Dyskinesia ↓</td>
+            <td>Minimal</td>
+            <td>QD</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Ideal Candidates -->
+  <div class="card">
+    <div class="card__label">Clinical Utility</div>
+    <h2 class="card__title">Ideal Candidate Selection</h2>
+    <div class="mech-grid">
+      <div class="mech-box mech-box--new">
+        <div class="mech-box__title">✓ Tavapadon Preferred</div>
+        <div class="mech-box__text">
+          • Treatment-naïve early PD<br>
+          • ICD risk factors (history, family Hx)<br>
+          • Sleep disorders on D2/D3 agonists<br>
+          • Geriatric patients (start low)<br>
+          • Cognitive vulnerability (MCI, >75y)<br>
+          • Autonomic dysfunction (OH)<br>
+          • Pill burden concerns<br>
+          • Once-daily dosing preference
+        </div>
+      </div>
+      <div class="mech-box mech-box--old">
+        <div class="mech-box__title">✗ Alternatives Preferred</div>
+        <div class="mech-box__text">
+          • Primary dyskinesia (amantadine)<br>
+          • Advanced PD (LCIG, apomorphine, DBS)<br>
+          • Active ICD (avoid all agonists)<br>
+          • Failed/inadequate tavapadon<br>
+          • Specific formulary constraints<br>
+          • Cost/access limitations
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Take-home -->
+  <div class="takeaway">
+    <div class="takeaway__title">Take-Home Points for Practice</div>
+    <ul class="takeaway__list">
+      <li><strong>First D1/D5-selective agonist</strong> — mechanistically distinct from D2/D3 agonists</li>
+      <li><strong>Primary endpoints met:</strong> TEMPO-1/2 (−9 pts MDS-UPDRS), TEMPO-3 (+1.1 hr good ON-time)</li>
+      <li><strong>ICD rate ~1%</strong> vs 17–28% with D2/D3 agonists — the critical differentiator</li>
+      <li><strong>Sleep attacks:</strong> Indistinguishable from placebo (~1%)</li>
+      <li><strong>Once-daily dosing (5–15 mg)</strong> — flexible titration</li>
+      <li><strong>FDA NDA submitted Sept 2025</strong> — potential approval 2026–2027</li>
+      <li><strong>Mechanism:</strong> D1/D5 selectivity avoids mesolimbic D3 circuits → ICD protection</li>
+      <li><strong>Long-term data:</strong> 58-week TEMPO-4 confirms sustained benefit and continued low ICD rate</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="footer">
+  Sources: JAMA Neurology (Fernandez et al., TEMPO-3, 2026), AAN 2024–2025, AbbVie Press Releases, Michael J. Fox Foundation<br>
+  Supreme Neurologist Level — IMBR Mentor — Neurology Board Review — March 2026
+</div>
+
+</body>
+</html>

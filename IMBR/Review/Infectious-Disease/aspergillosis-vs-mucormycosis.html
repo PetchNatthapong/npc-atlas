@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulmonary Aspergillosis vs Mucormycosis — Clinical Comparison 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Fragment+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --surface: #1a1a1a;
+      --surface2: #242424;
+      --border: rgba(255,255,255,0.08);
+      --text: #f0ece4;
+      --text-dim: #8a8680;
+      --text-muted: #5a5754;
+      --accent-asp: #e8a445;
+      --accent-asp-dim: rgba(232,164,69,0.12);
+      --accent-muc: #c25c3a;
+      --accent-muc-dim: rgba(194,92,58,0.12);
+      --accent-neutral: #6b9e7a;
+      --accent-neutral-dim: rgba(107,158,122,0.12);
+      --font-head: 'Bricolage Grotesque', sans-serif;
+      --font-mono: 'Fragment Mono', monospace;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #faf7f2;
+        --surface: #ffffff;
+        --surface2: #f2ede6;
+        --border: rgba(0,0,0,0.08);
+        --text: #1a1815;
+        --text-dim: #6b6560;
+        --text-muted: #9a9590;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-head);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 64px 40px 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(232,164,69,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--text-dim);
+      max-width: 540px;
+      margin: 0 auto 32px;
+    }
+    .hero-badges {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid;
+    }
+    .badge-asp {
+      color: var(--accent-asp);
+      border-color: rgba(232,164,69,0.3);
+      background: var(--accent-asp-dim);
+    }
+    .badge-muc {
+      color: var(--accent-muc);
+      border-color: rgba(194,92,58,0.3);
+      background: var(--accent-muc-dim);
+    }
+    .badge-neutral {
+      color: var(--accent-neutral);
+      border-color: rgba(107,158,122,0.3);
+      background: var(--accent-neutral-dim);
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Comparison Grid */
+    .comparison-section {
+      padding: 56px 0 40px;
+    }
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .comp-col-header {
+      display: contents;
+    }
+    .comp-col-header > div {
+      padding: 20px 24px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+    }
+    .comp-col-header .asp-col-head {
+      background: var(--accent-asp-dim);
+      color: var(--accent-asp);
+      border-bottom: 2px solid var(--accent-asp);
+    }
+    .comp-col-header .muc-col-head {
+      background: var(--accent-muc-dim);
+      color: var(--accent-muc);
+      border-bottom: 2px solid var(--accent-muc);
+    }
+
+    .comp-row {
+      display: grid;
+      grid-template-columns: 220px 1fr 1fr;
+      border-top: 1px solid var(--border);
+    }
+    .comp-row-header {
+      display: contents;
+    }
+    .comp-row-header > div {
+      padding: 16px 20px;
+      background: var(--surface2);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+    }
+    .comp-cell {
+      padding: 14px 20px;
+      background: var(--surface);
+      font-size: 13.5px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .comp-label {
+      padding: 14px 20px 14px 24px;
+      background: var(--surface2);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-right: 1px solid var(--border);
+    }
+    .comp-cell .asp-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-asp);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .comp-cell .muc-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-muc);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .comp-cell .neutral-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-neutral);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    /* Treatment Cards */
+    .treatment-section {
+      padding: 40px 0 56px;
+    }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .treatment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .treatment-card {
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid;
+      position: relative;
+      overflow: hidden;
+    }
+    .treatment-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .treatment-card.asp-card {
+      border-color: rgba(232,164,69,0.25);
+      background: var(--accent-asp-dim);
+    }
+    .treatment-card.asp-card::before { background: var(--accent-asp); }
+    .treatment-card.muc-card {
+      border-color: rgba(194,92,58,0.25);
+      background: var(--accent-muc-dim);
+    }
+    .treatment-card.muc-card::before { background: var(--accent-muc); }
+    .treatment-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .treatment-card.asp-card h3 { color: var(--accent-asp); }
+    .treatment-card.muc-card h3 { color: var(--accent-muc); }
+
+    .drug-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .drug-list li {
+      font-size: 13.5px;
+      line-height: 1.5;
+      padding-left: 16px;
+      position: relative;
+    }
+    .drug-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+    .drug-name {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--surface2);
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-right: 4px;
+    }
+    .drug-note {
+      font-size: 12px;
+      color: var(--text-dim);
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* Key Numbers */
+    .numbers-section {
+      padding: 0 0 56px;
+    }
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .num-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    .num-value {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .num-card:nth-child(1) .num-value { color: var(--accent-asp); }
+    .num-card:nth-child(2) .num-value { color: var(--accent-muc); }
+    .num-card:nth-child(3) .num-value { color: var(--accent-neutral); }
+    .num-card:nth-child(4) .num-value { color: #9b8fc4; }
+    .num-label {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    /* Footer */
+    footer {
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    footer p {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .comparison-grid, .comp-row {
+        grid-template-columns: 1fr;
+      }
+      .comp-row-header > div,
+      .comp-label,
+      .comp-cell {
+        padding: 10px 16px;
+        border-right: none;
+      }
+      .comp-label {
+        border-bottom: 1px solid var(--border);
+        background: var(--surface2);
+      }
+      .treatment-grid { grid-template-columns: 1fr; }
+      .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding: 40px 20px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-label">Expert Review — 2025 Guidelines</div>
+  <h1>Pulmonary Aspergillosis<br>vs Mucormycosis</h1>
+  <p class="hero-sub">Side-by-side clinical comparison: risk factors, diagnosis, treatment, and prognosis</p>
+  <div class="hero-badges">
+    <span class="badge badge-asp">Aspergillus spp.</span>
+    <span class="badge badge-muc">Mucorales spp.</span>
+    <span class="badge badge-neutral">Evidence-Based</span>
+    <span class="badge badge-neutral">ATS · Chinese · BTS · ESCMID · IDSA</span>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- Key Numbers -->
+  <section class="numbers-section">
+    <div class="numbers-grid">
+      <div class="num-card">
+        <div class="num-value">42%</div>
+        <div class="num-label">IPA attributable mortality (HM)</div>
+      </div>
+      <div class="num-card">
+        <div class="num-value">40–80%</div>
+        <div class="num-label">PM overall mortality</div>
+      </div>
+      <div class="num-card">
+        <div class="num-value">90%</div>
+        <div class="num-label">IFI cases = IPA in hematologic malignancy</div>
+      </div>
+      <div class="num-card">
+        <div class="num-value">≥0.5</div>
+        <div class="num-label">Serum GM index cutoff (probable IPA)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="comparison-section">
+    <div class="section-label">Clinical Comparison Matrix</div>
+    <div class="comparison-grid">
+      <!-- Column Headers -->
+      <div class="comp-col-header">
+        <div></div>
+        <div class="asp-col-head">Invasive Pulmonary Aspergillosis</div>
+        <div class="muc-col-head">Pulmonary Mucormycosis</div>
+      </div>
+
+      <!-- Causative organisms -->
+      <div class="comp-row">
+        <div class="comp-label">Causative Organisms</div>
+        <div class="comp-cell"><span class="asp-dot"></span>A. fumigatus, A. niger, A. flavus, A. terreus</div>
+        <div class="comp-cell"><span class="muc-dot"></span>Rhizopus, Mucor, Absidia, Cunninghamella</div>
+      </div>
+
+      <!-- Epidemiology -->
+      <div class="comp-row">
+        <div class="comp-label">Epidemiology</div>
+        <div class="comp-cell"><span class="asp-dot"></span>Most common IFI in HM/HSCT (up to 90% of IFI); global distribution</div>
+        <div class="comp-cell"><span class="muc-dot"></span>Rare (~500 cases/year US); increasing due to immunosuppression</div>
+      </div>
+
+      <!-- Key Risk Factors -->
+      <div class="comp-row">
+        <div class="comp-label">Key Risk Factors</div>
+        <div class="comp-cell"><span class="asp-dot"></span>Neutropenia, HSCT, GVHD, prolonged high-dose steroids, SOT, AIDS</div>
+        <div class="comp-cell"><span class="muc-dot"></span>DKA (most distinctive), iron overload, neutropenia, voriconazole prophylaxis</div>
+      </div>
+
+      <!-- Onset -->
+      <div class="comp-row">
+        <div class="comp-label">Disease Onset</div>
+        <div class="comp-cell"><span class="asp-dot"></span>Days to weeks; gradual worsening typical</div>
+        <div class="comp-cell"><span class="muc-dot"></span>Days; rapidly progressive, fulminant course</div>
+      </div>
+
+      <!-- Pathology -->
+      <div class="comp-row">
+        <div class="comp-label">Pathology</div>
+        <div class="comp-cell"><span class="asp-dot"></span>Angioinvasion → hemorrhage, thrombosis, necrosis, cavitation</div>
+        <div class="comp-cell"><span class="muc-dot"></span>Severe angioinvasion → extensive necrosis, tissue infarction, black eschar</div>
+      </div>
+
+      <!-- Imaging Hallmark -->
+      <div class="comp-row">
+        <div class="comp-label">Imaging Hallmark</div>
+        <div class="comp-cell"><span class="asp-dot"></span>nodular lesions, halo sign (early), air crescent sign (recovery)</div>
+        <div class="comp-cell"><span class="muc-dot"></span>Reverse halo (atoll sign), mass-like consolidation, pleural effusion</div>
+      </div>
+
+      <!-- GM Test -->
+      <div class="comp-row">
+        <div class="comp-label">Galactomannan</div>
+        <div class="comp-cell"><span class="asp-dot"></span>POSITIVE — serum ≥ 0.5, BAL ≥ 1.0 (key diagnostic tool)</div>
+        <div class="comp-cell"><span class="muc-dot"></span>NEGATIVE — not useful (Mucorales lack GM)</div>
+      </div>
+
+      <!-- BDG -->
+      <div class="comp-row">
+        <div class="comp-label">1,3-β-D-Glucan</div>
+        <div class="comp-cell"><span class="neutral-dot"></span>May be positive; sensitive but non-specific</div>
+        <div class="comp-cell"><span class="neutral-dot"></span>May be positive; non-specific (not diagnostic)</div>
+      </div>
+
+      <!-- First-Line Treatment -->
+      <div class="comp-row">
+        <div class="comp-label">First-Line Treatment</div>
+        <div class="comp-cell"><span class="asp-dot"></span>Voriconazole IV 6 mg/kg loading → 4 mg/kg q12h (ATS 2025)</div>
+        <div class="comp-cell"><span class="muc-dot"></span>L-AmB 5–10 mg/kg/day IV induction (Muthu 2026)</div>
+      </div>
+
+      <!-- Alternative -->
+      <div class="comp-row">
+        <div class="comp-label">Alternatives</div>
+        <div class="comp-cell"><span class="asp-dot"></span>Isavuconazole (equally acceptable), L-AmB, posaconazole</div>
+        <div class="comp-cell"><span class="muc-dot"></span>Posaconazole or isavuconazole oral (maintenance/step-down)</div>
+      </div>
+
+      <!-- Combination Therapy -->
+      <div class="comp-row">
+        <div class="comp-label">Combination Therapy</div>
+        <div class="comp-cell"><span class="neutral-dot"></span>Conditional recommendation: triazole + echinocandin for severe/refractory cases</div>
+        <div class="comp-cell"><span class="neutral-dot"></span>Not routinely recommended; consider for severe/refractory disease</div>
+      </div>
+
+      <!-- Surgery -->
+      <div class="comp-row">
+        <div class="comp-label">Surgery</div>
+        <div class="comp-cell"><span class="neutral-dot"></span>Salvage / adjunctive; for hemoptysis, cavity, refractory disease</div>
+        <div class="comp-cell"><span class="muc-dot"></span>CRITICAL — early aggressive surgical debridement is essential for survival</div>
+      </div>
+
+      <!-- TDM -->
+      <div class="comp-row">
+        <div class="comp-label">TDM Required</div>
+        <div class="comp-cell"><span class="asp-dot"></span>YES — Voriconazole: trough 1–5.5 mg/L; Posaconazole: ≥ 1–1.5 mg/L</div>
+        <div class="comp-cell"><span class="neutral-dot"></span>Posaconazole trough ≥ 1–1.5 mg/L; Isavuconazole: not routinely required</div>
+      </div>
+
+      <!-- Mortality -->
+      <div class="comp-row">
+        <div class="comp-label">Overall Mortality</div>
+        <div class="comp-cell"><span class="asp-dot"></span>30–50% (HM/HSCT); < 20% (SOT); 72% (HSCT attributable)</div>
+        <div class="comp-cell"><span class="muc-dot"></span>40–80% overall; 90%+ if disseminated or untreated</div>
+      </div>
+
+      <!-- Duration -->
+      <div class="comp-row">
+        <div class="comp-label">Treatment Duration</div>
+        <div class="comp-cell"><span class="asp-dot"></span>Minimum 6–12 weeks; often longer based on immune reconstitution</div>
+        <div class="comp-cell"><span class="muc-dot"></span>6–12 months minimum; lifelong in chronic immunosuppression</div>
+      </div>
+
+      <!-- Key Guidelines -->
+      <div class="comp-row">
+        <div class="comp-label">Key Guidelines</div>
+        <div class="comp-cell"><span class="asp-dot"></span>ATS 2025, ESCMID-ECMM-ERS 2017, IDSA 2016, BTS 2025</div>
+        <div class="comp-cell"><span class="muc-dot"></span>Chinese Guidelines 2025, Muthu et al. 2026, ECIL-6</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Treatment Cards -->
+  <section class="treatment-section">
+    <div class="section-label">Treatment Overview</div>
+    <div class="treatment-grid">
+
+      <!-- IPA Card -->
+      <div class="treatment-card asp-card">
+        <h3>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8 4v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          IPA — First-Line Therapy
+        </h3>
+        <ul class="drug-list">
+          <li>
+            <span class="drug-name">Voriconazole</span>
+            IV: 6 mg/kg q12h × 1d → 4 mg/kg q12h<br>
+            PO: 200–300 mg q12h | Target trough 1–5.5 mg/L
+            <span class="drug-note">ATS 2025 — gold standard monotherapy</span>
+          </li>
+          <li>
+            <span class="drug-name">Isavuconazole</span>
+            200 mg q8h × 6 doses → 200 mg q24h<br>
+            <span class="drug-note">Equally acceptable alternative; fewer drug interactions</span>
+          </li>
+          <li>
+            <span class="drug-name">+ Echinocandin</span>
+            (Conditional) For severe / refractory cases<br>
+            <span class="drug-note">Micafungin 100–150 mg/d or Caspofungin 70→50 mg/d</span>
+          </li>
+          <li>
+            <span class="drug-name">Prophylaxis</span>
+            Posaconazole oral 200 mg q8h (preferred)<br>
+            <span class="drug-note">Voriconazole as alternative; in HM/HSCT</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- PM Card -->
+      <div class="treatment-card muc-card">
+        <h3>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L2 14h12L8 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="8" y1="6" x2="8" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="12" r="0.5" fill="currentColor"/></svg>
+          PM — First-Line Therapy
+        </h3>
+        <ul class="drug-list">
+          <li>
+            <span class="drug-name">L-AmB</span>
+            5–10 mg/kg/day IV induction until stable<br>
+            <span class="drug-note">Muthu et al. 2026 — cornerstone of PM therapy</span>
+          </li>
+          <li>
+            <span class="drug-name">Posaconazole</span>
+            Modified-release 300 mg q12h × 2 → 300 mg q24h<br>
+            <span class="drug-note">Step-down maintenance; TDM target ≥ 1–1.5 mg/L</span>
+          </li>
+          <li>
+            <span class="drug-name">Isavuconazole</span>
+            200 mg q8h × 6 → 200 mg q24h<br>
+            <span class="drug-note">Alternative oral maintenance; fewer interactions</span>
+          </li>
+          <li>
+            <span class="drug-name">Host Optimization</span>
+            Glycemic control (DKA), reduce immunosuppression, iron chelation (deferasirox)<br>
+            <span class="drug-note">As critical as antifungal therapy itself</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>Sources: ATS 2025 (doi:10.1164/rccm.202410-2045ST) · Chinese Guidelines 2025 (PMID:41362140) · Muthu et al. 2026 (doi:10.1080/14787210.2026.2622695) · BTS 2025 · ESCMID-ECMM-ERS 2017 · IDSA 2016</p>
+</footer>
+
+</body>
+</html>

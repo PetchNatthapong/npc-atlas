@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candesartan vs Topiramate — Supreme Neurologist Visual Summary</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-2: #f1f5f9;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-dim: #64748b;
+      --accent: #0369a1;
+      --accent-2: #0891b2;
+      --accent-bg: #e0f2fe;
+      --success: #059669;
+      --success-bg: #d1fae5;
+      --warning: #d97706;
+      --warning-bg: #fef3c7;
+      --danger: #dc2626;
+      --danger-bg: #fee2e2;
+      --purple: #7c3aed;
+      --purple-bg: #ede9fe;
+      --font-body: 'IBM Plex Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100dvh;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 3rem 2rem 2.5rem;
+      background: linear-gradient(135deg, #1e3a5f 0%, #0369a1 50%, #0891b2 100%);
+      color: white;
+      margin-bottom: 2.5rem;
+      border-radius: 0 0 1.5rem 1.5rem;
+    }
+    .header__tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.15);
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      margin-bottom: 1rem;
+    }
+    .header__title {
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    .header__subtitle {
+      font-size: 1rem;
+      opacity: 0.85;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .header__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+    .header__meta span {
+      background: rgba(255,255,255,0.1);
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+    }
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .card--hero {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-color: #bae6fd;
+      padding: 2.5rem;
+    }
+    .card__label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .card__title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    /* Stats grid */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+    }
+    .stat__value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .stat__value--success { color: var(--success); }
+    .stat__value--danger { color: var(--danger); }
+    .stat__label {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+    .stat__sub {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-top: 0.25rem;
+    }
+    /* Badges */
+    .badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.25rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.25rem;
+    }
+    .badge--success { background: var(--success-bg); color: var(--success); }
+    .badge--warning { background: var(--warning-bg); color: var(--warning); }
+    .badge--accent { background: var(--accent-bg); color: var(--accent); }
+    .badge--danger { background: var(--danger-bg); color: var(--danger); }
+    .badge--purple { background: var(--purple-bg); color: var(--purple); }
+    /* Tables */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0;
+      border-radius: 0.75rem;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    th, td {
+      padding: 0.85rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: var(--surface-2);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-dim);
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: var(--surface-2); }
+    /* Comparison boxes */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    @media (max-width: 600px) {
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+    .compare-box {
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      border: 2px solid;
+    }
+    .compare-box--candesartan {
+      background: var(--success-bg);
+      border-color: var(--success);
+    }
+    .compare-box--topiramate {
+      background: var(--danger-bg);
+      border-color: var(--danger);
+    }
+    .compare-box__title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .compare-box--candesartan .compare-box__title { color: var(--success); }
+    .compare-box--topiramate .compare-box__title { color: var(--danger); }
+    .compare-box__text {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+    /* Mechanism boxes */
+    .mech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    @media (max-width: 580px) {
+      .mech-grid { grid-template-columns: 1fr; }
+    }
+    .mech-box {
+      background: var(--surface-2);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      border-left: 3px solid var(--accent);
+    }
+    .mech-box--candesartan { border-left-color: var(--success); }
+    .mech-box--topiramate { border-left-color: var(--purple); }
+    .mech-box__title {
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+    .mech-box__text {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+    /* Migraine cascade */
+    .cascade {
+      background: var(--surface-2);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      margin: 1rem 0;
+    }
+    .cascade__title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .cascade__steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+    .cascade__step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      text-align: center;
+    }
+    .cascade__arrow {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    /* AE comparison */
+    .ae-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .ae-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      padding: 0.5rem;
+      background: var(--surface-2);
+      border-radius: 0.5rem;
+    }
+    .ae-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .ae-dot--low { background: var(--success); }
+    .ae-dot--med { background: var(--warning); }
+    .ae-dot--high { background: var(--danger); }
+    /* Guidelines */
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .guide-item {
+      background: var(--surface-2);
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+    .guide-item__name {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .guide-item__level {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+    }
+    /* Key points */
+    .points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .points li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.9rem;
+    }
+    .points li::before {
+      content: "→";
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    /* Take-home */
+    .takeaway {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border: 1px solid #86efac;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    .takeaway__title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--success);
+      margin-bottom: 1rem;
+    }
+    .takeaway__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .takeaway__list li {
+      display: flex;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      align-items: baseline;
+    }
+    .takeaway__list li::before {
+      content: "✓";
+      color: var(--success);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    /* Callout */
+    .callout {
+      background: var(--warning-bg);
+      border: 1px solid #fca5a5;
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      margin: 1rem 0;
+      border-left: 3px solid var(--warning);
+    }
+    .callout__title {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--warning);
+      margin-bottom: 0.5rem;
+    }
+    .callout__text {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+    .callout--danger {
+      background: var(--danger-bg);
+      border-color: var(--danger);
+    }
+    .callout--danger .callout__title { color: var(--danger); }
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card, .stat, .compare-box, .takeaway {
+      animation: fadeUp 0.5s ease-out both;
+    }
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.1s; }
+    .card:nth-child(3) { animation-delay: 0.15s; }
+    .card:nth-child(4) { animation-delay: 0.2s; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header__tag">Neurology — Headache Medicine</div>
+  <h1 class="header__title">Candesartan vs Topiramate</h1>
+  <p class="header__subtitle">Comparative Effectiveness and Tolerability for Migraine Prophylaxis — Supreme Neurologist Level</p>
+  <div class="header__meta">
+    <span>Real-World Cohort</span>
+    <span>n=661 | 6-month follow-up</span>
+    <span>Cephalalgia 2026</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Key Results -->
+  <div class="card card--hero">
+    <div class="card__label">Cephalalgia 2026 — Primary Endpoint</div>
+    <h2 class="card__title">Candesartan: 2.5× Better Continuation at 6 Months</h2>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat__value stat__value--success">70.3%</div>
+        <div class="stat__label">Candesartan on Drug at 6 mo</div>
+        <div class="stat__sub">Discontinuation: 29.7%</div>
+      </div>
+      <div class="stat">
+        <div class="stat__value stat__value--danger">32.7%</div>
+        <div class="stat__label">Topiramate on Drug at 6 mo</div>
+        <div class="stat__sub">Discontinuation: 67.3%</div>
+      </div>
+      <div class="stat">
+        <div class="stat__value">HR 2.5</div>
+        <div class="stat__label">Topiramate Discontinuation Risk</div>
+        <div class="stat__sub">95% CI: 1.9–3.3 | P < .001</div>
+      </div>
+      <div class="stat">
+        <div class="stat__value stat__value--success">47%</div>
+        <div class="stat__label">Candesartan ≥50% Response</div>
+        <div class="stat__sub">vs 29% topiramate (P = .004)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Migraine Pathophysiology -->
+  <div class="card">
+    <div class="card__label">Migraine Pathophysiology — Supreme Level</div>
+    <h2 class="card__title">Trigeminovascular System & Cortical Spreading Depression</h2>
+    <div class="cascade">
+      <div class="cascade__title">Migraine Cascade</div>
+      <div class="cascade__steps">
+        <div class="cascade__step">Trigger<br>(Stress/CSD/Hypothalamic)</div>
+        <div class="cascade__arrow">→</div>
+        <div class="cascade__step">Trigeminovascular<br>Activation</div>
+        <div class="cascade__arrow">→</div>
+        <div class="cascade__step">CGRP Release<br>(Vasodilation)</div>
+        <div class="cascade__arrow">→</div>
+        <div class="cascade__step">TCC Sensitization<br>(TNC/C1-C2)</div>
+        <div class="cascade__arrow">→</div>
+        <div class="cascade__step">Thalamic<br>Projection</div>
+        <div class="cascade__arrow">→</div>
+        <div class="cascade__step">MIGRAINE<br>PAIN</div>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Process</th>
+            <th>Mechanism</th>
+            <th>Targeted By</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cortical Spreading Depression</td>
+            <td>K+ release, glutamate excitotoxicity, neuronal depolarization wave</td>
+            <td>Both agents (GABA enhancement vs AT1 blockade)</td>
+          </tr>
+          <tr>
+            <td>Trigeminovascular Activation</td>
+            <td>CGRP release from trigeminal terminals</td>
+            <td>Candesartan (↓ Ang II signaling)</td>
+          </tr>
+          <tr>
+            <td>TCC Sensitization</td>
+            <td>Central neuronal hyperexcitability</td>
+            <td>Topiramate (Na+/GABA mechanisms)</td>
+          </tr>
+          <tr>
+            <td>Neurogenic Inflammation</td>
+            <td>NF-κB, cytokine release, perivascular inflammation</td>
+            <td>Candesartan (↓ AT1-mediated inflammation)</td>
+          </tr>
+          <tr>
+            <td>Cortical Hyperexcitability</td>
+            <td>↓ seizure/migraine threshold</td>
+            <td>Topiramate (multiple mechanisms)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Mechanism -->
+  <div class="card">
+    <div class="card__label">Mechanisms of Action</div>
+    <h2 class="card__title">Candesartan: AT1 Blockade vs Topiramate: Multimodal</h2>
+    <div class="mech-grid">
+      <div class="mech-box mech-box--candesartan">
+        <div class="mech-box__title">Candesartan — ARB (AT1 Blocker)</div>
+        <div class="mech-box__text">
+          <strong>AT1 Receptor Blockade:</strong><br>
+          • TCC neuronal excitability ↓<br>
+          • Glutamate/NMDA transmission ↓<br>
+          • Neurogenic inflammation ↓<br>
+          • CGRP expression ↓<br>
+          • Sympathetic tone ↓<br>
+          • Cortical hyperexcitability ↓<br><br>
+          <strong>Dose:</strong> 4–32 mg once daily<br>
+          <strong>Ki (AT1):</strong> 0.26 nM (ultra-high affinity)
+        </div>
+      </div>
+      <div class="mech-box mech-box--topiramate">
+        <div class="mech-box__title">Topiramate — Anticonvulsant</div>
+        <div class="mech-box__text">
+          <strong>Multimodal Mechanisms:</strong><br>
+          • Na+ channel blockade → membrane stabilization<br>
+          • GABA-A enhancement → ↑ inhibition<br>
+          • AMPA/kainate antagonism → ↓ excitation<br>
+          • Carbonic anhydrase inhibition<br>
+          • L-type Ca2+ channel blockade<br>
+          • ↓ brain hyperexcitability<br><br>
+          <strong>Dose:</strong> 25–100 mg/day<br>
+          <strong>Start:</strong> 25 mg QHS, titrate weekly
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comparison -->
+  <div class="card">
+    <div class="card__label">Head-to-Head Comparison</div>
+    <h2 class="card__title">Candesartan vs Topiramate — Key Differentiators</h2>
+    <div class="compare-grid">
+      <div class="compare-box compare-box--candesartan">
+        <div class="compare-box__title">Candesartan — Preferred</div>
+        <div class="compare-box__text">
+          ✓ 70.3% continuation at 6 months<br>
+          ✓ 47% ≥50% responder rate<br>
+          ✓ Once-daily dosing<br>
+          ✓ Minimal CNS side effects<br>
+          ✓ No cognitive impairment<br>
+          ✓ Less teratogenic concern<br>
+          ✓ Treats comorbid HTN<br>
+          ✓ No drug interactions
+        </div>
+      </div>
+      <div class="compare-box compare-box--topiramate">
+        <div class="compare-box__title">Topiramate — Higher Burden</div>
+        <div class="compare-box__text">
+          ✗ 67.3% discontinued by 6 months<br>
+          ✗ 29% ≥50% responder rate<br>
+          ✗ BID dosing required<br>
+          ✗ <strong>Cognitive impairment (15–25%)</strong><br>
+          ✗ Paresthesias (~50%)<br>
+          ✗ Category D (teratogenic)<br>
+          ✗ Weight loss (can be problematic)<br>
+          ✗ Kidney stones (1–2%)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AE Comparison -->
+  <div class="card">
+    <div class="card__label">Tolerability Profile</div>
+    <h2 class="card__title">Adverse Event Burden — Critical Differences</h2>
+    <div class="ae-grid">
+      <div class="ae-item">
+        <span class="ae-dot ae-dot--med"></span>
+        Dizziness (candesartan 18–30%)
+      </div>
+      <div class="ae-item">
+        <span class="ae-dot ae-dot--low"></span>
+        Dizziness (topiramate 5–10%)
+      </div>
+      <div class="ae-item">
+        <span class="ae-dot ae-dot--high"></span>
+        Cognitive impairment (topiramate 15–25%)
+      </div>
+      <div class="ae-item">
+        <span class="ae-dot ae-dot--high"></span>
+        Paresthesias (topiramate 35–50%)
+      </div>
+      <div class="ae-item">
+        <span class="ae-dot ae-dot--high"></span>
+        Category D teratogenicity (topiramate)
+      </div>
+      <div class="ae-item">
+        <span class="ae-dot ae-dot--low"></span>
+        Hypotension (candesartan 8–15%)
+      </div>
+      <div class="ae-item">
+        <span class="ae-dot ae-dot--high"></span>
+        Weight loss (topiramate 10–20%)
+      </div>
+      <div class="ae-item">
+        <span class="ae-dot ae-dot--high"></span>
+        Kidney stones (topiramate 1–2%)
+      </div>
+    </div>
+    <div class="callout--danger" style="margin-top: 1rem; padding: 1rem; border-radius: 0.5rem;">
+      <div class="callout__title">Topiramate's Critical Limitation</div>
+      <div class="callout__text">
+        <strong>Cognitive impairment (memory, concentration, word-finding)</strong> affects 15–25% of patients and is often dose-limiting. Unlike candesartan, which has minimal CNS effects, topiramate directly impairs cognitive function through its anticonvulsant mechanisms.
+      </div>
+    </div>
+  </div>
+
+  <!-- Guideline Comparison -->
+  <div class="card">
+    <div class="card__label">Guideline Recommendations</div>
+    <h2 class="card__title">Current Guidelines — Pending Revision</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Guideline</th>
+            <th>Candesartan</th>
+            <th>Topiramate</th>
+            <th>Propranolol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AAN/AHS (2012)</td>
+            <td><span class="badge badge--warning">Level C</span> (possibly effective)</td>
+            <td><span class="badge badge--success">Level A</span> (established)</td>
+            <td><span class="badge badge--success">Level A</span> (established)</td>
+          </tr>
+          <tr>
+            <td>EFNS (2009)</td>
+            <td><span class="badge badge--warning">"Can be considered"</span></td>
+            <td><span class="badge badge--success">First-line choice</span></td>
+            <td><span class="badge badge--success">First-line choice</span></td>
+          </tr>
+          <tr>
+            <td>Canadian Headache Soc.</td>
+            <td><span class="badge badge--success">Strong rec.</span></td>
+            <td><span class="badge badge--success">Strong rec.</span></td>
+            <td><span class="badge badge--success">Strong rec.</span></td>
+          </tr>
+          <tr>
+            <td><strong>Expected Update</strong></td>
+            <td><span class="badge badge--success">→ Level B+</span></td>
+            <td>Reassess positioning</td>
+            <td>Maintain Level A</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.75rem;">
+      <strong>Note:</strong> Cephalalgia 2026 evidence is expected to drive guideline revisions elevating candesartan to Level B or higher, particularly for tolerability-sensitive populations.
+    </p>
+  </div>
+
+  <!-- RCT Evidence -->
+  <div class="card">
+    <div class="card__label">Supporting RCT Evidence</div>
+    <h2 class="card__title">Candesartan vs Propranolol vs Placebo (Cephalalgia 2014)</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Outcome</th>
+            <th>Candesartan 16mg</th>
+            <th>Propranolol 160mg</th>
+            <th>Placebo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Migraine headache days/4 weeks</td>
+            <td>4.4 ± 3.8</td>
+            <td>4.5 ± 3.6</td>
+            <td>6.0 ± 4.2</td>
+          </tr>
+          <tr>
+            <td>≥50% Responder Rate</td>
+            <td><strong class="badge badge--success">43%</strong></td>
+            <td><span class="badge badge--accent">40%</span></td>
+            <td>23%</td>
+          </tr>
+          <tr>
+            <td>vs Placebo</td>
+            <td>Superior ✓</td>
+            <td>Superior ✓</td>
+            <td>Reference</td>
+          </tr>
+          <tr>
+            <td>Non-inferiority to propranolol</td>
+            <td colspan="2"><strong>Confirmed ✓</strong></td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.75rem;">
+      n=72, triple-blind, double cross-over RCT. Candesartan non-inferior to propranolol — an established first-line agent.
+    </p>
+  </div>
+
+  <!-- When to Choose -->
+  <div class="card">
+    <div class="card__label">Clinical Decision Making</div>
+    <h2 class="card__title">When to Choose Which Agent</h2>
+    <div class="compare-grid">
+      <div class="compare-box compare-box--candesartan">
+        <div class="compare-box__title">✓ Prefer Candesartan When:</div>
+        <div class="compare-box__text">
+          • First-line prophylaxis<br>
+          • Cognitive concerns (job, academics)<br>
+          • Women of childbearing age<br>
+          • Comorbid hypertension<br>
+          • Failed/inadequate topiramate<br>
+          • Chronic migraine + MOH<br>
+          • Multiple prior prophylaxis failures<br>
+          • Once-daily dosing preference<br>
+          • Need simple "start low" titration
+        </div>
+      </div>
+      <div class="compare-box compare-box--topiramate">
+        <div class="compare-box__title">✓ Consider Topiramate When:</div>
+        <div class="compare-box__text">
+          • Weight loss is desired<br>
+          • Patient specifically requests<br>
+          • Failed candesartan<br>
+          • No cognitive job demands<br>
+          • Not childbearing potential<br>
+          • Budget/formulary constraints<br>
+          • Concurrent epilepsy indication<br>
+          • Physician/patient familiarity
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Special Populations -->
+  <div class="card">
+    <div class="card__label">Special Populations</div>
+    <h2 class="card__title">Guidance by Patient Profile</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Population</th>
+            <th>Recommendation</th>
+            <th>Rationale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Chronic migraine + MOH</strong></td>
+            <td><span class="badge badge--success">Candesartan preferred</span></td>
+            <td>Better tolerability; efficacy maintained</td>
+          </tr>
+          <tr>
+            <td><strong>Women of childbearing age</strong></td>
+            <td><span class="badge badge--success">Candesartan strongly preferred</span></td>
+            <td>Topiramate Category D; cleft risk</td>
+          </tr>
+          <tr>
+            <td><strong>Cognitive concerns</strong></td>
+            <td><span class="badge badge--success">Candesartan only</span></td>
+            <td>Topiramate causes memory/concentration issues</td>
+          </tr>
+          <tr>
+            <td><strong>Migraine with aura</strong></td>
+            <td><span class="badge badge--success">Candesartan preferred</span></td>
+            <td>Safe; no vascular concerns</td>
+          </tr>
+          <tr>
+            <td><strong>Adolescents</strong></td>
+            <td><span class="badge badge--warning">Candesartan (limited data)</span></td>
+            <td>Topiramate FDA ≥12y; growth concerns</td>
+          </tr>
+          <tr>
+            <td><strong>Comorbid HTN</strong></td>
+            <td><span class="badge badge--success">Candesartan dual benefit</span></td>
+            <td>Treats both conditions</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Take-home -->
+  <div class="takeaway">
+    <div class="takeaway__title">Take-Home Points for Practice</div>
+    <ul class="takeaway__list">
+      <li><strong>Candesartan superior tolerability:</strong> 70.3% vs 32.7% drug continuation at 6 months (HR 2.5, P < .001)</li>
+      <li><strong>Higher response rates:</strong> 47% ≥50% responders vs 29% (OR 0.6, P = .004)</li>
+      <li><strong>Comparable migraine efficacy:</strong> No significant difference in migraine days, acute med use, or disability</li>
+      <li><strong>Topiramate's weakness:</strong> Cognitive impairment (15–25%, dose-limiting) + Category D teratogenicity</li>
+      <li><strong>Guideline revision warranted:</strong> AAN/AHS Level C → Level B+ expected; EFNS reconsideration pending</li>
+      <li><strong>Chronic migraine + MOH:</strong> Candesartan retains efficacy; superior tolerability particularly important</li>
+      <li><strong>Women of childbearing age:</strong> Candesartan strongly preferred — topiramate contraindicated in pregnancy</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="footer">
+  Sources: Cephalalgia 2026 (Oosterlee et al., n=661), Cephalalgia 2014 (Stovner et al., n=72), PAIN Medicine 2021 (n=120), AAN/AHS/EFNS Guidelines<br>
+  Supreme Neurologist Level — IMBR Mentor — Neurology Board Review — March 2026
+</div>
+
+</body>
+</html>

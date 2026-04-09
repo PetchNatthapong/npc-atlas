@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surviving Sepsis Campaign 2026 — Visual Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ===== THEME: Deep Blue + Gold — Blueprint meets Clinical ===== */
+  :root {
+    --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+    --bg: #f0f4f8;
+    --surface: #ffffff;
+    --surface2: #e8edf4;
+    --surface-elevated: #ffffff;
+    --border: rgba(30, 58, 95, 0.10);
+    --border-bright: rgba(30, 58, 95, 0.20);
+    --text: #0f1f33;
+    --text-dim: #4a6080;
+    --accent: #1e3a5f;
+    --accent-mid: #2d5282;
+    --accent-light: rgba(30, 58, 95, 0.08);
+    --gold: #b5881a;
+    --gold-dim: rgba(181, 136, 26, 0.10);
+    --gold-bright: #d4a73a;
+    --green: #166534;
+    --green-dim: rgba(22, 101, 52, 0.09);
+    --green-bright: #16a34a;
+    --red: #991b1b;
+    --red-dim: rgba(153, 27, 27, 0.09);
+    --red-bright: #dc2626;
+    --orange: #92400e;
+    --orange-dim: rgba(146, 64, 14, 0.09);
+    --orange-bright: #d97706;
+    --teal: #0e7490;
+    --teal-dim: rgba(14, 116, 144, 0.09);
+  }
+  /* Dark mode intentionally disabled — force light theme always */
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    background-image:
+      radial-gradient(ellipse at 15% 0%, var(--accent-light) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 100%, var(--gold-dim) 0%, transparent 45%);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0 0 60px;
+  }
+
+  /* ===== HEADER ===== */
+  .page-header {
+    background: var(--accent);
+    background-image: linear-gradient(135deg, var(--accent) 0%, var(--accent-mid) 100%);
+    padding: 48px 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      0deg, transparent, transparent 39px, rgba(255,255,255,0.04) 39px, rgba(255,255,255,0.04) 40px
+    ), repeating-linear-gradient(
+      90deg, transparent, transparent 39px, rgba(255,255,255,0.04) 39px, rgba(255,255,255,0.04) 40px
+    );
+  }
+  .page-header-inner { position: relative; max-width: 1100px; margin: 0 auto; }
+  .header-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 10px;
+  }
+  .page-header h1 {
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .page-header h1 span {
+    color: var(--gold-bright);
+  }
+  .header-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 28px;
+  }
+  .header-stats {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .hstat {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 10px 18px;
+    text-align: center;
+  }
+  .hstat-num {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gold-bright);
+    font-family: var(--font-mono);
+    line-height: 1;
+  }
+  .hstat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  /* ===== LAYOUT ===== */
+  .main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 0;
+  }
+
+  /* ===== SECTION LABEL ===== */
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    margin-top: 44px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  /* ===== KPI ROW ===== */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 0;
+  }
+  .kpi {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.5s ease both;
+    animation-delay: calc(var(--i, 0) * 80ms);
+  }
+  .kpi::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--kpi-color, var(--accent));
+    border-radius: 10px 10px 0 0;
+  }
+  .kpi-num {
+    font-family: var(--font-mono);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--kpi-color, var(--accent));
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .kpi-desc { font-size: 12px; color: var(--text-dim); line-height: 1.4; }
+
+  /* ===== CHANGES TABLE ===== */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    animation: fadeUp 0.5s ease both 0.2s;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  thead th {
+    background: var(--surface2);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 12px 16px;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid var(--border-bright);
+  }
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    animation: fadeIn 0.4s ease both;
+    animation-delay: calc(var(--i, 0) * 40ms);
+    transition: background 0.15s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--accent-light); }
+  tbody tr:nth-child(even) { background: var(--surface2); }
+  tbody tr:nth-child(even):hover { background: var(--accent-light); }
+  td {
+    padding: 12px 16px;
+    vertical-align: top;
+    color: var(--text);
+  }
+  td:first-child { font-weight: 500; }
+  td code {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: var(--accent-light);
+    color: var(--accent-mid);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+  .badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .badge-upgrade { background: var(--green-dim); color: var(--green-bright); }
+  .badge-new { background: var(--gold-dim); color: var(--gold); }
+  .badge-change { background: var(--teal-dim); color: var(--teal); }
+  .badge-down { background: var(--orange-dim); color: var(--orange-bright); }
+  .badge-expand { background: var(--red-dim); color: var(--red-bright); }
+
+  /* ===== DOMAIN CARDS ===== */
+  .domain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 18px;
+  }
+  .domain-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    animation: fadeUp 0.5s ease both;
+    animation-delay: calc(var(--i, 0) * 100ms);
+    display: flex;
+    flex-direction: column;
+  }
+  .domain-header {
+    padding: 16px 20px 14px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .domain-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--surface);
+  }
+  .domain-header h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .domain-body { padding: 16px 20px; flex: 1; }
+  .rec-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .rec-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .rec-strength {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 10px;
+    white-space: nowrap;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .str-rec { background: var(--green-dim); color: var(--green-bright); border: 1px solid var(--green-dim); }
+  .str-sug { background: var(--accent-light); color: var(--accent-mid); border: 1px solid var(--border); }
+  .str-against { background: var(--red-dim); color: var(--red-bright); border: 1px solid var(--red-dim); }
+
+  /* ===== ANTIBIOTIC TIMING BOX ===== */
+  .timing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 600px) { .timing-grid { grid-template-columns: 1fr; } }
+  .timing-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+    animation: fadeUp 0.5s ease both;
+    animation-delay: calc(var(--i, 0) * 120ms);
+    position: relative;
+    overflow: hidden;
+  }
+  .timing-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--tc-color, var(--accent));
+    border-radius: 0 0 10px 10px;
+  }
+  .timing-icon { font-size: 28px; margin-bottom: 8px; }
+  .timing-time {
+    font-family: var(--font-mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--tc-color, var(--accent));
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .timing-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .timing-desc { font-size: 11.5px; color: var(--text-dim); line-height: 1.5; }
+
+  /* ===== TAKEAWAYS ===== */
+  .takeaway-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .takeaway {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    font-size: 13.5px;
+    line-height: 1.6;
+    animation: fadeUp 0.4s ease both;
+    animation-delay: calc(var(--i, 0) * 60ms);
+  }
+  .takeaway-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    width: 22px; height: 22px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .takeaway strong { color: var(--accent-mid); }
+
+  /* ===== VASOPRESSOR FLOW ===== */
+  .vaso-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  .vaso-step {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    animation: fadeUp 0.4s ease both;
+    animation-delay: calc(var(--i, 0) * 100ms);
+  }
+  .vaso-step-title {
+    font-size: 14px; font-weight: 600;
+    color: var(--vs-color, var(--accent));
+    margin-bottom: 4px;
+  }
+  .vaso-step-desc { font-size: 12px; color: var(--text-dim); }
+  .vaso-arrow {
+    width: 2px; height: 20px;
+    background: var(--border-bright);
+    position: relative;
+  }
+  .vaso-arrow::after {
+    content: '▼';
+    position: absolute;
+    bottom: -12px; left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-dim);
+    font-size: 10px;
+  }
+
+  /* ===== FOOTER ===== */
+  .page-footer {
+    max-width: 1100px;
+    margin: 48px auto 0;
+    padding: 0 24px;
+    font-size: 11.5px;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="header-label">Surviving Sepsis Campaign · Visual Overview</div>
+    <h1>SSC Guidelines <span>2026</span></h1>
+    <div class="header-sub">Prescott · Coopersmith · Rhodes · SCCM/ESICM · Published 23 March 2026 · DOI: 10.1007/s00134-026-08361-1</div>
+    <div class="header-stats">
+      <div class="hstat"><div class="hstat-num">129</div><div class="hstat-label">Graded Statements</div></div>
+      <div class="hstat"><div class="hstat-num">46</div><div class="hstat-label">New Recommendations</div></div>
+      <div class="hstat"><div class="hstat-num">49M</div><div class="hstat-label">Cases / Year</div></div>
+      <div class="hstat"><div class="hstat-num">13M</div><div class="hstat-label">Deaths / Year</div></div>
+      <div class="hstat"><div class="hstat-num">24</div><div class="hstat-label">Societies Endorsed</div></div>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- KPI OVERVIEW -->
+  <div class="section-label">At a Glance</div>
+  <div class="kpi-row">
+    <div class="kpi" style="--i:0; --kpi-color: var(--red-bright)">
+      <div class="kpi-num">1 hr</div>
+      <div class="kpi-desc">ABx target: septic shock &amp; probable sepsis</div>
+    </div>
+    <div class="kpi" style="--i:1; --kpi-color: var(--orange-bright)">
+      <div class="kpi-num">3 hr</div>
+      <div class="kpi-desc">ABx target: possible sepsis without shock</div>
+    </div>
+    <div class="kpi" style="--i:2; --kpi-color: var(--gold)">
+      <div class="kpi-num">65 mmHg</div>
+      <div class="kpi-desc">Default MAP target; 60–65 for age ≥65</div>
+    </div>
+    <div class="kpi" style="--i:3; --kpi-color: var(--green-bright)">
+      <div class="kpi-num">30 mL/kg</div>
+      <div class="kpi-desc">Initial IV crystalloid within 3 hours</div>
+    </div>
+    <div class="kpi" style="--i:4; --kpi-color: var(--teal)">
+      <div class="kpi-num">6 hr</div>
+      <div class="kpi-desc">Source control target from diagnosis</div>
+    </div>
+    <div class="kpi" style="--i:5; --kpi-color: var(--accent)">
+      <div class="kpi-num">NEWS2</div>
+      <div class="kpi-desc">Replaces qSOFA as inpatient screening tool</div>
+    </div>
+  </div>
+
+  <!-- KEY CHANGES TABLE -->
+  <div class="section-label" style="margin-top:44px">Key Changes 2021 → 2026</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:18%">Area</th>
+          <th style="width:27%">2021</th>
+          <th style="width:27%">2026</th>
+          <th style="width:14%">Change</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="--i:0">
+          <td>Screening Tool</td>
+          <td>qSOFA recommended</td>
+          <td>Use <code>NEWS / NEWS2 / MEWS / SIRS</code> — qSOFA not recommended alone</td>
+          <td><span class="badge badge-change">Major Change</span></td>
+        </tr>
+        <tr style="--i:1">
+          <td>Beta-lactam Infusion</td>
+          <td>Suggest prolonged infusion</td>
+          <td><strong>Recommend</strong> prolonged (extended/continuous) infusion after loading dose</td>
+          <td><span class="badge badge-upgrade">Upgraded → Strong</span></td>
+        </tr>
+        <tr style="--i:2">
+          <td>ABx De-escalation</td>
+          <td>Suggest when culture available</td>
+          <td><strong>Recommend</strong> when culture + susceptibility available</td>
+          <td><span class="badge badge-upgrade">Upgraded → Strong</span></td>
+        </tr>
+        <tr style="--i:3">
+          <td>ABx Timing Framework</td>
+          <td>1-hour bundle (single tier)</td>
+          <td>1 hr (shock/probable) · 3 hr (possible without shock)</td>
+          <td><span class="badge badge-new">New Framework</span></td>
+        </tr>
+        <tr style="--i:4">
+          <td>MAP Target (Elderly)</td>
+          <td>Not specifically addressed</td>
+          <td>Suggest 60–65 mmHg for patients ≥65 years</td>
+          <td><span class="badge badge-new">New</span></td>
+        </tr>
+        <tr style="--i:5">
+          <td>HFNC / Awake Proning</td>
+          <td>Not addressed</td>
+          <td>Suggest HFNC over conventional O₂; suggest awake proning (non-intubated)</td>
+          <td><span class="badge badge-new">New</span></td>
+        </tr>
+        <tr style="--i:6">
+          <td>Blood Purification</td>
+          <td>Against polymyxin B hemoperfusion</td>
+          <td>Against <em>all</em> blood purification therapies (hemoperfusion, HVHF, plasma exchange)</td>
+          <td><span class="badge badge-expand">Expanded Against</span></td>
+        </tr>
+        <tr style="--i:7">
+          <td>Prehospital ABx</td>
+          <td>Not addressed</td>
+          <td>Suggest prehospital ABx if time to evaluation &gt;60 min (septic shock)</td>
+          <td><span class="badge badge-new">New</span></td>
+        </tr>
+        <tr style="--i:8">
+          <td>Corticosteroids</td>
+          <td>Suggest IV corticosteroids broadly</td>
+          <td>Suggest hydrocortisone 200 mg/day — clarified to refractory vasopressor-dependent shock</td>
+          <td><span class="badge badge-down">Downgraded</span></td>
+        </tr>
+        <tr style="--i:9">
+          <td>Fluid Post-Resus</td>
+          <td>Insufficient evidence</td>
+          <td>Suggest liberal <em>or</em> restrictive strategy — individualized to patient</td>
+          <td><span class="badge badge-new">New Statement</span></td>
+        </tr>
+        <tr style="--i:10">
+          <td>Post-Sepsis Rehab</td>
+          <td>Not addressed</td>
+          <td>New domain: physical, cognitive, mental health rehabilitation after discharge</td>
+          <td><span class="badge badge-new">New Domain</span></td>
+        </tr>
+        <tr style="--i:11">
+          <td>Norepinephrine Priority</td>
+          <td>Recommend over dopamine, etc.</td>
+          <td>Suggest over vasopressin or angiotensin II specifically (downgraded vs. vaso)</td>
+          <td><span class="badge badge-down">Conditional</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ANTIBIOTIC TIMING -->
+  <div class="section-label">Antibiotic Timing Framework</div>
+  <div class="timing-grid">
+    <div class="timing-card" style="--i:0; --tc-color: var(--red-bright)">
+      <div class="timing-time">≤ 1 hr</div>
+      <div class="timing-label">Septic Shock</div>
+      <div class="timing-desc">Immediate antimicrobials ideally within 1 hour. No delay for diagnostic workup.</div>
+    </div>
+    <div class="timing-card" style="--i:1; --tc-color: var(--orange-bright)">
+      <div class="timing-time">≤ 1 hr</div>
+      <div class="timing-label">Probable / Definite Sepsis</div>
+      <div class="timing-desc">Immediate therapy even without shock. Don't wait for culture confirmation.</div>
+    </div>
+    <div class="timing-card" style="--i:2; --tc-color: var(--gold)">
+      <div class="timing-time">≤ 3 hr</div>
+      <div class="timing-label">Possible Sepsis (no shock)</div>
+      <div class="timing-desc">Rapid assessment for infectious vs. non-infectious cause. Defer if low likelihood.</div>
+    </div>
+  </div>
+
+  <!-- VASOPRESSOR LADDER -->
+  <div class="section-label">Vasopressor Escalation Ladder</div>
+  <div class="vaso-flow">
+    <div class="vaso-step" style="--i:0; --vs-color: var(--green-bright)">
+      <div class="vaso-step-title">① Norepinephrine — First Line</div>
+      <div class="vaso-step-desc">Recommended first-line. Preferred over dopamine (high certainty), epinephrine, selepressin, terlipressin.</div>
+    </div>
+    <div class="vaso-arrow"></div>
+    <div class="vaso-step" style="--i:1; --vs-color: var(--gold)">
+      <div class="vaso-step-title">② Add Vasopressin — When Escalating</div>
+      <div class="vaso-step-desc">Suggest vasopressin when norepinephrine dose is escalating. Moderate certainty.</div>
+    </div>
+    <div class="vaso-arrow"></div>
+    <div class="vaso-step" style="--i:2; --vs-color: var(--orange-bright)">
+      <div class="vaso-step-title">③ Add Epinephrine — Refractory MAP</div>
+      <div class="vaso-step-desc">Add epinephrine if MAP inadequate despite norepinephrine + vasopressin. Very low certainty.</div>
+    </div>
+    <div class="vaso-arrow"></div>
+    <div class="vaso-step" style="--i:3; --vs-color: var(--teal)">
+      <div class="vaso-step-title">➕ Inotropes — Cardiac Dysfunction</div>
+      <div class="vaso-step-desc">Dobutamine or epinephrine if cardiac dysfunction + persistent hypoperfusion despite adequate fluid &amp; MAP. Avoid levosimendan &amp; beta-blockers.</div>
+    </div>
+  </div>
+
+  <!-- DOMAIN CARDS -->
+  <div class="section-label">Clinical Domains — Key Recommendations</div>
+  <div class="domain-grid">
+
+    <div class="domain-card" style="--i:0">
+      <div class="domain-header">
+        <div class="domain-icon" style="background: var(--accent)">Dx</div>
+        <h3>Diagnosis &amp; Screening</h3>
+      </div>
+      <div class="domain-body">
+        <ul class="rec-list">
+          <li class="rec-item"><span class="rec-strength str-rec">REC</span>Use NEWS/NEWS2/MEWS/SIRS over qSOFA for inpatient screening</li>
+          <li class="rec-item"><span class="rec-strength str-rec">REC</span>Blood cultures before ABx, but don't delay treatment</li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Measure lactate in possible/probable/definite sepsis</li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Prehospital screening tool for acutely ill patients in transit</li>
+          <li class="rec-item"><span class="rec-strength str-rec">REC</span>Hospitals implement performance improvement program for sepsis</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="domain-card" style="--i:1">
+      <div class="domain-header">
+        <div class="domain-icon" style="background: var(--teal)">Rx</div>
+        <h3>Initial Resuscitation</h3>
+      </div>
+      <div class="domain-body">
+        <ul class="rec-list">
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>≥30 mL/kg IV crystalloid in first 3 hrs (hypoperfusion/shock)</li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Balanced crystalloids (LR/PlasmaLyte) over 0.9% saline</li>
+          <li class="rec-item"><span class="rec-strength str-against">AGAINST</span>Starches (HES) — high certainty. Gelatin — moderate.</li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Dynamic measures (PLR, SVV, echo) to guide fluids</li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Serial lactate to guide resuscitation in elevated lactate</li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Liberal or restrictive post-resus strategy — individualized</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="domain-card" style="--i:2">
+      <div class="domain-header">
+        <div class="domain-icon" style="background: var(--gold)">ABx</div>
+        <h3>Antibiotic Therapy</h3>
+      </div>
+      <div class="domain-body">
+        <ul class="rec-list">
+          <li class="rec-item"><span class="rec-strength str-rec">REC</span>Immediately (≤1 hr) for shock and probable/definite sepsis</li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Within 3 hrs for possible sepsis without shock</li>
+          <li class="rec-item"><span class="rec-strength str-rec">REC</span><strong>Prolonged (extended/continuous) beta-lactam infusion</strong> — upgraded to Strong</li>
+          <li class="rec-item"><span class="rec-strength str-rec">REC</span><strong>De-escalate</strong> when culture + susceptibility available — upgraded to Strong</li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Procalcitonin + clinical assessment to guide discontinuation</li>
+          <li class="rec-item"><span class="rec-strength str-against">AGAINST</span>Empiric antifungal in most patients; MDR coverage in low-risk</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="domain-card" style="--i:3">
+      <div class="domain-header">
+        <div class="domain-icon" style="background: var(--red-bright)">SC</div>
+        <h3>Source Control</h3>
+      </div>
+      <div class="domain-body">
+        <ul class="rec-list">
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Rapid anatomical evaluation for all sepsis patients</li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Early source control ideally <strong>within 6 hours</strong> of diagnosis</li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Don't delay source control for hemodynamic optimization when life-threatening (necrotizing fasciitis, septic joint)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="domain-card" style="--i:4">
+      <div class="domain-header">
+        <div class="domain-icon" style="background: var(--green-bright)">Adj</div>
+        <h3>Adjunctive Therapies</h3>
+      </div>
+      <div class="domain-body">
+        <ul class="rec-list">
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Hydrocortisone 200 mg/day for vasopressor-dependent septic shock</li>
+          <li class="rec-item"><span class="rec-strength str-against">AGAINST</span>Blood purification (hemoperfusion, HVHF, plasma exchange)</li>
+          <li class="rec-item"><span class="rec-strength str-rec">REC</span>Low tidal volume 6 mL/kg IBW for ARDS (high certainty)</li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>HFNC over conventional O₂ or NIPPV for hypoxemic failure</li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Awake proning in non-intubated hypoxemic patients</li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>SDD in mechanically ventilated patients in low-AMR units</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="domain-card" style="--i:5">
+      <div class="domain-header">
+        <div class="domain-icon" style="background: var(--accent-mid)">F/U</div>
+        <h3>Post-Sepsis Care (New Domain)</h3>
+      </div>
+      <div class="domain-body">
+        <ul class="rec-list">
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>ICU admission within 6 hours for patients needing ICU-level care</li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Structured follow-up for <strong>physical functional recovery</strong></li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Structured follow-up for <strong>cognitive recovery</strong></li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Structured follow-up for <strong>mental health</strong> (PTSD, anxiety, depression)</li>
+          <li class="rec-item"><span class="rec-strength str-sug">SUG</span>Early goals-of-care discussion; palliative consultation for poor prognosis</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 10 TAKE-HOME POINTS -->
+  <div class="section-label">10 Take-Home Points</div>
+  <div class="takeaway-list">
+    <div class="takeaway" style="--i:0"><div class="takeaway-num">1</div><div><strong>Sepsis is a medical emergency.</strong> Time to treatment is the single most modifiable factor. Don't wait.</div></div>
+    <div class="takeaway" style="--i:1"><div class="takeaway-num">2</div><div><strong>qSOFA is OUT for inpatient screening.</strong> Use NEWS, NEWS2, MEWS, or SIRS instead.</div></div>
+    <div class="takeaway" style="--i:2"><div class="takeaway-num">3</div><div><strong>Tiered ABx timing:</strong> ≤1 hr for shock/probable sepsis · ≤3 hr for possible sepsis without shock after rapid evaluation.</div></div>
+    <div class="takeaway" style="--i:3"><div class="takeaway-num">4</div><div><strong>Prolonged beta-lactam infusion is now a Strong recommendation</strong> — use extended or continuous infusion for maintenance dosing.</div></div>
+    <div class="takeaway" style="--i:4"><div class="takeaway-num">5</div><div><strong>De-escalation is now a Strong recommendation</strong> — mandatory once culture and susceptibility results are available.</div></div>
+    <div class="takeaway" style="--i:5"><div class="takeaway-num">6</div><div><strong>Balanced crystalloids preferred</strong> (LR/PlasmaLyte). Starches are contraindicated. Dynamic measures guide ongoing resuscitation.</div></div>
+    <div class="takeaway" style="--i:6"><div class="takeaway-num">7</div><div><strong>MAP 65 mmHg default.</strong> In patients ≥65 years, 60–65 mmHg is acceptable — higher targets offer no benefit.</div></div>
+    <div class="takeaway" style="--i:7"><div class="takeaway-num">8</div><div><strong>Blood purification is out broadly</strong> — the recommendation expands from polymyxin B to ALL blood purification therapies.</div></div>
+    <div class="takeaway" style="--i:8"><div class="takeaway-num">9</div><div><strong>HFNC + awake proning</strong> for non-intubated patients with hypoxemic respiratory failure — new recommendations.</div></div>
+    <div class="takeaway" style="--i:9"><div class="takeaway-num">10</div><div><strong>Post-sepsis rehabilitation is now a formal domain.</strong> 30–40% of survivors face lasting physical, cognitive, and psychological impairment.</div></div>
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  <span>Source: SSC 2026 · Prescott et al. · Intensive Care Med / Crit Care Med</span>
+  <span>·</span>
+  <span>DOI: 10.1007/s00134-026-08361-1</span>
+  <span>·</span>
+  <span>Compiled by Notchiii · 29 Mar 2026</span>
+</footer>
+
+</body>
+</html>

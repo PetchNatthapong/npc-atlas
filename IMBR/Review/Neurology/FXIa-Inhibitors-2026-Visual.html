@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FXIa Inhibitors — Stroke Prevention 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f0f4f8;
+  --surface: #ffffff;
+  --surface-2: #e8edf2;
+  --border: #c8d1db;
+  --text: #1e3a5f;
+  --text-dim: #5a6a7a;
+  --text-muted: #8a96a3;
+  --accent: #1e3a5f;
+  --accent-light: rgba(30,58,95,0.08);
+  --blue: #1565c0;
+  --blue-light: #e3f0fd;
+  --green: #2e7d32;
+  --green-light: #e8f5e9;
+  --red: #c62828;
+  --red-light: #ffebee;
+  --amber: #e65100;
+  --amber-light: #fff3e0;
+  --font-body: 'DM Sans', -apple-system, sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; padding-bottom: 2rem; }
+
+.hero {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8a 50%, #1565c0 100%);
+  color: white;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 100% at 90% 50%, rgba(255,255,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero__label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; margin-bottom: 8px; }
+.hero__title { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+.hero__subtitle { font-size: 0.9rem; opacity: 0.85; margin-bottom: 12px; }
+.hero__meta { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero__badge { font-family: var(--font-mono); font-size: 0.65rem; padding: 3px 10px; background: rgba(255,255,255,0.15); border-radius: 20px; border: 1px solid rgba(255,255,255,0.25); }
+.hero__badge.green { background: rgba(46,125,50,0.3); border-color: rgba(46,125,50,0.5); }
+
+.container { max-width: 960px; margin: 0 auto; padding: 1.5rem 1.5rem; }
+
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 2px solid var(--accent); }
+.section-header__icon { font-size: 1.1rem; }
+.section-header__title { font-size: 1rem; font-weight: 700; color: var(--accent); }
+.section-header__count { margin-left: auto; font-family: var(--font-mono); font-size: 0.65rem; background: var(--blue-light); color: var(--blue); padding: 2px 8px; border-radius: 10px; }
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem; margin-bottom: 1rem; }
+.card.success { border-left: 4px solid var(--green); }
+.card.danger { border-left: 4px solid var(--red); }
+.card.warning { border-left: 4px solid var(--amber); }
+
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 1.5rem; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; text-align: center; }
+.stat-card__value { font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1; }
+.stat-card__label { font-size: 0.75rem; color: var(--text-dim); margin-top: 4px; }
+.stat-card__sublabel { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); margin-top: 2px; }
+
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 1rem; }
+.kpi { background: var(--blue-light); border: 1px solid rgba(21,101,192,0.2); border-radius: 8px; padding: 0.8rem; text-align: center; }
+.kpi__value { font-size: 1.6rem; font-weight: 700; color: var(--blue); }
+.kpi__label { font-size: 0.72rem; color: var(--text-dim); margin-top: 2px; }
+.kpi.success { background: var(--green-light); border-color: rgba(46,125,50,0.2); }
+.kpi.success .kpi__value { color: var(--green); }
+.kpi.danger { background: var(--red-light); border-color: rgba(198,40,40,0.2); }
+.kpi.danger .kpi__value { color: var(--red); }
+
+.table-wrap { overflow-x: auto; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+th { background: var(--accent); color: white; padding: 8px 12px; text-align: left; font-weight: 600; }
+td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) td { background: var(--surface-2); }
+.badge { display: inline-block; font-family: var(--font-mono); font-size: 0.65rem; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+.badge.green { background: var(--green-light); color: var(--green); }
+.badge.red { background: var(--red-light); color: var(--red); }
+.badge.amber { background: var(--amber-light); color: var(--amber); }
+.badge.blue { background: var(--blue-light); color: var(--blue); }
+
+.timeline { position: relative; padding-left: 24px; }
+.timeline::before { content: ''; position: absolute; left: 7px; top: 4px; bottom: 4px; width: 2px; background: var(--border); }
+.timeline-item { position: relative; margin-bottom: 1rem; }
+.timeline-item::before { content: ''; position: absolute; left: -20px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); border: 2px solid white; }
+.timeline-item__date { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); }
+.timeline-item__text { font-weight: 500; font-size: 0.88rem; }
+
+.tag-list { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.tag { font-family: var(--font-mono); font-size: 0.65rem; padding: 2px 8px; background: var(--surface-2); border-radius: 4px; color: var(--text-dim); }
+
+.takeaway-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.takeaway { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; display: flex; gap: 10px; }
+.takeaway__icon { font-size: 1.4rem; flex-shrink: 0; }
+.takeaway__title { font-weight: 600; font-size: 0.88rem; margin-bottom: 4px; }
+.takeaway__text { font-size: 0.8rem; color: var(--text-dim); line-height: 1.5; }
+
+.ref-list { display: flex; flex-direction: column; gap: 6px; }
+.ref { display: flex; gap: 8px; font-size: 0.8rem; }
+.ref__num { font-family: var(--font-mono); font-size: 0.65rem; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; color: var(--text-muted); }
+.ref__text { color: var(--text-dim); }
+
+.footer { text-align: center; padding: 1.5rem; color: var(--text-muted); font-size: 0.72rem; font-family: var(--font-mono); border-top: 1px solid var(--border); margin-top: 2rem; }
+
+@media (max-width: 600px) {
+  .hero { padding: 1.5rem 1rem; }
+  .container { padding: 1rem; }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero__label">Hematology / Cardiology / Neurology</div>
+  <h1 class="hero__title">FXIa Inhibitors for Stroke Prevention</h1>
+  <p class="hero__subtitle">Abelacimab vs Asundexian — The 2026 Clinical Trial Landscape</p>
+  <div class="hero__meta">
+    <span class="hero__badge">📅 April 2026</span>
+    <span class="hero__badge">🔬 Phase 2–3 Evidence</span>
+    <span class="hero__badge green">⭐ High Clinical Impact</span>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ── Executive Summary ── -->
+  <div class="section-header">
+    <span class="section-header__icon">📋</span>
+    <span class="section-header__title">Executive Summary</span>
+  </div>
+  <div class="card success">
+    <p style="font-size:0.9rem; line-height:1.7;">FXIa inhibitors represent a <strong>paradigm shift in anticoagulation</strong> — targeting the intrinsic coagulation pathway with the promise of <strong>equivalent efficacy with superior safety</strong>. Two candidates: <strong>Abelacimab</strong> (IV, q90d, Phase 3 ongoing) showed <strong>67% major bleeding reduction</strong> vs rivaroxaban; <strong>Asundexian</strong> (oral, failed OCEANIC-AF — not recommended.</p>
+  </div>
+
+  <!-- ── Key Numbers ── -->
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-card__value" style="color:var(--green)">67%</div>
+      <div class="stat-card__label">Major bleeding reduction</div>
+      <div class="stat-card__sublabel">Abelacimab vs Rivaroxaban</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card__value">90d</div>
+      <div class="stat-card__label">Dosing interval</div>
+      <div class="stat-card__sublabel">Abelacimab IV infusion</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card__value" style="color:var(--red)">1.57</div>
+      <div class="stat-card__label">Asundexian HR stroke</div>
+      <div class="stat-card__sublabel">Failed noninferiority OCEANIC-AF</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card__value">2026</div>
+      <div class="stat-card__label">Phase 3 results expected</div>
+      <div class="stat-card__sublabel">LILAC-TIMI 76 (Abelacimab)</div>
+    </div>
+  </div>
+
+  <!-- ── Mechanism ── -->
+  <div class="section-header">
+    <span class="section-header__icon">⚗️</span>
+    <span class="section-header__title">Mechanism of Action</span>
+  </div>
+  <div class="card">
+    <p style="font-size:0.88rem; margin-bottom:1rem;"><strong>FXIa</strong> = Factor XIa — upstream of Factor Xa in the <strong>intrinsic coagulation pathway</strong>. Key difference: Factor XIa is primarily involved in <strong>propagation</strong> (amplification) not initiation of coagulation.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Target</th><th>FXIa Inhibition</th><th>Factor Xa Inhibition (DOACs)</th></tr>
+        <tr><td>Pathway</td><td>Intrinsic (upstream)</td><td>Common terminal pathway</td></tr>
+        <tr><td>Thrombus propagation</td><td>Yes — blocks amplification</td><td>Direct thrombin generation</td></tr>
+        <tr><td>Bleeding risk</td><td>Potentially lower</td><td>Standard DOAC bleeding profile</td></tr>
+        <tr><td>Oral options</td><td>Emerging (asundexian failed)</td><td>Apixaban, Rivaroxaban, etc.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── Drug Comparison ── -->
+  <div class="section-header">
+    <span class="section-header__icon">💊</span>
+    <span class="section-header__title">Drug Comparison</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th><span class="badge green">Abelacimab</span></th>
+        <th><span class="badge red">Asundexian</span></th>
+      </tr>
+      <tr>
+        <td>Drug Type</td>
+        <td>Fully human monoclonal antibody (IgG1)</td>
+        <td>Small molecule, oral</td>
+      </tr>
+      <tr>
+        <td>Administration</td>
+        <td>IV infusion q90 days</td>
+        <td>Oral once daily</td>
+      </tr>
+      <tr>
+        <td>Binding</td>
+        <td>Covalent, irreversible FXIa inhibition</td>
+        <td>Non-covalent, reversible FXIa inhibition</td>
+      </tr>
+      <tr>
+        <td>Major Bleeding vs DOAC</td>
+        <td><strong>67% ↓ vs Rivaroxaban</strong> ✅</td>
+        <td>25% ↓ vs Apixaban ⚠️ (but inferior efficacy)</td>
+      </tr>
+      <tr>
+        <td>Efficacy vs DOAC</td>
+        <td>Comparable (NS trend: worse) ⚠️</td>
+        <td><strong>Failed noninferiority</strong> ❌</td>
+      </tr>
+      <tr>
+        <td>Trial Phase</td>
+        <td>Phase 2 ✅ → Phase 3 (LILAC-TIMI 76) ongoing</td>
+        <td>Phase 3 failed ❌ — development uncertain</td>
+      </tr>
+      <tr>
+        <td>Regulatory Status</td>
+        <td>Breakthrough designation</td>
+        <td>Development discontinued</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ── AZALEA-TIMI 71 Results ── -->
+  <div class="section-header">
+    <span class="section-header__icon">📊</span>
+    <span class="section-header__title">AZALEA-TIMI 71 — Abelacimab vs Rivaroxaban</span>
+    <span class="section-header__count">Phase 2 · NEJM Oct 2024</span>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi success">
+      <div class="kpi__value">67%</div>
+      <div class="kpi__label">Major bleeding reduction</div>
+    </div>
+    <div class="kpi success">
+      <div class="kpi__value">0.65%</div>
+      <div class="kpi__label">Abelacimab 90mg — Annualized</div>
+    </div>
+    <div class="kpi danger">
+      <div class="kpi__value">1.99%</div>
+      <div class="kpi__label">Rivaroxaban — Annualized</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi__value">1,287</div>
+      <div class="kpi__label">Patients enrolled</div>
+    </div>
+  </div>
+
+  <div class="card success">
+    <strong style="font-size:0.88rem;">Primary Safety Endpoint — Major Bleeding (Annualized)</strong>
+    <div class="table-wrap" style="margin-top:8px;">
+      <table>
+        <tr><th>Dose</th><th>Abelacimab Rate</th><th>Rivaroxaban Rate</th><th>HR</th></tr>
+        <tr><td>Abelacimab 90mg</td><td>0.65%/yr</td><td rowspan=2>1.99%/yr</td><td rowspan=2><strong>0.33 (p&lt;0.001)</strong></td></tr>
+        <tr><td>Abelacimab 150mg</td><td>0.47%/yr</td></tr>
+        <tr><td colspan=4 style="background:var(--green-light);font-size:0.8rem;">⚠️ Numerically higher thrombotic events in abelacimab arm — not statistically significant, trial not powered for efficacy</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── OCEANIC-AF Results ── -->
+  <div class="section-header">
+    <span class="section-header__icon">📊</span>
+    <span class="section-header__title">OCEANIC-AF — Asundexian vs Apixaban</span>
+    <span class="section-header__count">Phase 3 · NEJM 2024</span>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi danger">
+      <div class="kpi__value">1.57</div>
+      <div class="kpi__label">Stroke/SEE HR vs Apixaban</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi__value">❌</div>
+      <div class="kpi__label">Failed noninferiority</div>
+    </div>
+    <div class="kpi success">
+      <div class="kpi__value">25%</div>
+      <div class="kpi__label">Major bleeding ↓ vs Apixaban</div>
+    </div>
+    <div class="kpi danger">
+      <div class="kpi__value">STOP</div>
+      <div class="kpi__label">Trial terminated early</div>
+    </div>
+  </div>
+
+  <div class="card danger">
+    <p style="font-size:0.88rem;"><strong>Asundexian did NOT meet noninferiority</strong> for stroke/systemic embolism vs apixaban. Stroke rate numerically higher (1.78%/yr vs 1.14%/yr). Despite better bleeding profile, inferior efficacy = net harm. Trial stopped early.</p>
+  </div>
+
+  <!-- ── Why Asundexian Failed ── -->
+  <div class="section-header">
+    <span class="section-header__icon">❓</span>
+    <span class="section-header__title">Why Did Asundexian Fail?</span>
+  </div>
+  <div class="takeaway-grid">
+    <div class="takeaway">
+      <span class="takeaway__icon">⚡</span>
+      <div>
+        <div class="takeaway__title">Insufficient FXIa Inhibition</div>
+        <div class="takeaway__text">Plasma FXIa inhibition may be inadequate for cardioembolic stroke prevention — extrinsic pathway may compensate</div>
+      </div>
+    </div>
+    <div class="takeaway">
+      <span class="takeaway__icon">🔄</span>
+      <div>
+        <div class="takeaway__title">Factor Xa Compensation</div>
+        <div class="takeaway__text">When FXIa is blocked, Factor Xa (extrinsic) may compensate — partial FXIa inhibition insufficient for AF</div>
+      </div>
+    </div>
+    <div class="takeaway">
+      <span class="takeaway__icon">📊</span>
+      <div>
+        <div class="takeaway__title">Early Trial Termination</div>
+        <div class="takeaway__text">OCEANIC-AF stopped early → reduced statistical power → harder to prove noninferiority</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Timeline ── -->
+  <div class="section-header">
+    <span class="section-header__icon">📅</span>
+    <span class="section-header__title">Timeline & Milestones</span>
+  </div>
+  <div class="card">
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-item__date">Oct 2024</div>
+        <div class="timeline-item__text">AZALEA-TIMI 71 published — Abelacimab 67% bleeding reduction (NEJM)</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-item__date">2024</div>
+        <div class="timeline-item__text">OCEANIC-AF failed — Asundexian development uncertain</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-item__date">2024</div>
+        <div class="timeline-item__text">PACIFIC-Stroke — Asundexian neutral vs aspirin in secondary stroke prevention</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-item__date">2025–2026</div>
+        <div class="timeline-item__text">LILAC-TIMI 76 Phase 3 results expected — Abelacimab pivotal trial</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Clinical Takeaways ── -->
+  <div class="section-header">
+    <span class="section-header__icon">🎯</span>
+    <span class="section-header__title">Clinical Takeaways 2026</span>
+  </div>
+  <div class="takeaway-grid">
+    <div class="takeaway" style="border-left:4px solid var(--green);">
+      <span class="takeaway__icon">✅</span>
+      <div>
+        <div class="takeaway__title">Abelacimab — Watch This Space</div>
+        <div class="takeaway__text">67% bleeding reduction is unprecedented. If Phase 3 confirms efficacy, transforms anticoagulation in high-bleeding-risk AF patients.</div>
+      </div>
+    </div>
+    <div class="takeaway" style="border-left:4px solid var(--red);">
+      <span class="takeaway__icon">❌</span>
+      <div>
+        <div class="takeaway__title">Asundexian — Not Ready</div>
+        <div class="takeaway__text">Failed efficacy; cannot replace DOACs. Development likely discontinued. Do not use for AF stroke prevention.</div>
+      </div>
+    </div>
+    <div class="takeaway" style="border-left:4px solid var(--blue);">
+      <span class="takeaway__icon">🔄</span>
+      <div>
+        <div class="takeaway__title">DOACs Remain Standard</div>
+        <div class="takeaway__text">Apixaban, Rivaroxaban, Edoxaban, Dabigatran remain first-line. Abelacimab awaits Phase 3 confirmation.</div>
+      </div>
+    </div>
+    <div class="takeaway" style="border-left:4px solid var(--amber);">
+      <span class="takeaway__icon">⚠️</span>
+      <div>
+        <div class="takeaway__title">No Reversal Agent Yet</div>
+        <div class="takeaway__text">Andexanet alfa does not reverse abelacimab. Critical consideration for emergency surgery/bleeding scenarios.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Bottom Line ── -->
+  <div class="card" style="background: linear-gradient(135deg, var(--blue-light), rgba(30,58,95,0.05)); border-color: rgba(21,101,192,0.3);">
+    <div style="display:flex; gap:12px; align-items:flex-start;">
+      <span style="font-size:1.8rem;">💡</span>
+      <div>
+        <div style="font-weight:700; font-size:0.95rem; margin-bottom:4px;">Bottom Line</div>
+        <div style="font-size:0.88rem; line-height:1.7;">Abelacimab is the most exciting anticoagulant safety development in years — <strong>67% major bleeding reduction</strong> is unprecedented. If LILAC-TIMI 76 confirms efficacy while maintaining this safety signal, it could transform anticoagulation for high-bleeding-risk AF patients. Asundexian's failure is a cautionary tale about translating mechanism from preclinical to clinical AF.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── References ── -->
+  <div class="section-header">
+    <span class="section-header__icon">📚</span>
+    <span class="section-header__title">References</span>
+  </div>
+  <div class="card">
+    <div class="ref-list">
+      <div class="ref">
+        <span class="ref__num">[1]</span>
+        <span class="ref__text">Giugliano RP et al. <em>Abelacimab vs Rivaroxaban in Atrial Fibrillation</em> (AZALEA-TIMI 71). <strong>NEJM</strong>. October 2024. doi:10.1056/NEJMoa2406674</span>
+      </div>
+      <div class="ref">
+        <span class="ref__num">[2]</span>
+        <span class="ref__text">Piccini JP et al. <em>Asundexian vs Apixaban in Atrial Fibrillation</em> (OCEANIC-AF). <strong>NEJM</strong>. 2024. doi:10.1056/NEJMoa2407105</span>
+      </div>
+      <div class="ref">
+        <span class="ref__num">[3]</span>
+        <span class="ref__text">LILAC-TIMI 76 Phase 3 — NCT05643573 (ongoing)</span>
+      </div>
+      <div class="ref">
+        <span class="ref__num">[4]</span>
+        <span class="ref__text">PACIFIC-Stroke — Asundexian secondary stroke prevention (results: neutral)</span>
+      </div>
+      <div class="ref">
+        <span class="ref__num">[5]</span>
+        <span class="ref__text">Bhatt DL et al. 2024 ACC/AHA anticoagulation guidelines update</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  FXIa Inhibitors Review · Notchiii AI · April 2026 · FOR OPENCLAW/IMBR/Review/Hematology/
+</footer>
+</body>
+</html>
