@@ -1,0 +1,65 @@
+{
+  "ClawHub": {
+    "type": "dir",
+    "count": 71
+  },
+  "FOR CLAUDE": {
+    "type": "dir",
+    "count": 384
+  },
+  "IMBR": {
+    "type": "dir",
+    "count": 104
+  },
+  "Knowledge": {
+    "type": "dir",
+    "count": 17
+  },
+  "NPC-Profile.md": {
+    "type": "file",
+    "ftype": "md",
+    "path": "NPC-Profile.md",
+    "date": "31 Mar 2026",
+    "size": "1.8 KB"
+  },
+  "README.md": {
+    "type": "file",
+    "ftype": "md",
+    "path": "README.md",
+    "date": "29 Mar 2026",
+    "size": "1.9 KB"
+  },
+  "REGULATION.md": {
+    "type": "file",
+    "ftype": "md",
+    "path": "REGULATION.md",
+    "date": "31 Mar 2026",
+    "size": "2.6 KB"
+  },
+  "SOUL-main.md": {
+    "type": "file",
+    "ftype": "md",
+    "path": "SOUL-main.md",
+    "date": "29 Mar 2026",
+    "size": "2.7 KB"
+  },
+  "Setup": {
+    "type": "dir",
+    "count": 5
+  },
+  "outputs": {
+    "type": "dir",
+    "count": 4370
+  },
+  "scripts": {
+    "type": "dir",
+    "count": 1
+  },
+  "shopping-list.md": {
+    "type": "file",
+    "ftype": "md",
+    "path": "shopping-list.md",
+    "date": "4d ago",
+    "size": "672 B"
+  }
+}

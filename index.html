@@ -882,7 +882,7 @@ function showSection(id, btn) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
   history.replaceState(null, '', '#' + id);
   if (id === 'imbr' && allData) { renderFiles(); renderInputFiles(); }
-  if (id === 'project' && allData) renderProjectTree();
+  if (id === 'project' && allData) loadProjectTree();
   if (id === 'medicine') loadMedicine();
 }
 const _initHash = window.location.hash.slice(1) || 'project';
@@ -892,14 +892,26 @@ if (_initBtn) showSection(_initHash, _initBtn);
 // ── Data loading ──
 async function loadData() {
   try {
-    const resp = await fetch('/alldata.json?t=1775750107');
+    const resp = await fetch('/data.json');
     allData = await resp.json();
     updateStats();
     renderOverviewFolders();
     if (document.getElementById('imbr').classList.contains('active')) { renderFiles(); renderInputFiles(); }
-    if (document.getElementById('project').classList.contains('active')) renderProjectTree();
+    if (document.getElementById('project').classList.contains('active')) loadProjectTree();
   } catch(e) {
     console.error('Failed to load:', e);
+  }
+}
+
+async function loadProjectTree() {
+  try {
+    const resp = await fetch('/project-tree.json');
+    const tree = await resp.json();
+    allData = allData || {};
+    allData.fullTree = tree;
+    renderProjectTree();
+  } catch(e) {
+    console.error('Failed to load project tree:', e);
   }
 }
 
@@ -1146,7 +1158,7 @@ async function loadMedicine() {
   if (medicineLoaded) return;
   const container = document.getElementById('medicine-tree');
   try {
-    const resp = await fetch('/api/medicine');
+    const resp = await fetch('/medicine.json');
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     const tree = await resp.json();
     medicineLoaded = true;
