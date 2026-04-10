@@ -1018,6 +1018,11 @@ function renderFiles() {
     return;
   }
 
+  // Save current folder open state
+  const fileSections = document.getElementById('file-sections');
+  const savedOpen = new Set();
+  fileSections.querySelectorAll('.tree-children.open').forEach(el => savedOpen.add(el.id));
+
   // Group by folder
   const byFolder = {};
   files.forEach(f => {
@@ -1067,6 +1072,14 @@ function renderFiles() {
   document.getElementById('file-sections').innerHTML = html;
   localStorage.setItem('readItems', JSON.stringify([...readItems]));
   document.getElementById('load-more').style.display = 'none';
+
+  // Restore folder open state
+  savedOpen.forEach(uid => {
+    const el = document.getElementById(uid);
+    if (el) el.classList.add('open');
+    const arrow = document.getElementById('arrow_' + uid);
+    if (arrow) arrow.classList.add('open');
+  });
 }
 
 function loadMore() {
