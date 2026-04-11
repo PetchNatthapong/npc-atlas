@@ -943,7 +943,6 @@ function renderOverviewFolders() {
   const container = document.getElementById('overview-folders');
   container.innerHTML = '';
   for (const [folder, files] of Object.entries(allData.folders)) {
-    if (files.length === 0) continue;
     const htmlC = files.filter(f => f.type === 'html').length;
     const pdfC = files.filter(f => f.type === 'pdf').length;
     const mdC = files.filter(f => f.type === 'md').length;
